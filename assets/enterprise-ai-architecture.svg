@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="diagram-vector" viewBox="0 0 1200 1100" role="img" aria-labelledby="architecture-svg-title architecture-svg-description">
+<title id="architecture-svg-title">Enterprise AI platform: end-to-end architecture</title>
+<desc id="architecture-svg-description">Users enter through chat, embedded copilots, collaboration, analytics, agent studio or APIs. Identity routes requests to an orchestrator with human review, domain agents and shared capability agents. Tool and model gateways connect to governed knowledge, data pipelines and systems of record. Evaluation and governance run alongside the request path. Eight numbered flows and seven security checkpoints connect these components. This is a proposed reference design.</desc>
+<style>
+.diagram-vector{background:#fff;color:#16232a;font-family:"IBM Plex Sans",Arial,sans-serif}
+.diagram-vector .box{fill:#fff;stroke:#96a7ad;stroke-width:1}
+.diagram-vector .L{fill:#f8faf9;stroke:#c7d0d3;stroke-width:1}
+.diagram-vector .ag{fill:#dcefed;stroke:#739b97;stroke-width:1}
+.diagram-vector .hu{fill:#f5e5da;stroke:#b48163;stroke-width:1}
+.diagram-vector .da{fill:#e1eee5;stroke:#7a9b84;stroke-width:1}
+.diagram-vector .so{fill:#e0e7eb;stroke:#96a7ad;stroke-width:1}
+.diagram-vector .tr{fill:#e0ebf1;stroke:#809bab;stroke-width:1}
+.diagram-vector .sc{fill:#f5e5da;stroke:#b48163;stroke-width:1}
+.diagram-vector text{fill:#16232a}
+.diagram-vector .tt{font-size:12px;font-weight:600}
+.diagram-vector .ts{font-size:10.5px;fill:#43545c}
+.diagram-vector .lh{font-size:13px;font-weight:600}
+.diagram-vector .a1,.diagram-vector .a5,.diagram-vector .a6,.diagram-vector .a7{fill:none;stroke-width:1.6}
+.diagram-vector .a1{stroke:#315f79}.diagram-vector .a5{stroke:#a74318;stroke-dasharray:5 3}.diagram-vector .a6{stroke:#39704d}.diagram-vector .a7{stroke:#006d68}
+.diagram-vector .m1,.diagram-vector .b1{fill:#315f79}.diagram-vector .m5,.diagram-vector .b5{fill:#a74318}.diagram-vector .m6,.diagram-vector .b6{fill:#39704d}.diagram-vector .m7,.diagram-vector .b7{fill:#006d68}
+.diagram-vector .bn{fill:#fff;font-size:11px;font-weight:700}
+.diagram-vector .sh{fill:#a74318}.diagram-vector .shn{fill:#fff;font-size:8.5px;font-weight:700}
+</style>
+<defs><marker id="arch-k1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="m1"></path></marker><marker id="arch-k5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="m5"></path></marker><marker id="arch-k6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="m6"></path></marker><marker id="arch-k7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="m7"></path></marker></defs>
+<rect class="box" x="20" y="18" width="440" height="42" rx="21"></rect>
+<text class="tt" x="240" y="44" text-anchor="middle">Business users: executives, managers, frontline</text>
+<rect class="box" x="480" y="18" width="440" height="42" rx="21"></rect>
+<text class="tt" x="700" y="44" text-anchor="middle">Technical users: analysts, data scientists, engineers</text>
+<rect class="box" x="20" y="78" width="140" height="56" rx="6"></rect>
+<text class="tt" x="90" y="100.4" text-anchor="middle">Assistant chat</text>
+<text class="ts" x="90" y="120.56" text-anchor="middle">Conversational entry</text>
+<rect class="box" x="172" y="78" width="140" height="56" rx="6"></rect>
+<text class="tt" x="242" y="100.4" text-anchor="middle">Embedded copilots</text>
+<text class="ts" x="242" y="120.56" text-anchor="middle">Inside ERP, CRM, QMS</text>
+<rect class="box" x="324" y="78" width="140" height="56" rx="6"></rect>
+<text class="tt" x="394" y="100.4" text-anchor="middle">Collaboration</text>
+<text class="ts" x="394" y="120.56" text-anchor="middle">Chat, meetings</text>
+<rect class="box" x="476" y="78" width="140" height="56" rx="6"></rect>
+<text class="tt" x="546" y="100.4" text-anchor="middle">NL analytics &amp; BI</text>
+<text class="ts" x="546" y="120.56" text-anchor="middle">Search-driven insight</text>
+<rect class="box" x="628" y="78" width="140" height="56" rx="6"></rect>
+<text class="tt" x="698" y="100.4" text-anchor="middle">Agent studio</text>
+<text class="ts" x="698" y="120.56" text-anchor="middle">Low-code builder</text>
+<rect class="box" x="780" y="78" width="140" height="56" rx="6"></rect>
+<text class="tt" x="850" y="100.4" text-anchor="middle">Notebooks &amp; APIs</text>
+<text class="ts" x="850" y="120.56" text-anchor="middle">SDK, pro-code</text>
+<rect class="box" x="20" y="160" width="900" height="40" rx="6"></rect>
+<text class="tt" x="470" y="185" text-anchor="middle">Identity, entitlements and intent router: user-delegated access, persona context</text>
+<rect class="L" x="20" y="215" width="900" height="245" rx="10"></rect>
+<text class="lh" x="36" y="235" text-anchor="start">Agent orchestration</text>
+<rect class="ag" x="40" y="245" width="220" height="50" rx="6"></rect>
+<text class="tt" x="150" y="265" text-anchor="middle">Agent registry &amp; memory</text>
+<text class="ts" x="150" y="283" text-anchor="middle">A2A contracts, state, versions</text>
+<rect class="ag" x="320" y="245" width="300" height="50" rx="6"></rect>
+<text class="tt" x="470" y="265" text-anchor="middle">Orchestrator agent</text>
+<text class="ts" x="470" y="283" text-anchor="middle">Plan, delegate, compose, verify</text>
+<rect class="hu" x="680" y="245" width="220" height="50" rx="6"></rect>
+<text class="tt" x="790" y="265" text-anchor="middle">Human review &amp; approval</text>
+<text class="ts" x="790" y="283" text-anchor="middle">Approve, edit, escalate</text>
+<text class="ts" x="40" y="313" text-anchor="start">Domain agents support a business outcome; people remain accountable</text>
+<rect class="ag" x="40" y="320" width="112" height="44" rx="6"></rect>
+<text class="tt" x="96" y="337.6" text-anchor="middle">Quality</text>
+<text class="ts" x="96" y="353.44" text-anchor="middle">complaints, CAPA</text>
+<rect class="ag" x="164" y="320" width="112" height="44" rx="6"></rect>
+<text class="tt" x="220" y="337.6" text-anchor="middle">Clinical</text>
+<text class="ts" x="220" y="353.44" text-anchor="middle">evidence, studies</text>
+<rect class="ag" x="288" y="320" width="112" height="44" rx="6"></rect>
+<text class="tt" x="344" y="337.6" text-anchor="middle">Engineering</text>
+<text class="ts" x="344" y="353.44" text-anchor="middle">design, tests</text>
+<rect class="ag" x="412" y="320" width="112" height="44" rx="6"></rect>
+<text class="tt" x="468" y="337.6" text-anchor="middle">Operations</text>
+<text class="ts" x="468" y="353.44" text-anchor="middle">mfg, supply</text>
+<rect class="ag" x="536" y="320" width="112" height="44" rx="6"></rect>
+<text class="tt" x="592" y="337.6" text-anchor="middle">Field service</text>
+<text class="ts" x="592" y="353.44" text-anchor="middle">triage, uptime</text>
+<rect class="ag" x="660" y="320" width="112" height="44" rx="6"></rect>
+<text class="tt" x="716" y="337.6" text-anchor="middle">Commercial</text>
+<text class="ts" x="716" y="353.44" text-anchor="middle">sales, education</text>
+<rect class="ag" x="784" y="320" width="112" height="44" rx="6"></rect>
+<text class="tt" x="840" y="337.6" text-anchor="middle">Corporate</text>
+<text class="ts" x="840" y="353.44" text-anchor="middle">finance, HR, IT</text>
+<text class="ts" x="40" y="385" text-anchor="start">Shared capability agents serve each domain within approved access</text>
+<rect class="box" x="40" y="392" width="160" height="48" rx="6"></rect>
+<text class="tt" x="120" y="411.2" text-anchor="middle">Retrieval</text>
+<text class="ts" x="120" y="428.48" text-anchor="middle">hybrid RAG, citations</text>
+<rect class="box" x="215" y="392" width="160" height="48" rx="6"></rect>
+<text class="tt" x="295" y="411.2" text-anchor="middle">Analytics</text>
+<text class="ts" x="295" y="428.48" text-anchor="middle">governed text-to-SQL</text>
+<rect class="box" x="390" y="392" width="160" height="48" rx="6"></rect>
+<text class="tt" x="470" y="411.2" text-anchor="middle">Graph reasoning</text>
+<text class="ts" x="470" y="428.48" text-anchor="middle">entities, traceability</text>
+<rect class="box" x="565" y="392" width="160" height="48" rx="6"></rect>
+<text class="tt" x="645" y="411.2" text-anchor="middle">Multimodal</text>
+<text class="ts" x="645" y="428.48" text-anchor="middle">docs, images, video</text>
+<rect class="hu" x="740" y="392" width="160" height="48" rx="6"></rect>
+<text class="tt" x="820" y="411.2" text-anchor="middle">Action &amp; workflow</text>
+<text class="ts" x="820" y="428.48" text-anchor="middle">approved tool writes</text>
+<text class="lh" x="904" y="477" text-anchor="end">Context &amp; model services</text>
+<rect class="box" x="20" y="484" width="290" height="56" rx="6"></rect>
+<text class="tt" x="165" y="506.4" text-anchor="middle">Tool gateway (MCP)</text>
+<text class="ts" x="165" y="526.56" text-anchor="middle">Registry, authZ, risk tier per tool</text>
+<rect class="box" x="325" y="484" width="290" height="56" rx="6"></rect>
+<text class="tt" x="470" y="506.4" text-anchor="middle">Model gateway</text>
+<text class="ts" x="470" y="526.56" text-anchor="middle">Route, region-pin, redact, meter</text>
+<rect class="box" x="630" y="484" width="290" height="56" rx="6"></rect>
+<text class="tt" x="775" y="506.4" text-anchor="middle">Prompt, skill &amp; policy catalog</text>
+<text class="ts" x="775" y="526.56" text-anchor="middle">Versioned, reusable, reviewed</text>
+<rect class="L" x="20" y="560" width="900" height="182" rx="10"></rect>
+<text class="lh" x="904" y="580" text-anchor="end">Knowledge &amp; data pipelines</text>
+<rect class="da" x="40" y="592" width="160" height="52" rx="6"></rect>
+<text class="tt" x="120" y="612.8" text-anchor="middle">RAG index</text>
+<text class="ts" x="120" y="631.52" text-anchor="middle">chunk, embed, rerank</text>
+<rect class="da" x="215" y="592" width="160" height="52" rx="6"></rect>
+<text class="tt" x="295" y="612.8" text-anchor="middle">Knowledge graph</text>
+<text class="ts" x="295" y="631.52" text-anchor="middle">parts, suppliers, cases</text>
+<rect class="da" x="390" y="592" width="160" height="52" rx="6"></rect>
+<text class="tt" x="470" y="612.8" text-anchor="middle">Multimodal store</text>
+<text class="ts" x="470" y="631.52" text-anchor="middle">procedure video, logs</text>
+<rect class="da" x="565" y="592" width="160" height="52" rx="6"></rect>
+<text class="tt" x="645" y="612.8" text-anchor="middle">Semantic layer</text>
+<text class="ts" x="645" y="631.52" text-anchor="middle">metrics, definitions</text>
+<rect class="da" x="740" y="592" width="160" height="52" rx="6"></rect>
+<text class="tt" x="820" y="612.8" text-anchor="middle">ML models</text>
+<text class="ts" x="820" y="631.52" text-anchor="middle">features, predictions</text>
+<rect class="da" x="40" y="672" width="520" height="52" rx="6"></rect>
+<text class="tt" x="300" y="692.8" text-anchor="middle">Data pipelines</text>
+<text class="ts" x="300" y="711.52" text-anchor="middle">Ingest, contracts, quality, lineage, PII and intended-use tags</text>
+<rect class="da" x="580" y="672" width="320" height="52" rx="6"></rect>
+<text class="tt" x="740" y="692.8" text-anchor="middle">Lakehouse &amp; warehouse</text>
+<text class="ts" x="740" y="711.52" text-anchor="middle">Regional data planes, governed tables</text>
+<text class="lh" x="36" y="764" text-anchor="start">Systems of record</text>
+<rect class="so" x="20" y="772" width="140" height="40" rx="6"></rect>
+<text class="tt" x="90" y="796.8" text-anchor="middle">ERP</text>
+<rect class="so" x="172" y="772" width="140" height="40" rx="6"></rect>
+<text class="tt" x="242" y="796.8" text-anchor="middle">CRM</text>
+<rect class="so" x="324" y="772" width="140" height="40" rx="6"></rect>
+<text class="tt" x="394" y="796.8" text-anchor="middle">QMS, PLM, MES</text>
+<rect class="so" x="476" y="772" width="140" height="40" rx="6"></rect>
+<text class="tt" x="546" y="796.8" text-anchor="middle">ITSM, HR</text>
+<rect class="so" x="628" y="772" width="140" height="40" rx="6"></rect>
+<text class="tt" x="698" y="796.8" text-anchor="middle">Documents</text>
+<rect class="so" x="780" y="772" width="140" height="40" rx="6"></rect>
+<text class="tt" x="850" y="796.8" text-anchor="middle">Device telemetry</text>
+<rect class="L" x="945" y="160" width="235" height="300" rx="10"></rect>
+<text class="lh" x="961" y="180" text-anchor="start">Evaluation</text>
+<rect class="tr" x="960" y="196" width="205" height="40" rx="6"></rect>
+<text class="tt" x="1062.5" y="220.8" text-anchor="middle">Golden datasets</text>
+<rect class="tr" x="960" y="246" width="205" height="40" rx="6"></rect>
+<text class="tt" x="1062.5" y="270.8" text-anchor="middle">Offline evals &amp; judges</text>
+<rect class="tr" x="960" y="296" width="205" height="40" rx="6"></rect>
+<text class="tt" x="1062.5" y="320.8" text-anchor="middle">Red teaming &amp; safety</text>
+<rect class="tr" x="960" y="346" width="205" height="40" rx="6"></rect>
+<text class="tt" x="1062.5" y="370.8" text-anchor="middle">Release gates</text>
+<rect class="tr" x="960" y="396" width="205" height="40" rx="6"></rect>
+<text class="tt" x="1062.5" y="420.8" text-anchor="middle">Online scoring &amp; feedback</text>
+<rect class="L" x="945" y="484" width="235" height="396" rx="10"></rect>
+<text class="lh" x="961" y="504" text-anchor="start">Governance</text>
+<rect class="tr" x="960" y="518" width="205" height="36" rx="6"></rect>
+<text class="tt" x="1062.5" y="540.32" text-anchor="middle">Risk &amp; intended-use tiers</text>
+<rect class="tr" x="960" y="562" width="205" height="36" rx="6"></rect>
+<text class="tt" x="1062.5" y="584.32" text-anchor="middle">Policy engine (as code)</text>
+<rect class="tr" x="960" y="606" width="205" height="36" rx="6"></rect>
+<text class="tt" x="1062.5" y="628.32" text-anchor="middle">Use-case &amp; model inventory</text>
+<rect class="tr" x="960" y="650" width="205" height="36" rx="6"></rect>
+<text class="tt" x="1062.5" y="672.32" text-anchor="middle">Approvals &amp; e-signatures</text>
+<rect class="tr" x="960" y="694" width="205" height="36" rx="6"></rect>
+<text class="tt" x="1062.5" y="716.32" text-anchor="middle">Audit trail &amp; e-records</text>
+<rect class="tr" x="960" y="738" width="205" height="36" rx="6"></rect>
+<text class="tt" x="1062.5" y="760.32" text-anchor="middle">Tracing &amp; observability</text>
+<rect class="tr" x="960" y="782" width="205" height="36" rx="6"></rect>
+<text class="tt" x="1062.5" y="804.32" text-anchor="middle">Cost &amp; budgets by domain</text>
+<rect class="tr" x="960" y="826" width="205" height="36" rx="6"></rect>
+<text class="tt" x="1062.5" y="848.32" text-anchor="middle">Lifecycle &amp; change control</text>
+<rect class="L" x="20" y="900" width="1160" height="96" rx="10"></rect>
+<text class="lh" x="36" y="920" text-anchor="start">Security controls enforced at S1 to S7</text>
+<rect class="sc" x="40" y="932" width="132" height="50" rx="6"></rect>
+<text class="tt" x="106" y="952" text-anchor="middle">Identity</text>
+<text class="ts" x="106" y="970" text-anchor="middle">users and agents</text>
+<rect class="sc" x="181" y="932" width="132" height="50" rx="6"></rect>
+<text class="tt" x="247" y="952" text-anchor="middle">Secrets</text>
+<text class="ts" x="247" y="970" text-anchor="middle">regional keys</text>
+<rect class="sc" x="322" y="932" width="132" height="50" rx="6"></rect>
+<text class="tt" x="388" y="952" text-anchor="middle">Injection defenses</text>
+<text class="ts" x="388" y="970" text-anchor="middle">untrusted content</text>
+<rect class="sc" x="463" y="932" width="132" height="50" rx="6"></rect>
+<text class="tt" x="529" y="952" text-anchor="middle">Tool sandbox</text>
+<text class="ts" x="529" y="970" text-anchor="middle">allow-lists</text>
+<rect class="sc" x="604" y="932" width="132" height="50" rx="6"></rect>
+<text class="tt" x="670" y="952" text-anchor="middle">DLP</text>
+<text class="ts" x="670" y="970" text-anchor="middle">redaction</text>
+<rect class="sc" x="745" y="932" width="132" height="50" rx="6"></rect>
+<text class="tt" x="811" y="952" text-anchor="middle">Residency</text>
+<text class="ts" x="811" y="970" text-anchor="middle">enforcement</text>
+<rect class="sc" x="886" y="932" width="132" height="50" rx="6"></rect>
+<text class="tt" x="952" y="952" text-anchor="middle">Threat detection</text>
+<text class="ts" x="952" y="970" text-anchor="middle">SIEM, anomalies</text>
+<rect class="sc" x="1027" y="932" width="132" height="50" rx="6"></rect>
+<text class="tt" x="1093" y="952" text-anchor="middle">Incident response</text>
+<text class="ts" x="1093" y="970" text-anchor="middle">review &amp; correction</text>
+<rect class="L" x="20" y="1008" width="1160" height="78" rx="10"></rect>
+<text class="lh" x="36" y="1028" text-anchor="start">Oversight forums decide policy, tiers, funding and required evidence</text>
+<rect class="tr" x="40" y="1032" width="270" height="40" rx="6"></rect>
+<text class="tt" x="175" y="1056.8" text-anchor="middle">AI governance council</text>
+<rect class="tr" x="324" y="1032" width="270" height="40" rx="6"></rect>
+<text class="tt" x="459" y="1056.8" text-anchor="middle">Architecture &amp; security review</text>
+<rect class="tr" x="608" y="1032" width="270" height="40" rx="6"></rect>
+<text class="tt" x="743" y="1056.8" text-anchor="middle">Quality &amp; regulatory review</text>
+<rect class="tr" x="892" y="1032" width="270" height="40" rx="6"></rect>
+<text class="tt" x="1027" y="1056.8" text-anchor="middle">Domain portfolio review</text>
+<path class="sh" d="M31 170 H49 V181 Q49 189 40 192 Q31 189 31 181 Z"></path>
+<text class="shn" x="40" y="184" text-anchor="middle">S1</text>
+<path class="sh" d="M181 220 H199 V231 Q199 239 190 242 Q181 239 181 231 Z"></path>
+<text class="shn" x="190" y="234" text-anchor="middle">S2</text>
+<path class="sh" d="M29 502 H47 V513 Q47 521 38 524 Q29 521 29 513 Z"></path>
+<text class="shn" x="38" y="516" text-anchor="middle">S3</text>
+<path class="sh" d="M334 502 H352 V513 Q352 521 343 524 Q334 521 334 513 Z"></path>
+<text class="shn" x="343" y="516" text-anchor="middle">S4</text>
+<path class="sh" d="M43 568 H61 V579 Q61 587 52 590 Q43 587 43 579 Z"></path>
+<text class="shn" x="52" y="582" text-anchor="middle">S5</text>
+<path class="sh" d="M49 688 H67 V699 Q67 707 58 710 Q49 707 49 699 Z"></path>
+<text class="shn" x="58" y="702" text-anchor="middle">S6</text>
+<path class="sh" d="M183 750 H201 V761 Q201 769 192 772 Q183 769 183 761 Z"></path>
+<text class="shn" x="192" y="764" text-anchor="middle">S7</text>
+<line class="a1" x1="470" y1="134" x2="470" y2="157" marker-end="url(#arch-k1)"></line>
+<line class="a1" x1="470" y1="200" x2="470" y2="242" marker-end="url(#arch-k1)"></line>
+<circle class="b1" cx="492" cy="221" r="10"></circle>
+<text class="bn" x="492" y="225" text-anchor="middle">1</text>
+<line class="a1" x1="470" y1="295" x2="470" y2="317" marker-end="url(#arch-k1)"></line>
+<line class="a1" x1="530" y1="364" x2="530" y2="389" marker-end="url(#arch-k1)"></line>
+<circle class="b1" cx="626" cy="302" r="10"></circle>
+<text class="bn" x="626" y="306" text-anchor="middle">2</text>
+<line class="a1" x1="120" y1="440" x2="120" y2="481" marker-end="url(#arch-k1)"></line>
+<line class="a1" x1="120" y1="540" x2="120" y2="589" marker-end="url(#arch-k1)"></line>
+<circle class="b1" cx="142" cy="460" r="10"></circle>
+<text class="bn" x="142" y="464" text-anchor="middle">3</text>
+<line class="a1" x1="470" y1="440" x2="470" y2="481" marker-end="url(#arch-k1)"></line>
+<circle class="b1" cx="492" cy="460" r="10"></circle>
+<text class="bn" x="492" y="464" text-anchor="middle">4</text>
+<path class="a5" d="M900 416 H911 V270 H903" marker-end="url(#arch-k5)"></path>
+<path class="a5" d="M20 512 H9 V792 H17" marker-end="url(#arch-k5)"></path>
+<circle class="b5" cx="911" cy="378" r="10"></circle>
+<text class="bn" x="911" y="382" text-anchor="middle">5</text>
+<circle class="b5" cx="9" cy="650" r="9"></circle>
+<text class="bn" x="9" y="654" text-anchor="middle">5</text>
+<line class="a6" x1="242" y1="772" x2="242" y2="727" marker-end="url(#arch-k6)"></line>
+<line class="a6" x1="560" y1="698" x2="577" y2="698" marker-end="url(#arch-k6)"></line>
+<line class="a6" x1="820" y1="672" x2="820" y2="647" marker-end="url(#arch-k6)"></line>
+<circle class="b6" cx="264" cy="750" r="10"></circle>
+<text class="bn" x="264" y="754" text-anchor="middle">6</text>
+<line class="a7" x1="920" y1="340" x2="942" y2="340" marker-end="url(#arch-k7)"></line>
+<circle class="b7" cx="931" cy="318" r="10"></circle>
+<text class="bn" x="931" y="322" text-anchor="middle">7</text>
+<line class="a7" x1="920" y1="512" x2="942" y2="512" marker-end="url(#arch-k7)"></line>
+<circle class="b7" cx="931" cy="552" r="10"></circle>
+<text class="bn" x="931" y="556" text-anchor="middle">8</text>
+</svg>

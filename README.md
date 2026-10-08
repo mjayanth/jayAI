@@ -12,6 +12,8 @@ A library of frameworks, playbooks and architectures for building and running AI
 - `assets/site.css` — homepage colors, type and layout, drawn from the playbook.
 - `assets/library.js` — card rendering, filtering and safe local links.
 - `assets/main.js` — homepage interactions.
+- `assets/enterprise-ai-architecture.svg` — full reference diagram adapted from Jay’s original Claude artifact.
+- `assets/architecture.css` and `assets/diagram-viewer.js` — playbook diagram layout, zoom and expanded view.
 
 Plain HTML, CSS and JavaScript. No install, bundler, database or paid service is required. GitHub Pages serves the root of `main`. IBM Plex fonts load from Google Fonts with local fallbacks.
 
@@ -80,3 +82,7 @@ The tests exercise card additions, safe links, escaped text, search, draft filte
 The homepage follows an editorial layout, using the original playbook’s teal/gray palette and IBM Plex Sans, Sans Condensed and Mono. Diagrams show relationships and steps; they do not stand in for performance data.
 
 The homepage contains the resource library and concise links into the current playbook. Avoid biographies, employer lists, sales pitches and repeated summaries. Framework links are labeled as sections within the playbook, not separate publications. The full nine-layer architecture is visible in the card preview and opens the original interactive diagram. The playbook retains its thirteen sections, including the technical detail on evidence, replay, model evaluation, sign-off and cost.
+
+The playbook’s Architecture section opens with the end-to-end diagram from the original Claude artifact, followed by eight numbered flows, seven security checkpoints, then the nine-layer capability view. The SVG is also embedded inline for accessible text and the site fonts. If its layout changes, update both the inline SVG and the standalone SVG file. The diagram is a proposed reference design, not a representation of a company’s deployed systems. Labels were clarified around human approval, accountable owners, intended use and evaluation; the original component layout and flow connections remain.
+
+Diagram controls support fit, actual size, zoom in/out and a native dialog. Escape closes the expanded view and returns keyboard focus to its trigger. Without JavaScript, the inline diagram and standalone SVG remain available. Use `#architecture-flows`, `#architecture-controls` and `#architecture-layers` for direct links into this section.
