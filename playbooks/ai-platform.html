@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Jay Madduru’s approach to enterprise AI: product choices, a nine-layer architecture, agent delivery, evaluation, governance and operating costs." />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>AI Platform Playbook · How I AI · Jay Madduru</title>
+  <style>
+    :root {
+      --bg: #e9eef0;
+      --paper: #f8faf9;
+      --panel: #ffffff;
+      --ink: #16232a;
+      --muted: #53636b;
+      --line: #c7d0d3;
+      --line-strong: #96a7ad;
+      --teal: #006d68;
+      --teal-soft: #dcefed;
+      --orange: #a74318;
+      --orange-soft: #f5e5da;
+      --blue: #315f79;
+      --blue-soft: #e0ebf1;
+      --green: #39704d;
+      --green-soft: #e1eee5;
+      --shadow: 0 16px 42px rgba(28, 48, 58, .09);
+      --display: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+      --body: "IBM Plex Sans", sans-serif;
+      --mono: "IBM Plex Mono", monospace;
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e1519;
+        --paper: #131d22;
+        --panel: #19252b;
+        --ink: #e6edef;
+        --muted: #a0b0b6;
+        --line: #304148;
+        --line-strong: #50646d;
+        --teal: #60c5bc;
+        --teal-soft: #173a39;
+        --orange: #f0a078;
+        --orange-soft: #43291e;
+        --blue: #8dc0dc;
+        --blue-soft: #203642;
+        --green: #86c79c;
+        --green-soft: #213a2a;
+        --shadow: 0 18px 44px rgba(0, 0, 0, .28);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 22px; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; min-width: 0; background: var(--bg); color: var(--ink); font: 16px/1.58 var(--body); }
+    button, select { font: inherit; }
+    a { color: var(--teal); }
+    :focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 44px) 72px; }
+    .utility { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 56px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .84rem; }
+    .scope { font-family: var(--mono); letter-spacing: .02em; }
+    .read-path { display: flex; gap: 8px; align-items: center; }
+    .read-path select { color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 6px 30px 6px 9px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); gap: clamp(30px, 6vw, 92px); padding: clamp(50px, 8vw, 112px) 0 clamp(42px, 6vw, 78px); border-bottom: 1px solid var(--line); }
+    .hero h1 { margin: 0; max-width: 14ch; font: 700 clamp(3rem, 7.5vw, 7rem)/.88 var(--display); letter-spacing: -.045em; text-wrap: balance; }
+    .hero h1 span { color: var(--teal); }
+    .hero .lead { margin: 30px 0 0; max-width: 60ch; font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.55; }
+    .north { align-self: end; border-top: 5px solid var(--teal); padding-top: 18px; }
+    .north .label, .kicker { margin: 0 0 8px; color: var(--muted); font: 500 .77rem/1.3 var(--mono); text-transform: uppercase; letter-spacing: .09em; }
+    .north blockquote { margin: 0; font: 600 clamp(1.45rem, 2.5vw, 2.2rem)/1.16 var(--display); letter-spacing: -.01em; }
+    .north p { margin: 16px 0 0; color: var(--muted); font-size: .92rem; }
+    .shell { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(30px, 5vw, 76px); padding-top: 34px; }
+    .rail { position: sticky; top: 18px; align-self: start; }
+    .rail p { margin: 0 0 10px; color: var(--muted); font: 500 .74rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .rail ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .rail a { display: grid; grid-template-columns: 2.15rem 1fr; gap: 5px; padding: 8px 5px; border-bottom: 1px solid var(--line); color: var(--muted); text-decoration: none; font-size: .89rem; line-height: 1.25; }
+    .rail a span { color: var(--line-strong); font: 500 .74rem var(--mono); padding-top: 2px; }
+    .rail a:hover, .rail a.active { color: var(--ink); background: var(--paper); }
+    .rail a.active span { color: var(--teal); }
+    main { min-width: 0; }
+    section { padding: clamp(50px, 7vw, 92px) 0; border-bottom: 1px solid var(--line); }
+    section:last-child { border-bottom: 0; }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .6fr); gap: 32px 60px; align-items: end; margin-bottom: 34px; }
+    .section-head h2 { margin: 0; max-width: 17ch; font: 700 clamp(2.35rem, 5vw, 4.6rem)/.95 var(--display); letter-spacing: -.035em; text-wrap: balance; }
+    .section-head .intro { margin: 0; color: var(--muted); max-width: 50ch; font-size: 1rem; }
+    h3 { margin: 0; font: 600 1.25rem/1.18 var(--display); letter-spacing: -.01em; }
+    h4 { margin: 0; font-size: .97rem; }
+    p { margin: 0; }
+    .muted { color: var(--muted); }
+    .mono { font-family: var(--mono); }
+    .grid-2, .grid-3, .grid-4 { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 21px; }
+    .card p { margin-top: 9px; color: var(--muted); font-size: .93rem; }
+    .card .num { display: block; margin-bottom: 24px; color: var(--teal); font: 600 1rem var(--mono); }
+    .rule-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .rule { background: var(--paper); padding: 22px; min-height: 162px; }
+    .rule strong { display: block; font: 600 1.1rem var(--display); }
+    .rule p { margin-top: 10px; color: var(--muted); font-size: .9rem; }
+    .decision { margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); border: 1px solid var(--line-strong); background: var(--paper); }
+    .decision > div { padding: 26px; }
+    .decision > div + div { border-left: 1px solid var(--line); }
+    .decision ul, .clean-list { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+    .decision li, .clean-list li { position: relative; padding-left: 19px; color: var(--muted); }
+    .decision li::before, .clean-list li::before { content: "—"; position: absolute; left: 0; color: var(--teal); }
+    .flowline { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 28px; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+    .flowline article { position: relative; padding: 22px 17px 24px; min-height: 176px; }
+    .flowline article + article { border-left: 1px solid var(--line); }
+    .flowline article::after { content: "→"; position: absolute; right: -9px; top: 22px; z-index: 1; color: var(--teal); background: var(--bg); font: 600 1rem var(--mono); padding: 0 2px; }
+    .flowline article:last-child::after { display: none; }
+    .flowline .step { color: var(--teal); font: 600 .78rem var(--mono); }
+    .flowline h3 { margin-top: 9px; }
+    .flowline p { margin-top: 9px; color: var(--muted); font-size: .86rem; }
+    .stack-map { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr); gap: 24px; align-items: start; }
+    .layers { display: grid; gap: 7px; }
+    .layer { width: 100%; display: grid; grid-template-columns: 2.3rem minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 62px; padding: 10px 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--layer-color, var(--teal)); border-radius: 5px; cursor: pointer; text-align: left; }
+    .layer:hover, .layer[aria-pressed="true"] { border-color: var(--layer-color, var(--teal)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--layer-color, var(--teal)) 15%, transparent); }
+    .layer .n { font: 600 1rem var(--mono); color: var(--layer-color, var(--teal)); }
+    .layer strong { font-size: .96rem; }
+    .layer small { color: var(--muted); font-size: .77rem; }
+    .layer .signal { font: 500 .72rem var(--mono); color: var(--muted); text-align: right; }
+    .inspector { position: sticky; top: 18px; background: var(--paper); border: 1px solid var(--line-strong); border-top: 6px solid var(--inspect-color, var(--teal)); padding: 24px; box-shadow: var(--shadow); }
+    .inspector .eyebrow { color: var(--muted); font: 500 .74rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .inspector h3 { margin-top: 8px; font-size: 1.65rem; }
+    .inspector > p { margin-top: 10px; color: var(--muted); }
+    .inspector dl { margin: 22px 0 0; display: grid; gap: 14px; }
+    .inspector dt { font: 600 .77rem var(--mono); color: var(--teal); text-transform: uppercase; letter-spacing: .05em; }
+    .inspector dd { margin: 3px 0 0; font-size: .9rem; }
+    .crosscuts { margin-top: 18px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .crosscuts div { padding: 12px; background: var(--teal-soft); color: var(--ink); border-top: 3px solid var(--teal); font-size: .84rem; font-weight: 600; }
+    .harness { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: 28px; align-items: start; }
+    .harness-flow { display: grid; gap: 0; }
+    .h-step { width: 100%; display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 10px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); padding: 16px; cursor: pointer; text-align: left; }
+    .h-step + .connector { height: 22px; position: relative; }
+    .connector::before { content: ""; position: absolute; left: 28px; top: 0; height: 22px; border-left: 1px solid var(--line-strong); }
+    .connector::after { content: ""; position: absolute; left: 24px; bottom: 0; border: 5px solid transparent; border-top-color: var(--line-strong); }
+    .h-step .n { color: var(--teal); font: 600 1.2rem var(--mono); }
+    .h-step strong { display: block; }
+    .h-step small { display: block; margin-top: 3px; color: var(--muted); }
+    .h-step:hover, .h-step[aria-pressed="true"] { border-color: var(--teal); background: var(--teal-soft); }
+    .h-detail { background: var(--panel); border: 1px solid var(--line); padding: 24px; }
+    .h-detail h3 { font-size: 1.7rem; }
+    .h-detail > p { margin-top: 10px; color: var(--muted); }
+    .h-detail .gate { margin-top: 20px; padding: 14px; border-left: 4px solid var(--orange); background: var(--orange-soft); }
+    .h-detail .gate strong { display: block; font: 600 .8rem var(--mono); text-transform: uppercase; }
+    .h-detail .gate p { margin-top: 5px; font-size: .88rem; }
+    .h-principles { margin-top: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .h-principles div { padding-top: 12px; border-top: 3px solid var(--teal); }
+    .h-principles strong { font-size: .93rem; }
+    .h-principles p { margin-top: 5px; color: var(--muted); font-size: .84rem; }
+    .matrix { border: 1px solid var(--line); background: var(--panel); }
+    .matrix-row { display: grid; grid-template-columns: minmax(120px, .7fr) minmax(0, 1fr) minmax(0, 1fr); }
+    .matrix-row + .matrix-row { border-top: 1px solid var(--line); }
+    .matrix-row > div { padding: 14px 16px; min-width: 0; }
+    .matrix-row > div + div { border-left: 1px solid var(--line); }
+    .matrix-row.head { background: var(--paper); color: var(--muted); font: 600 .76rem var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+    .matrix-row:not(.head) > div:first-child { font-weight: 600; }
+    .matrix-row:not(.head) > div { font-size: .89rem; }
+    .loop { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; align-items: stretch; margin-top: 24px; }
+    .loop div { position: relative; padding: 14px 12px; background: var(--panel); border-top: 4px solid var(--blue); font-size: .85rem; font-weight: 600; }
+    .loop div::after { content: "→"; position: absolute; right: -10px; top: 13px; color: var(--blue); font-family: var(--mono); }
+    .loop div:last-child::after { content: "↺"; }
+    .tier-list { display: grid; gap: 12px; }
+    .tier { display: grid; grid-template-columns: 9rem minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--line); background: var(--panel); }
+    .tier > div { padding: 16px; }
+    .tier > div + div { border-left: 1px solid var(--line); }
+    .tier .tag { font: 600 .78rem var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+    .tier.low { border-left: 5px solid var(--green); }
+    .tier.med { border-left: 5px solid var(--blue); }
+    .tier.high { border-left: 5px solid var(--orange); }
+    .lifecycle { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .life { background: var(--panel); padding: 18px; border-bottom: 4px solid var(--teal); }
+    .life span { color: var(--teal); font: 600 .77rem var(--mono); }
+    .life h3 { margin-top: 9px; }
+    .life p { margin-top: 8px; color: var(--muted); font-size: .84rem; }
+    .scorecards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .score { background: var(--panel); border: 1px solid var(--line); padding: 22px; }
+    .score .formula { margin: 16px 0; padding: 13px; background: var(--paper); border: 1px dashed var(--line-strong); font: 500 .82rem var(--mono); color: var(--teal); }
+    .score ul { margin: 0; padding-left: 19px; color: var(--muted); font-size: .89rem; }
+    .roadmap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line-strong); }
+    .phase { padding: 20px 18px 24px; }
+    .phase + .phase { border-left: 1px solid var(--line); }
+    .phase .when { color: var(--teal); font: 600 .78rem var(--mono); }
+    .phase h3 { margin-top: 9px; }
+    .phase ul { margin: 13px 0 0; padding-left: 18px; color: var(--muted); font-size: .86rem; }
+    .phase li + li { margin-top: 7px; }
+    .canvas { background: var(--ink); color: var(--bg); padding: clamp(24px, 4vw, 46px); border-radius: 8px; }
+    @media (prefers-color-scheme: dark) { .canvas { background: #e8eff1; color: #142027; } }
+    .canvas-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+    .canvas h3 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
+    .copy { flex: none; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 5px; padding: 7px 11px; cursor: pointer; }
+    .copy:hover { background: rgba(255,255,255,.08); }
+    .canvas-grid { margin-top: 30px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .canvas-grid div { border-top: 1px solid currentColor; padding-top: 11px; }
+    .canvas-grid strong { font: 600 .8rem var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+    .canvas-grid p { margin-top: 7px; opacity: .78; font-size: .88rem; }
+    .anti { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .anti div { background: var(--paper); padding: 20px; }
+    .anti strong { color: var(--orange); }
+    .anti p { margin-top: 6px; color: var(--muted); font-size: .89rem; }
+    .footer-note { padding-top: 28px; color: var(--muted); font-size: .84rem; }
+    .mobile-jump { display: none; }
+    @media (max-width: 1080px) {
+      .shell { grid-template-columns: 190px minmax(0, 1fr); gap: 28px; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flowline { grid-template-columns: repeat(2, minmax(0, 1fr)); border: 0; gap: 10px; }
+      .flowline article { border: 1px solid var(--line); }
+      .flowline article + article { border-left: 1px solid var(--line); }
+      .flowline article::after { display: none; }
+      .crosscuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .loop { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .loop div::after { display: none; }
+      .lifecycle { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .roadmap { grid-template-columns: repeat(2, minmax(0, 1fr)); border: 0; gap: 10px; }
+      .phase { border-top: 1px solid var(--line-strong); }
+      .phase + .phase { border-left: 0; }
+    }
+    @media (max-width: 800px) {
+      .page { padding-inline: 16px; }
+      .utility { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 52px; }
+      .hero h1 { font-size: clamp(3.2rem, 17vw, 6rem); }
+      .shell { display: block; padding-top: 0; }
+      .rail { display: none; }
+      .mobile-jump { position: sticky; top: 0; z-index: 10; display: block; margin: 0 -16px; padding: 10px 16px; background: var(--bg); border-bottom: 1px solid var(--line); }
+      .mobile-jump select { width: 100%; color: var(--ink); background: var(--paper); border: 1px solid var(--line-strong); border-radius: 5px; padding: 8px 10px; }
+      .section-head { grid-template-columns: 1fr; }
+      .rule-grid { grid-template-columns: 1fr; }
+      .rule { min-height: 0; }
+      .stack-map, .harness { grid-template-columns: 1fr; }
+      .inspector { position: static; }
+      .h-principles { grid-template-columns: 1fr; }
+      .roadmap { grid-template-columns: 1fr; }
+      .canvas-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .grid-2, .grid-3, .grid-4, .scorecards, .anti { grid-template-columns: 1fr; }
+      .decision { grid-template-columns: 1fr; }
+      .decision > div + div { border-left: 0; border-top: 1px solid var(--line); }
+      .flowline { grid-template-columns: 1fr; }
+      .layer { grid-template-columns: 2rem minmax(0, 1fr); }
+      .layer .signal { grid-column: 2; text-align: left; }
+      .matrix { border: 0; background: transparent; display: grid; gap: 10px; }
+      .matrix-row { grid-template-columns: 1fr; background: var(--panel); border: 1px solid var(--line); padding: 12px; }
+      .matrix-row.head { display: none; }
+      .matrix-row + .matrix-row { border-top: 1px solid var(--line); }
+      .matrix-row > div { padding: 5px 0; }
+      .matrix-row > div + div { border-left: 0; }
+      .matrix-row > div:nth-child(2)::before { content: "Decision · "; color: var(--muted); font-family: var(--mono); font-size: .72rem; }
+      .matrix-row > div:nth-child(3)::before { content: "Evidence · "; color: var(--muted); font-family: var(--mono); font-size: .72rem; }
+      .loop { grid-template-columns: 1fr; }
+      .tier { grid-template-columns: 1fr; }
+      .tier > div + div { border-left: 0; border-top: 1px solid var(--line); }
+      .lifecycle { grid-template-columns: 1fr; }
+      .canvas-head { display: grid; }
+      .copy { justify-self: start; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    .publication-nav{display:flex;align-items:center;gap:24px;min-height:76px;border-bottom:1px solid var(--line);font-size:.92rem}
+    .publication-nav a{color:var(--ink);text-decoration:none;padding:12px 0}.publication-nav a:hover{text-decoration:underline;text-underline-offset:5px}
+    .publication-brand{margin-right:auto;font-weight:600;font-size:1.1rem}.publication-brand span{font-weight:400;font-size:.8rem;color:var(--muted);margin-left:8px}
+    .skip-link{position:fixed;top:-100px;left:16px;background:var(--panel);padding:12px;z-index:100}.skip-link:focus{top:12px}
+    @media(max-width:620px){.publication-nav{gap:16px}.publication-brand span{display:block;margin:0}.publication-nav>a{font-size:.85rem}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to the playbook</a>
+<div class="page">
+  <nav class="publication-nav" aria-label="Site navigation"><a class="publication-brand" href="../index.html">How I AI <span>by Jay Madduru</span></a><a href="../index.html#work">All work</a><a href="../index.html#about">About Jay</a></nav>
+  <div class="utility">
+    <span class="scope">Scope · Enterprise + regulated AI</span>
+    <label class="read-path">Start with
+      <select id="path-select" aria-label="Choose a reading path">
+        <option value="north-star">the whole system</option>
+        <option value="product">product and outcomes</option>
+        <option value="architecture">architecture</option>
+        <option value="harness">agent delivery workflow</option>
+        <option value="governance">governance</option>
+        <option value="roadmap">the first 180 days</option>
+      </select>
+    </label>
+  </div>
+
+  <header class="hero" id="north-star">
+    <div>
+      <p class="kicker">Jay Madduru · October 2026 · Playbook</p>
+      <h1>AI Platform<br><span>Playbook</span></h1>
+      <p class="lead">I start with the work people need to get done. This playbook covers how I would choose the first use cases, build capabilities teams can share, and evaluate the work before expanding.</p>
+    </div>
+    <aside class="north">
+      <p class="label">The question I start with</p>
+      <blockquote>Can a team go from approved intent to an accepted result without rebuilding identity, data access, evaluation, deployment and evidence?</blockquote>
+      <p>I use that question to decide what belongs in the platform and what should stay with the team doing the work.</p>
+    </aside>
+  </header>
+
+  <div class="shell">
+    <nav class="rail" aria-label="Playbook sections">
+      <p>Playbook</p>
+      <ol>
+        <li><a href="#principles"><span>01</span>Platform thesis</a></li>
+        <li><a href="#product"><span>02</span>Product portfolio</a></li>
+        <li><a href="#architecture"><span>03</span>Nine-layer system</a></li>
+        <li><a href="#harness"><span>04</span>Agent delivery</a></li>
+        <li><a href="#data"><span>05</span>Data & knowledge</a></li>
+        <li><a href="#agents"><span>06</span>Agents & tools</a></li>
+        <li><a href="#governance"><span>07</span>Trust & governance</a></li>
+        <li><a href="#observability"><span>08</span>Evals & observability</a></li>
+        <li><a href="#adoption"><span>09</span>Adoption & operations</a></li>
+        <li><a href="#metrics"><span>10</span>Metrics & economics</a></li>
+        <li><a href="#roadmap"><span>11</span>Roadmap</a></li>
+        <li><a href="#canvas"><span>12</span>Operating canvas</a></li>
+        <li><a href="#failure"><span>13</span>Failure patterns</a></li>
+      </ol>
+    </nav>
+
+    <label class="mobile-jump"> <select id="mobile-select" aria-label="Jump to a section">
+      <option value="principles">01 · Platform thesis</option><option value="product">02 · Product portfolio</option><option value="architecture">03 · Nine-layer system</option><option value="harness">04 · Agent delivery</option><option value="data">05 · Data & knowledge</option><option value="agents">06 · Agents & tools</option><option value="governance">07 · Trust & governance</option><option value="observability">08 · Evals & observability</option><option value="adoption">09 · Adoption & operations</option><option value="metrics">10 · Metrics & economics</option><option value="roadmap">11 · Roadmap</option><option value="canvas">12 · Operating canvas</option><option value="failure">13 · Failure patterns</option>
+    </select></label>
+
+    <main id="main-content">
+      <section id="principles">
+        <div class="section-head">
+          <div><p class="kicker">01 · Platform thesis</p><h2>Build the capabilities teams keep needing.</h2></div>
+          <p class="intro">Share identity, data access, evaluation and operating controls. Keep business definitions, workflow decisions and accountability with the people who understand the work.</p>
+        </div>
+        <div class="rule-grid">
+          <div class="rule"><strong>Start with the work.</strong><p>Name the user, current workflow, decision, consequence of failure and definition of an accepted result before discussing architecture.</p></div>
+          <div class="rule"><strong>Share what teams can reuse.</strong><p>Identity, retrieval, model access, evaluation and traces should be shared. The domain experience may remain purpose-built.</p></div>
+          <div class="rule"><strong>Test the complete workflow.</strong><p>Models supply capacity. Contracts, evals, hard rules, human approvals and recovery paths determine what can safely ship.</p></div>
+          <div class="rule"><strong>Controls follow intended use.</strong><p>A writing assistant, a financial decision aid and a device-adjacent workflow do not belong in one undifferentiated risk class.</p></div>
+          <div class="rule"><strong>Every run creates evidence.</strong><p>Traces support debugging, audit, cost analysis and learning. Capture required records during the workflow, with their own retention and access controls. Operational traces alone are not the audit record.</p></div>
+          <div class="rule"><strong>Adoption is part of delivery.</strong><p>A technically correct capability that people route around is unfinished. Workflow fit, trust and ownership belong on the roadmap.</p></div>
+        </div>
+        <div class="decision">
+          <div><h3>Build as platform when…</h3><ul><li>several teams have validated the same need</li><li>inconsistency creates material security, quality or cost risk</li><li>shared evidence improves every downstream use case</li><li>the capability has a stable contract and a clear owning team</li></ul></div>
+          <div><h3>Keep local when…</h3><ul><li>domain judgment is the differentiator</li><li>the workflow is still being discovered</li><li>the latency, safety or experience constraint is unique</li><li>forced reuse would add more coordination than it saves</li></ul></div>
+        </div>
+      </section>
+
+      <section id="product">
+        <div class="section-head">
+          <div><p class="kicker">02 · Product portfolio</p><h2>Decide which work is worth doing.</h2></div>
+          <p class="intro">Group requests by the business outcome and the capabilities they need. Agree priorities with business, engineering, data and control owners. Look for common needs without forcing every team into the same workflow.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card"><span class="num">A</span><h3>Knowledge work</h3><p>Search, synthesis, Q&A and governed knowledge bases. Optimize accepted-answer rate, provenance and time recovered.</p></article>
+          <article class="card"><span class="num">B</span><h3>Decision support</h3><p>Text-to-SQL, analysis and recommendations. Optimize verified decisions, abstention and review burden.</p></article>
+          <article class="card"><span class="num">C</span><h3>Workflow automation</h3><p>Agents that use tools and change systems. Optimize successful task completion, safe recovery and cost per task.</p></article>
+          <article class="card"><span class="num">D</span><h3>Embedded intelligence</h3><p>AI inside products or regulated workflows. Optimize validated performance, integration quality and lifecycle evidence.</p></article>
+        </div>
+        <div class="flowline" aria-label="Product lifecycle">
+          <article><span class="step">01</span><h3>Frame</h3><p>User, job, baseline, failure consequence, accountable owner.</p></article>
+          <article><span class="step">02</span><h3>Test value</h3><p>Concierge or narrow prototype with a real workflow and reviewer.</p></article>
+          <article><span class="step">03</span><h3>Prove quality</h3><p>Golden set, failure taxonomy, acceptance threshold and fallback.</p></article>
+          <article><span class="step">04</span><h3>Prepare for production</h3><p>Shared contracts, controls, runbooks, telemetry and ownership.</p></article>
+          <article><span class="step">05</span><h3>Expand</h3><p>Expand only after checking quality, permissions and support for the new users and tasks.</p></article>
+        </div>
+        <div class="matrix" style="margin-top:28px">
+          <div class="matrix-row head"><div>Prioritization lens</div><div>Decision question</div><div>Evidence</div></div>
+          <div class="matrix-row"><div>Outcome value</div><div>What changes if this works?</div><div>Cycle time, risk avoided, revenue, capacity or quality baseline</div></div>
+          <div class="matrix-row"><div>Reuse potential</div><div>How many validated products does it unlock?</div><div>Named consumers, common contract, avoided duplicate work</div></div>
+          <div class="matrix-row"><div>Readiness</div><div>Are data, owner and workflow stable enough?</div><div>Data profile, accountable owner, review capacity, integration path</div></div>
+          <div class="matrix-row"><div>Risk-adjusted effort</div><div>What must be proven before use expands?</div><div>Risk tier, validation work, security review, operational burden</div></div>
+        </div>
+      </section>
+
+      <section id="architecture">
+        <div class="section-head">
+          <div><p class="kicker">03 · Reference architecture</p><h2>How the platform fits together.</h2></div>
+          <p class="intro">Each layer has a job and an interface the next team can rely on. Select a layer to see what it does and how I would evaluate it.</p>
+        </div>
+        <div class="stack-map">
+          <div class="layers" id="layers" aria-label="AI platform layers"></div>
+          <aside class="inspector" id="layer-detail" aria-live="polite"></aside>
+        </div>
+        <div class="crosscuts">
+          <div>Identity & least privilege</div><div>Policy & evidence</div><div>Cost & capacity</div><div>Change & release management</div>
+        </div>
+      </section>
+
+      <section id="harness">
+        <div class="section-head">
+          <div><p class="kicker">04 · Agent delivery workflow</p><h2>How agents help build and review software.</h2></div>
+          <p class="intro">The delivery workflow takes a request through a specification, implementation and review. Keep the evidence needed to inspect a run. Safe replay also needs retained inputs and versions, with real business actions disabled.</p>
+        </div>
+        <div class="harness">
+          <div class="harness-flow" id="harness-flow" aria-label="Harness stages"></div>
+          <aside class="h-detail" id="harness-detail" aria-live="polite"></aside>
+        </div>
+        <div class="h-principles">
+          <div><strong>Operating model as versioned config</strong><p>Task types, templates, golden sets, guidelines, thresholds, risk floors and model routes change without rewriting the pipeline.</p></div>
+          <div><strong>Deterministic first, judgment second</strong><p>Tests, static analysis, graph rules and policy checks run before a model judge. A judge can raise risk; it cannot lower a hard floor.</p></div>
+          <div><strong>Cross-model verification</strong><p>Where model evaluation helps, compare evaluators against domain reviewers. A different model family can reduce some shared blind spots; it does not guarantee an independent or correct verdict.</p></div>
+          <div><strong>Spec failure is a first-class outcome</strong><p>Repeated failure triggers a review of the specification, context, tools and model. Cap retries instead of continuing without new evidence.</p></div>
+          <div><strong>Human intent and risk anchors</strong><p>Requesters confirm acceptance criteria. The authorized owner signs off before changes are merged or released, with any additional process approvals.</p></div>
+          <div><strong>Every decision is traced</strong><p>Routes, artifact references, checks, costs and approvals share a run identifier. Minimize sensitive payloads and retain required audit records separately.</p></div>
+        </div>
+      </section>
+
+      <section id="data">
+        <div class="section-head">
+          <div><p class="kicker">05 · Data & knowledge</p><h2>Give agents the right evidence and access.</h2></div>
+          <p class="intro">Retrieval needs permissions, source versions, freshness and business definitions. Return the evidence with its source and access decision so the next step can check it.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><span class="num">01</span><h3>Data plane</h3><p>Sources, lakehouse or warehouse, streaming, catalog, lineage, contracts, quality checks and retention. Keep the source of truth outside the model layer.</p></article>
+          <article class="card"><span class="num">02</span><h3>Knowledge plane</h3><p>Document parsing, chunking, lexical + vector + graph retrieval, reranking, citations, freshness and authorization-aware filtering.</p></article>
+          <article class="card"><span class="num">03</span><h3>Semantic plane</h3><p>Business definitions, metrics, entities, tool schemas and domain ontologies. Evaluate these definitions against real questions and approved actions.</p></article>
+        </div>
+        <div class="matrix" style="margin-top:24px">
+          <div class="matrix-row head"><div>Contract</div><div>Required fields</div><div>Gate</div></div>
+          <div class="matrix-row"><div>Context pack</div><div>Source, excerpt, owner, sensitivity, timestamp, permission decision</div><div>No source or access proof → exclude</div></div>
+          <div class="matrix-row"><div>Dataset</div><div>Purpose, schema, quality SLO, lineage, retention, approved uses</div><div>Contract break → quarantine consumer</div></div>
+          <div class="matrix-row"><div>Simulated data</div><div>Generator version, source trajectory, perturbation, coverage, validation result</div><div>No provenance → cannot support training evidence</div></div>
+          <div class="matrix-row"><div>Feedback record</div><div>Task, output, reviewer, reason code, correction, model/config versions</div><div>No consent or purpose → do not reuse for training</div></div>
+        </div>
+      </section>
+
+      <section id="agents">
+        <div class="section-head">
+          <div><p class="kicker">06 · Agents & tools</p><h2>Define what the agent can do and when it stops.</h2></div>
+          <p class="intro">Use an agent when the next step depends on what it finds. Give it approved tools, a budget and a recovery path. Before it changes a business system or finalizes a deliverable, the user signs off on the exact work.</p>
+        </div>
+        <div class="loop" aria-label="Agent runtime loop"><div>Receive typed task</div><div>Retrieve authorized context</div><div>Plan within budget</div><div>Call contracted tool</div><div>Verify effect</div><div>Finish, recover or escalate</div></div>
+        <div class="grid-2" style="margin-top:26px">
+          <article class="card"><h3>Runtime contract</h3><ul class="clean-list"><li>identity and delegated authority</li><li>allowed tools and argument schemas</li><li>time, token, cost and action budgets</li><li>idempotency key and rollback strategy</li><li>stop conditions and escalation owner</li></ul></article>
+          <article class="card"><h3>Agent lease</h3><p>A time-bounded grant tying one agent, user, purpose, environment, tool set and spend ceiling together. The lease expires automatically and every action carries its identifier.</p><ul class="clean-list"><li>prevents durable “shadow agents”</li><li>separates exploration from production</li><li>supports kill switches and attribution</li></ul></article>
+        </div>
+        <div class="decision">
+          <div><h3>Use an agent when</h3><ul><li>the task requires several conditional steps</li><li>the environment returns useful observations</li><li>success can be verified after each action</li><li>failure has a bounded recovery or escalation path</li></ul></div>
+          <div><h3>Prefer a workflow when</h3><ul><li>the sequence is stable and known</li><li>determinism matters more than flexibility</li><li>a simple service or rule engine is sufficient</li><li>the action has no safe observation loop</li></ul></div>
+        </div>
+      </section>
+
+      <section id="governance">
+        <div class="section-head">
+          <div><p class="kicker">07 · Trust & governance</p><h2>Match the controls to the consequences.</h2></div>
+          <p class="intro">Assess intended use, data sensitivity, permitted actions, reversibility and the consequence of failure. The tiers below are an illustrative starting point. Security, Privacy and Quality determine the applicable controls.</p>
+        </div>
+        <div class="tier-list">
+          <div class="tier low"><div class="tag">Low risk</div><div><strong>Assistive, reversible</strong><br><span class="muted">Drafting, summarization, internal search with citations</span></div><div>Owner review, access controls, basic evals, monitoring</div></div>
+          <div class="tier med"><div class="tag">Medium risk</div><div><strong>Decision support or system changes</strong><br><span class="muted">Analytics, recommendations, agents with reversible actions</span></div><div>Validated golden set, approval gate, rollback, full traces, periodic review</div></div>
+          <div class="tier high"><div class="tag">High risk</div><div><strong>Material or safety-adjacent consequence</strong><br><span class="muted">Regulated records, irreversible action, device-adjacent workflow</span></div><div>Quality-system path, independent validation, named human authority, release evidence, change control</div></div>
+        </div>
+        <div class="matrix" style="margin-top:24px">
+          <div class="matrix-row head"><div>Control</div><div>Platform mechanism</div><div>Evidence produced</div></div>
+          <div class="matrix-row"><div>Authorization</div><div>User identity, delegated authority, row/column/document filtering, agent lease</div><div>Who could access and act, for what purpose</div></div>
+          <div class="matrix-row"><div>Data protection</div><div>Classification, redaction, regional boundary, retention, encryption</div><div>What data moved, where and under which policy</div></div>
+          <div class="matrix-row"><div>Model risk</div><div>Approved registry, eval thresholds, routing rules, version pinning</div><div>Why a model/config was eligible at that moment</div></div>
+          <div class="matrix-row"><div>Action safety</div><div>Tool allowlist, parameter policy, idempotency, confirmation, rollback</div><div>What changed and whether the expected effect occurred</div></div>
+          <div class="matrix-row"><div>Change control</div><div>Versioned specs, data, prompts, policies and eval suites</div><div>Comparable release packet and approver record</div></div>
+        </div>
+      </section>
+
+      <section id="observability">
+        <div class="section-head">
+          <div><p class="kicker">08 · Evals & observability</p><h2>Check the work and keep the evidence.</h2></div>
+          <p class="intro">Operational telemetry explains latency and failures. Semantic telemetry explains whether the work was good. Business telemetry explains whether it mattered.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><span class="num">SYSTEM</span><h3>Reliability</h3><p>Availability, latency by stage, queue time, model/tool error rate, retries, saturation, rollback success.</p></article>
+          <article class="card"><span class="num">SEMANTIC</span><h3>Quality</h3><p>Groundedness, task-specific correctness, policy compliance, judge-human agreement, abstention, drift.</p></article>
+          <article class="card"><span class="num">OUTCOME</span><h3>Value</h3><p>Accepted-result rate, time to outcome, rework, sustained use, cost per successful task, avoided risk.</p></article>
+        </div>
+        <div class="matrix" style="margin-top:24px">
+          <div class="matrix-row head"><div>Eval moment</div><div>What it answers</div><div>Method</div></div>
+          <div class="matrix-row"><div>Before release</div><div>Is this candidate better and still safe?</div><div>Golden sets, adversarial suites, shadow replay, human calibration</div></div>
+          <div class="matrix-row"><div>During run</div><div>Should this step continue?</div><div>Deterministic checks, bounded judge, policy gate, confidence/abstention</div></div>
+          <div class="matrix-row"><div>After task</div><div>Was the result accepted and useful?</div><div>User/reviewer outcome, effect verification, reason-coded corrections</div></div>
+          <div class="matrix-row"><div>Over time</div><div>Has the world changed?</div><div>Input, retrieval, quality, cost and behavior drift by segment</div></div>
+        </div>
+        <div class="decision">
+          <div><h3>Minimum trace envelope</h3><ul><li>task, user/purpose and risk tier</li><li>model, prompt/config, knowledge and tool versions</li><li>step spans, approved input/output references, policy and check results</li><li>latency, token/tool cost and retries</li><li>final outcome, reviewer and correction reason</li></ul></div>
+          <div><h3>Trace design rule</h3><p class="muted">Record the evidence, versions, checks and outcome needed to investigate a decision. Exact replay needs additional retained state and may not reproduce a model’s output. Keep sensitive payloads out of general telemetry and use a durable path for required audit records.</p></div>
+        </div>
+      </section>
+
+      <section id="adoption">
+        <div class="section-head">
+          <div><p class="kicker">09 · Adoption & operations</p><h2>Adoption is a function of trust and value.</h2></div>
+          <p class="intro">I build trust by starting with a narrow task, showing the result and learning from the person doing the work. Expand only when the quality holds and the new path is worth using.</p>
+        </div>
+        <div class="lifecycle">
+          <article class="life"><span>01</span><h3>Observe</h3><p>Watch the current work. Quantify handoffs, shadow systems, delays and review burden.</p></article>
+          <article class="life"><span>02</span><h3>Co-design</h3><p>Build with the people who perform and approve the work; encode their exceptions.</p></article>
+          <article class="life"><span>03</span><h3>Prove</h3><p>Run in shadow or limited release; show accepted results and honest failure modes.</p></article>
+          <article class="life"><span>04</span><h3>Embed</h3><p>Place the capability in the system of work, with support, ownership and a fallback.</p></article>
+          <article class="life"><span>05</span><h3>Retire</h3><p>Remove the old route only when reliability and trust are sufficient; track exceptions.</p></article>
+        </div>
+        <div class="grid-2" style="margin-top:24px">
+          <article class="card"><h3>Federated operating model</h3><ul class="clean-list"><li>platform team owns shared interfaces, supported delivery paths, controls and evidence</li><li>domain product owns workflow, acceptance criteria and adoption</li><li>data owner owns meaning, quality and approved use</li><li>risk/quality owns floors and independent assurance</li></ul></article>
+          <article class="card"><h3>Decision rights</h3><ul class="clean-list"><li>platform reviews duplication and proposes shared options</li><li>domain owners decide whether the workflow meets their needs</li><li>control owners approve changes to required safeguards</li><li>product council allocates shared capacity using evidence</li></ul></article>
+        </div>
+      </section>
+
+      <section id="metrics">
+        <div class="section-head">
+          <div><p class="kicker">10 · Metrics & economics</p><h2>Measure the result after review and rework.</h2></div>
+          <p class="intro">A cheap model call can produce an expensive business outcome. A costly call can be efficient if it prevents rework. Normalize economics around a completed, accepted task.</p>
+        </div>
+        <div class="scorecards">
+          <article class="score"><h3>Outcome scorecard</h3><div class="formula">accepted-result rate = accepted tasks ÷ attempted tasks</div><ul><li>time from intent to accepted result</li><li>rework and reviewer minutes per result</li><li>sustained weekly use in the target cohort</li><li>business effect versus baseline</li></ul></article>
+          <article class="score"><h3>Unit economics</h3><div class="formula">cost / successful task = (model + tools + infra + evals + support + review + rework) ÷ accepted tasks</div><ul><li>segment by task type and risk tier</li><li>include failed runs and escalations</li><li>compare model routes on total cost, not token price</li><li>budget and meter; efficiency alone can expand demand</li></ul></article>
+          <article class="score"><h3>Platform reuse</h3><div class="formula">reuse rate = eligible products using a shared capability ÷ eligible products</div><ul><li>time to onboard a new product</li><li>percentage using paved-road contracts</li><li>duplicate services retired</li><li>upgrade adoption and backward-compatibility burden</li></ul></article>
+          <article class="score"><h3>Trust & quality</h3><div class="formula">material failure rate = released tasks with a material failure ÷ completed released tasks</div><ul><li>abstention appropriateness</li><li>judge-human agreement</li><li>policy and authorization violations</li><li>rollback, recovery and incident time</li></ul></article>
+        </div>
+      </section>
+
+      <section id="roadmap">
+        <div class="section-head">
+          <div><p class="kicker">11 · Roadmap</p><h2>An example first-six-month roadmap.</h2></div>
+          <p class="intro">Start with a useful product and learn which capabilities other teams need. The timing below is illustrative; data readiness, risk review and delivery capacity determine the actual sequence.</p>
+        </div>
+        <div class="roadmap">
+          <article class="phase"><span class="when">0–30 days</span><h3>Map reality</h3><ul><li>inventory products, tools, data, owners and spend</li><li>choose two outcome baselines and risk tiers</li><li>define canonical task, run and evidence IDs</li><li>stop unsafe or duplicative expansion</li></ul></article>
+          <article class="phase"><span class="when">31–60 days</span><h3>Prove the loop</h3><ul><li>ship one narrow product through a golden path</li><li>stand up model gateway, traces and eval suite</li><li>encode authorization and review gates</li><li>publish first cost-per-successful-task view</li></ul></article>
+          <article class="phase"><span class="when">61–90 days</span><h3>Extract the platform</h3><ul><li>stabilize shared contracts and SDK</li><li>launch self-service sandbox with agent leases</li><li>add the five-stage delivery workflow for platform changes</li><li>onboard a second product to prove reuse</li></ul></article>
+          <article class="phase"><span class="when">90–180 days</span><h3>Scale evidence</h3><ul><li>expand portfolio council and paved roads</li><li>automate release evidence by risk tier</li><li>retire duplicate gateways and shadow agents</li><li>route models by quality, latency and total cost</li></ul></article>
+        </div>
+      </section>
+
+      <section id="canvas">
+        <div class="section-head">
+          <div><p class="kicker">12 · Operating canvas</p><h2>Agree the problem and the conditions for success.</h2></div>
+          <p class="intro">Use this to work through the proposal with product, engineering, data, security, quality and the business owner. Unresolved questions need an owner and a next step.</p>
+        </div>
+        <div class="canvas" id="canvas-copy">
+          <div class="canvas-head"><h3>AI platform initiative canvas</h3><button class="copy" id="copy-canvas" type="button">Copy canvas</button></div>
+          <div class="canvas-grid">
+            <div><strong>Outcome</strong><p>User, job, baseline, accepted result, consequence of failure.</p></div>
+            <div><strong>Portfolio fit</strong><p>Product family, shared capabilities, local differentiators, reuse consumers.</p></div>
+            <div><strong>Owner</strong><p>Business owner, product owner, engineering owner, data owner, risk approver.</p></div>
+            <div><strong>Contracts</strong><p>Data, context, model, tool, agent, trace and release-evidence contracts.</p></div>
+            <div><strong>Quality</strong><p>Golden set, thresholds, failure taxonomy, abstention, fallback and reviewer.</p></div>
+            <div><strong>Risk</strong><p>Intended use, sensitivity, autonomy, reversibility, risk tier and control floor.</p></div>
+            <div><strong>Economics</strong><p>Volume, latency target, capacity, cost per successful task, budget and route.</p></div>
+            <div><strong>Adoption</strong><p>Workflow insertion, champions, support, old-path retirement and sustained-use target.</p></div>
+            <div><strong>Learning</strong><p>Trace plan, feedback rights, drift signals, review cadence and next expansion gate.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="failure">
+        <div class="section-head">
+          <div><p class="kicker">13 · Failure patterns</p><h2>Problems I would watch for.</h2></div>
+          <p class="intro">Review these as the work moves from a prototype into a supported service.</p>
+        </div>
+        <div class="anti">
+          <div><strong>Gateway as platform</strong><p>Model access without identity, context, evaluation, traces and product ownership leaves teams rebuilding the rest.</p></div>
+          <div><strong>Demo-to-production jump</strong><p>A compelling happy path replaces workflow study, failure taxonomy, operational readiness and review capacity.</p></div>
+          <div><strong>Governance as queue</strong><p>Documents and committees sit outside delivery, so teams route around them. Encode control floors and evidence in paved roads.</p></div>
+          <div><strong>One interface for every workflow</strong><p>A common surface is mistaken for common capability. Domain workflows become shallow while local tools proliferate underneath.</p></div>
+          <div><strong>Agent without a lease</strong><p>Long-lived credentials, unclear ownership and no budget or stop condition create unbounded operational risk.</p></div>
+          <div><strong>Token cost without review cost</strong><p>Cheaper calls look efficient while retries, review, rework and failed tasks make the business outcome more expensive.</p></div>
+          <div><strong>Judge grades itself</strong><p>Model evaluation substitutes for tests and calibrated human review. Changing model families alone does not resolve this.</p></div>
+          <div><strong>Adoption by mandate</strong><p>Training and executive sponsorship substitute for workflow fit, trust, support and the hard work of retiring the old route.</p></div>
+        </div>
+        <p class="footer-note">This is my proposed approach, not a claim about any employer’s systems or a compliance certification. The diagrams show design choices and evaluation criteria, not measured production results.</p>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+(function () {
+  var layers = [
+    {n:"01", name:"Data foundation", sub:"Trusted, governed source of truth", signal:"quality · lineage", color:"#39704d", job:"Supply reliable, permissioned data for analytics, training, retrieval and feedback.", contract:"Datasets with owner, schema, lineage, quality SLO, retention and approved-use metadata.", proof:"Freshness and quality SLOs hold; access is explainable; lineage reaches every product output."},
+    {n:"02", name:"Compute & training", sub:"Reproducible experimentation", signal:"utilization · reproducibility", color:"#4e7650", job:"Provision secure compute, environments, pipelines and experiment lineage for model development.", contract:"Versioned code, data, environment, parameters, artifact and training run manifest.", proof:"A run is reproducible; capacity is visible; artifacts pass security and provenance gates."},
+    {n:"03", name:"Inference serving", sub:"Reliable model access and routing", signal:"latency · cost", color:"#315f79", job:"Expose approved models through stable interfaces with routing, quotas, fallback and capacity controls.", contract:"Model endpoint with capability, context window, SLO, region, cost and approved-use profile.", proof:"SLOs hold by task class; fallback works; route changes improve total cost without quality loss."},
+    {n:"04", name:"Knowledge & retrieval", sub:"Authorized context with provenance", signal:"recall · grounding", color:"#277a78", job:"Assemble the right context using lexical, vector, graph and semantic retrieval under user permissions.", contract:"Typed context pack: excerpts, source, owner, time, sensitivity and authorization decision.", proof:"Evaluate retrieval on approved questions, resolve citations, and test denied access, revocation and cross-user cases."},
+    {n:"05", name:"Evaluation", sub:"Release and run-time quality gates", signal:"pass rate · agreement", color:"#006d68", job:"Measure task quality, safety, policy compliance and model changes before, during and after use.", contract:"Versioned eval suite with dataset, rubric, evaluator, threshold, segment and owner.", proof:"Thresholds predict accepted outcomes; judges agree with calibrated humans; regressions block release."},
+    {n:"06", name:"Agents & tools", sub:"Bounded autonomy and recovery", signal:"success · recovery", color:"#8b5b26", job:"Plan and execute multi-step work through contracted tools with budgets, verification and escalation.", contract:"Typed task, agent lease, tool schemas, authority, budgets, idempotency and stop conditions.", proof:"Tasks complete safely; effects are verified; retries are bounded; humans receive useful escalations."},
+    {n:"07", name:"Trust & governance", sub:"Policy, evidence and oversight", signal:"violations · evidence", color:"#a74318", job:"Translate intended use and risk into control floors, decision rights and release evidence.", contract:"Risk tier and policy bundle bound to product, version, data, model, tools and approvers.", proof:"Every release explains eligibility and approval; violations surface quickly; controls travel with change."},
+    {n:"08", name:"Developer platform", sub:"Paved roads and agent delivery", signal:"lead time · reuse", color:"#5c586f", job:"Give teams templates, SDKs, environments and a spec-driven workflow that encode the safe path.", contract:"Golden path with supported interfaces, operating model, gates, runbooks and ownership.", proof:"A second team ships faster without bespoke platform help; upgrades propagate without breaking products."},
+    {n:"09", name:"Observability & feedback", sub:"Trace, learn and improve", signal:"drift · outcome", color:"#684f62", job:"Connect system behavior, semantic quality, business outcomes, cost and feedback across a task trace.", contract:"Canonical run ID joining spans, versions, verdicts, costs, outcomes and correction reasons.", proof:"Incidents are explainable; drift is detected; feedback changes are reviewed and measurable."}
+  ];
+  var layerBox = document.getElementById("layers");
+  var detail = document.getElementById("layer-detail");
+  function renderLayer(i) {
+    var x = layers[i];
+    detail.style.setProperty("--inspect-color", x.color);
+    detail.innerHTML = '<div class="eyebrow">Layer ' + x.n + '</div><h3>' + x.name + '</h3><p>' + x.job + '</p><dl><div><dt>Core contract</dt><dd>' + x.contract + '</dd></div><div><dt>Proof of health</dt><dd>' + x.proof + '</dd></div></dl>';
+    document.querySelectorAll(".layer").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+  }
+  layers.forEach(function (x, i) {
+    var b = document.createElement("button"); b.type = "button"; b.className = "layer"; b.style.setProperty("--layer-color", x.color); b.setAttribute("aria-pressed", "false");
+    b.innerHTML = '<span class="n">' + x.n + '</span><span><strong>' + x.name + '</strong><br><small>' + x.sub + '</small></span><span class="signal">' + x.signal + '</span>';
+    b.addEventListener("click", function () { renderLayer(i); }); layerBox.appendChild(b);
+  });
+  renderLayer(0);
+
+  var harness = [
+    {n:"01", name:"Intake & routing", sub:"Retrieve context, classify the task, set owner and risk.", body:"A context service runs lexical, vector and graph retrieval in parallel, fuses the results and produces a typed context pack. The decision layer routes to a task operating model, or asks for clarification instead of guessing.", gate:"Low confidence, ambiguous intent or no matching task type returns to a requester or platform owner. Hard rules can raise risk but never lower it."},
+    {n:"02", name:"Spec development", sub:"Turn intent into testable acceptance criteria.", body:"Task-specific spec agents use a template, golden examples and domain guidelines. Deterministic checks and a calibrated spec judge test completeness, consistency and testability before the requester locks intent.", gate:"No implementation begins until acceptance criteria are testable and the requester confirms the intended outcome."},
+    {n:"03", name:"Blast radius & stacking", sub:"Predict change, dependencies and safe parallelism.", body:"Predicted edits are compared with repository ownership, dependency graphs, sensitive paths and static analysis. Related low-risk changes can form a stack; wide or high-risk changes run alone.", gate:"Risk floors, locked paths, task/file/service caps and drift checks decide what may share a run."},
+    {n:"04", name:"Execution loop", sub:"Build one spec step; verify before committing.", body:"A worker receives only the current step and context. Deterministic tests run first, then a bounded decision check and cross-model judge. Failure loops back with reasons; repeated failure can escalate model tier once.", gate:"Attempts are capped. If the stronger model still fails, stop and investigate the specification, evidence, tools and model rather than assuming one cause."},
+    {n:"05", name:"Verify & merge", sub:"Test the whole stack, approve risk, merge bottom-up.", body:"The complete stack is integrated and evaluated against acceptance criteria, regression suites and policy. Automated checks prepare the change for review. The named owner approves the exact change before merge; additional release approvals depend on the workflow.", gate:"Any failed stack-level test returns to the owning task. Merge proceeds bottom-up only after evidence and approvals are complete."}
+  ];
+  var hf = document.getElementById("harness-flow"), hd = document.getElementById("harness-detail");
+  function renderHarness(i) {
+    var x = harness[i];
+    hd.innerHTML = '<p class="kicker">Stage ' + x.n + '</p><h3>' + x.name + '</h3><p>' + x.body + '</p><div class="gate"><strong>Control gate</strong><p>' + x.gate + '</p></div>';
+    document.querySelectorAll(".h-step").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+  }
+  harness.forEach(function (x, i) {
+    var b = document.createElement("button"); b.type = "button"; b.className = "h-step"; b.setAttribute("aria-pressed", "false");
+    b.innerHTML = '<span class="n">' + x.n + '</span><span><strong>' + x.name + '</strong><small>' + x.sub + '</small></span>';
+    b.addEventListener("click", function () { renderHarness(i); }); hf.appendChild(b);
+    if (i < harness.length - 1) { var c = document.createElement("div"); c.className = "connector"; c.setAttribute("aria-hidden", "true"); hf.appendChild(c); }
+  });
+  renderHarness(0);
+
+  function jump(value) { var el = document.getElementById(value); if (el) { el.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); history.pushState(null, '', '#' + value); } }
+  document.getElementById("path-select").addEventListener("change", function (e) { jump(e.target.value); });
+  document.getElementById("mobile-select").addEventListener("change", function (e) { jump(e.target.value); });
+
+  var sections = Array.prototype.slice.call(document.querySelectorAll("main section"));
+  var links = Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  if ("IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id); });
+          document.getElementById("mobile-select").value = entry.target.id;
+        }
+      });
+    }, {rootMargin: "-25% 0px -65% 0px", threshold: 0});
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+
+  var copyButton = document.getElementById("copy-canvas");
+  copyButton.addEventListener("click", function () {
+    var text = "AI PLATFORM INITIATIVE CANVAS\n\nOutcome: user, job, baseline, accepted result, consequence of failure.\nPortfolio fit: product family, shared capabilities, local differentiators, reuse consumers.\nOwner: business, product, engineering, data and risk owners.\nContracts: data, context, model, tool, agent, trace and release evidence.\nQuality: golden set, thresholds, failure taxonomy, abstention, fallback and reviewer.\nRisk: intended use, sensitivity, autonomy, reversibility, tier and control floor.\nEconomics: volume, latency, capacity, cost per successful task, budget and route.\nAdoption: workflow insertion, champions, support, old-path retirement, sustained use.\nLearning: trace plan, feedback rights, drift signals, review cadence, expansion gate.";
+    function done(ok) { if(!ok){ var range=document.createRange();range.selectNodeContents(document.getElementById("canvas-copy"));var selection=window.getSelection();selection.removeAllRanges();selection.addRange(range); } copyButton.textContent = ok ? "Copied" : "Select text"; setTimeout(function () { copyButton.textContent = "Copy canvas"; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(function(){ done(true); }).catch(function(){ done(false); }); } else { done(false); }
+  });
+})();
+</script>
+</body>
+</html>
