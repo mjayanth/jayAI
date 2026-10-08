@@ -35,3 +35,14 @@ test('old playbook section links open the separate page without hijacking homepa
  assert.equal(api.legacyTarget('#work'),null);
  assert.equal(api.legacyTarget('#about'),null);
 });
+test('a long architecture preview keeps every supplied layer and links to its full diagram',()=>{
+ const html=api.renderCard({...item,visual:['Data','Compute','Serving','Retrieval','Evaluation','Agents','Governance','Developer platform','Observability'],visualHref:'playbooks/ai-platform.html#architecture',visualTitle:'Reference architecture'});
+ assert.equal((html.match(/class="preview-layer /g)||[]).length,9);
+ assert.ok(html.includes('Observability'));
+ assert.match(html,/class="preview-open" href="playbooks\/ai-platform\.html#architecture"/);
+});
+test('an unsafe diagram URL cannot become a clickable preview',()=>{
+ const html=api.renderCard({...item,visualHref:'javascript:alert(1)'});
+ assert.ok(!html.includes('javascript:'));
+ assert.ok(!html.includes('class="preview-open"'));
+});

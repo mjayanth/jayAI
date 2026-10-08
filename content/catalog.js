@@ -5,20 +5,22 @@
   {
    id:'ai-platform',
    title:'AI Platform Playbook',
-   description:'How I would build an enterprise AI platform, from choosing the work to designing shared capabilities, evaluating agents and running the service. With diagrams and the trade-offs behind each decision.',
+   description:'Choose which problems to solve, build shared capabilities, and evaluate agents through delivery and operation. The architecture connects each layer to its interfaces, controls and quality checks.',
    type:'Playbook',
    date:'2026-10-08',
    href:'playbooks/ai-platform.html',
    topics:['Enterprise AI','Product','Architecture'],
    featured:true,
-   visual:['Business outcomes','Shared capabilities','Data & access','Evals & evidence'],
-   visualCaption:'9 architecture layers · 13 sections',
+   visual:['Data foundation','Compute & training','Inference serving','Knowledge & retrieval','Evaluation','Agents & tools','Trust & governance','Developer platform','Observability & feedback'],
+   visualTitle:'Reference architecture',
+   visualMeta:'09 layers',
+   visualHref:'playbooks/ai-platform.html#architecture',
+   visualCaption:'Explore the interactive architecture',
    cta:'Read the playbook',
    links:[
-    {label:'Architecture',hash:'architecture'},
     {label:'Agent delivery',hash:'harness'},
-    {label:'Evals',hash:'observability'},
-    {label:'Economics',hash:'metrics'}
+    {label:'Data & retrieval',hash:'data'},
+    {label:'Operating canvas',hash:'canvas'}
    ]
   }
  ];

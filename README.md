@@ -1,6 +1,6 @@
 # How I AI
 
-Jay Madduru’s publishing home for playbooks, builds and notes on AI products.
+A library of frameworks, playbooks and architectures for building and running AI, by Jay Madduru. The homepage is a content index, not a career portfolio.
 
 **Live site:** https://mjayanth.github.io/jayAI/
 
@@ -8,7 +8,7 @@ Jay Madduru’s publishing home for playbooks, builds and notes on AI products.
 
 - `index.html` — the homepage, with a readable first-card fallback.
 - `playbooks/ai-platform.html` — the standalone AI Platform Playbook.
-- `content/catalog.js` — the list of cards. Add new work here without editing the homepage.
+- `content/catalog.js` — the list of cards. Add new resources here without editing the homepage.
 - `assets/site.css` — homepage colors, type and layout, drawn from the playbook.
 - `assets/library.js` — card rendering, filtering and safe local links.
 - `assets/main.js` — homepage interactions.
@@ -17,7 +17,7 @@ Plain HTML, CSS and JavaScript. No install, bundler, database or paid service is
 
 ## Add another piece
 
-1. Add the finished HTML file in a folder such as `notes/`, `projects/` or `playbooks/`.
+1. Add the finished HTML file in a folder such as `frameworks/`, `architectures/` or `playbooks/`.
 2. Add an entry to the `content` array in `content/catalog.js`. Keep a comma between entries:
 
 ```js
@@ -25,12 +25,14 @@ Plain HTML, CSS and JavaScript. No install, bundler, database or paid service is
   id: 'my-next-piece',
   title: 'The title of the piece',
   description: 'A short, specific description of what a reader will find.',
-  type: 'Note', // Playbook, Project, Article, Note, or another format
+  type: 'Framework', // Playbook, Architecture, Framework, Note, or another format
   date: '2026-10-09',
   href: 'notes/my-next-piece.html',
   topics: ['Agents', 'Evals'],
   featured: false,
-  visual: ['The problem', 'The approach', 'What I learned'],
+  visual: ['Problem', 'Approach', 'Decisions'],
+  visualTitle: 'Decision flow',
+  visualHref: 'notes/my-next-piece.html#approach', // optional clickable diagram
   visualCaption: 'An illustrated note',
   cta: 'Read the note',
   links: [
@@ -54,7 +56,7 @@ Each piece has its own shareable URL, such as:
 - `playbooks/ai-platform.html#architecture`
 - `playbooks/ai-platform.html#observability`
 
-Older homepage links such as `/#architecture` or `/#harness` are redirected to the corresponding playbook section when JavaScript is available. The homepage anchors are `#work`, `#approach` and `#about`.
+Older homepage links such as `/#architecture` or `/#harness` are redirected to the corresponding playbook section when JavaScript is available. The homepage anchors are `#work` (the library; retained for existing links) and `#frameworks`.
 
 ## Publishing safely
 
@@ -77,4 +79,4 @@ The tests exercise card additions, safe links, escaped text, search, draft filte
 
 The homepage follows an editorial layout, using the original playbook’s teal/gray palette and IBM Plex Sans, Sans Condensed and Mono. Diagrams show relationships and steps; they do not stand in for performance data.
 
-The copy favors concrete explanations and personal decisions. The playbook retains its thirteen sections and interactive nine-layer architecture, with tighter language around evidence, replay, model evaluation, sign-off and cost. Personal experience and proposed design choices remain distinct.
+The homepage contains the resource library and concise links into the current playbook. Avoid biographies, employer lists, sales pitches and repeated summaries. Framework links are labeled as sections within the playbook, not separate publications. The full nine-layer architecture is visible in the card preview and opens the original interactive diagram. The playbook retains its thirteen sections, including the technical detail on evidence, replay, model evaluation, sign-off and cost.

@@ -17,8 +17,10 @@
   return items.filter(item=>(type==='all'||item.type===type)&&words.every(word=>[item.title,item.description,...(item.topics||[])].join(' ').toLowerCase().includes(word)));
  }
  function preview(item){
-  const labels=Array.isArray(item.visual)?item.visual.slice(0,5):['The problem','The approach','What I learned'];
-  return `<div class="card-preview" aria-hidden="true"><div class="preview-top"><span>${escape(item.type||'Article')}</span><span>JM / ${escape(item.id)}</span></div><div class="preview-stack">${labels.map((label,i)=>`<div class="preview-layer layer-${i}"><span>${String(i+1).padStart(2,'0')}</span><strong>${escape(label)}</strong><i></i></div>`).join('')}</div><div class="preview-bottom"><span>${escape(item.visualCaption||'Decisions, diagrams and detail')}</span><span>↗</span></div></div>`;
+  const labels=Array.isArray(item.visual)?item.visual:['Problem','Approach','Decisions'];
+  const href=safeLocalHref(item.visualHref);
+  const diagram=`<div class="preview-top"><span>${escape(item.visualTitle||item.type||'Article')}</span><span>${escape(item.visualMeta||'')}</span></div><div class="preview-stack">${labels.map((label,i)=>`<div class="preview-layer layer-${i}"><span>${String(i+1).padStart(2,'0')}</span><strong>${escape(label)}</strong><i aria-hidden="true"></i></div>`).join('')}</div><div class="preview-bottom"><span>${escape(item.visualCaption||'Decisions, diagrams and detail')}</span>${href?'<span aria-hidden="true">↗</span>':''}</div>`;
+  return `<div class="card-preview">${href?`<a class="preview-open" href="${escape(href)}" aria-label="Open ${escape(item.visualTitle||'diagram')} in ${escape(item.title)}">${diagram}</a>`:diagram}</div>`;
  }
  function renderCard(item){
   const href=safeLocalHref(item.href);if(!href)return '';
