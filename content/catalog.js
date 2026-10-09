@@ -5,9 +5,9 @@
   {
    id:'ai-platform',
    title:'AI Platform Playbook',
-   description:'Choose which problems to solve, build shared capabilities, and evaluate agents through delivery and operation. The architecture connects each layer to its interfaces, controls and quality checks.',
+   description:'A practical guide to prioritization, ownership, adoption and evaluation, with worked decisions and a vendor-neutral architecture. Extend the platforms already in use and measure the result after review.',
    type:'Playbook',
-   date:'2026-10-08',
+   date:'2026-10-09',
    href:'playbooks/ai-platform.html',
    topics:['Enterprise AI','Product','Architecture'],
    featured:true,
@@ -18,9 +18,9 @@
    visualCaption:'Explore the interactive architecture',
    cta:'Read the playbook',
    links:[
-    {label:'Agent delivery',hash:'harness'},
-    {label:'Data & retrieval',hash:'data'},
-    {label:'Operating canvas',hash:'canvas'}
+    {label:'Product decisions',hash:'product'},
+    {label:'Adoption & ownership',hash:'adoption'},
+    {label:'Evaluation',hash:'observability'}
    ]
   }
  ];

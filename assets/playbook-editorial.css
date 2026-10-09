@@ -1,0 +1,44 @@
+.reading-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}
+.reading-guide a{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:6px;background:var(--paper);text-decoration:none;color:var(--ink);min-height:82px}
+.reading-guide a:hover{border-color:var(--teal);background:var(--teal-soft)}
+.reading-guide strong{display:block;font:600 1.15rem var(--display)}
+.reading-guide span{display:block;margin-top:6px;font-size:.85rem;color:var(--muted)}
+.playbook-note{margin:24px 0;padding:18px 20px;border-left:4px solid var(--teal);background:var(--teal-soft);font-size:.93rem}
+.playbook-note p+p{margin-top:10px}
+.practice{margin-top:22px;border:1px solid var(--line-strong);border-radius:7px;background:var(--paper);scroll-margin-top:80px}
+.practice summary{padding:19px 22px;min-height:60px;cursor:pointer;font-weight:600}
+.practice summary:hover{color:var(--teal)}
+.practice[open]>summary{border-bottom:1px solid var(--line)}
+.practice-body{padding:22px}
+.practice-body>p{max-width:78ch;margin-bottom:18px;color:var(--muted)}
+.practice-body>p:last-child{margin-bottom:0}
+.practice-body h3{margin:26px 0 12px;font-size:1.35rem}
+.practice-body h3:first-child{margin-top:0}
+.practice-body .card h3{margin:0;font-size:1.2rem}
+.practice-body ol,.practice-body ul{padding-left:22px;color:var(--muted)}
+.practice-body li+li{margin-top:10px}
+.example-label{display:inline-block;margin-bottom:14px;padding:4px 8px;border:1px solid var(--line-strong);font:500 .7rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.decision-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.decision-card{padding:19px;border:1px solid var(--line);border-top:4px solid var(--teal);background:var(--panel);min-width:0}
+.decision-card .verdict{color:var(--teal);font:600 .74rem var(--mono);text-transform:uppercase}
+.decision-card h4{margin:10px 0;font:600 1.22rem var(--display)}
+.decision-card p{font-size:.89rem;color:var(--muted)}
+.decision-card p+p{margin-top:12px}
+.decision-card:last-child{border-top-color:var(--orange)}
+.decision-card:last-child .verdict{color:var(--orange)}
+.decision-record{margin-top:20px;padding:18px 20px;border:1px dashed var(--line-strong);background:var(--panel)}
+.decision-record strong{font-size:.9rem}
+.decision-record p{margin-top:8px;color:var(--muted);font-size:.9rem}
+.ownership{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ownership>div{padding:19px;background:var(--panel)}
+.ownership h4{margin-bottom:9px}.ownership p{font-size:.91rem;color:var(--muted)}
+.step-list{list-style:none;padding:0!important;counter-reset:practice-step}
+.step-list li{position:relative;padding:0 0 18px 42px;margin:0!important;border-left:1px solid var(--line);margin-left:14px!important}
+.step-list li:last-child{border-left-color:transparent;padding-bottom:0}
+.step-list li:before{counter-increment:practice-step;content:counter(practice-step);position:absolute;left:-15px;top:0;display:grid;place-items:center;width:29px;height:29px;border-radius:50%;background:var(--teal);color:var(--paper);font:600 .8rem var(--mono)}
+.step-list strong{display:block;color:var(--ink);margin-bottom:5px}
+.reference-list{display:grid;gap:10px;padding-left:20px;color:var(--muted);font-size:.87rem}
+.matrix-row>div:empty{display:none}
+@media(max-width:1080px){.decision-cards{grid-template-columns:1fr}.decision-card{display:block}}
+@media(max-width:800px){html{scroll-padding-top:82px}.reading-guide{grid-template-columns:1fr;gap:8px}.reading-guide a{min-height:72px}.practice summary{padding:17px}.practice-body{padding:17px}.ownership{grid-template-columns:1fr}}
+@media print{.reading-guide{display:none}.practice-body{display:block}.practice{break-inside:auto}.decision-card,.ownership>div{break-inside:avoid}}
