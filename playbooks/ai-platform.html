@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="A practical enterprise AI platform playbook: prioritization, ownership, adoption, evaluation, governance, cost and a vendor-neutral reference architecture." />
+  <meta name="description" content="An outcome-led AI platform playbook: business workflows, adoption, investment, roadmap and shared architecture that reduces repeated delivery work." />
   <link rel="icon" href="data:," />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -276,15 +276,15 @@
 <div class="page">
   <nav class="publication-nav" aria-label="Site navigation"><a class="publication-brand" href="../index.html">How I AI</a><a href="../index.html#work">Library</a><a href="../index.html#frameworks">Frameworks</a></nav>
   <div class="utility">
-    <span class="scope">Scope · Enterprise + regulated AI</span>
+    <span class="scope">Scope · Business outcomes + delivery economics</span>
     <label class="read-path">Start with
       <select id="path-select" aria-label="Choose a reading path">
-        <option value="north-star">the whole system</option>
-        <option value="product">product and outcomes</option>
-        <option value="architecture">architecture</option>
-        <option value="harness">agent delivery workflow</option>
-        <option value="governance">governance</option>
-        <option value="roadmap">the first 180 days</option>
+        <option value="north-star">the business case</option>
+        <option value="product">business functions</option>
+        <option value="adoption">adoption and ownership</option>
+        <option value="metrics">value and investment</option>
+        <option value="roadmap">the delivery roadmap</option>
+        <option value="architecture">shared architecture</option>
       </select>
     </label>
   </div>
@@ -293,125 +293,241 @@
     <div>
       <p class="kicker">Jay Madduru · Updated October 9, 2026 · Playbook</p>
       <h1>AI Platform<br><span>Playbook</span></h1>
-      <p class="lead">Start with the work people need to get done. Choose what to improve, agree who owns each decision, test it with users and expand when the evidence supports it.</p>
+      <p class="lead">Improve the work business teams need to get done. Plan around measurable outcomes, build the capabilities those outcomes require, and reuse them to make each next delivery faster and less costly.</p>
     </div>
     <aside class="north">
-      <p class="label">A starting question</p>
-      <blockquote>Can a team go from approved intent to an accepted result without rebuilding identity, data access, evaluation, deployment and evidence?</blockquote>
-      <p>Use this playbook to decide what belongs in a shared platform and what should stay with the team doing the work. Examples are hypothetical; the architecture is a reference design.</p>
+      <p class="label">The investment test</p>
+      <blockquote>Does the work improve enough to justify the full investment?</blockquote>
+      <p>Follow a business need through workflow change, adoption, a delivery roadmap and shared architecture. Measure results after review, rework and support. Examples are hypothetical; the architecture is a reference design.</p>
     </aside>
   </header>
 
   <nav class="reading-guide" aria-label="Choose where to start">
-    <a href="#product"><strong>Choose the work</strong><span>Priorities, trade-offs and a worked decision.</span></a>
-    <a href="#adoption"><strong>Work with the people</strong><span>Ownership, adoption and changing responsibilities.</span></a>
-    <a href="#architecture"><strong>Explore the architecture</strong><span>The full diagram, flows and control points.</span></a>
+    <a href="#product"><strong>Find a business workflow</strong><span>Function needs, owners and measurable results.</span></a>
+    <a href="#roadmap"><strong>Plan the investment</strong><span>Sequence delivery and decide when to expand.</span></a>
+    <a href="#architecture"><strong>See what teams can reuse</strong><span>Architecture that supports faster delivery.</span></a>
   </nav>
 
   <div class="shell">
     <nav class="rail" aria-label="Playbook sections">
       <p>Playbook</p>
       <ol>
-        <li><a href="#principles"><span>01</span>Platform thesis</a></li>
-        <li><a href="#product"><span>02</span>Product portfolio</a></li>
-        <li><a href="#architecture"><span>03</span>Architecture & flows</a></li>
-        <li><a href="#harness"><span>04</span>Agent delivery</a></li>
-        <li><a href="#data"><span>05</span>Data & knowledge</a></li>
-        <li><a href="#agents"><span>06</span>Agents & tools</a></li>
-        <li><a href="#governance"><span>07</span>Trust & governance</a></li>
-        <li><a href="#observability"><span>08</span>Evals & observability</a></li>
-        <li><a href="#adoption"><span>09</span>Adoption & operations</a></li>
-        <li><a href="#metrics"><span>10</span>Metrics & economics</a></li>
-        <li><a href="#roadmap"><span>11</span>Roadmap</a></li>
-        <li><a href="#canvas"><span>12</span>Operating canvas</a></li>
-        <li><a href="#failure"><span>13</span>Failure patterns</a></li>
+        <li><a href="#principles"><span>01</span>The business case</a></li>
+        <li><a href="#product"><span>02</span>Business functions</a></li>
+        <li><a href="#adoption"><span>03</span>Adoption & ownership</a></li>
+        <li><a href="#metrics"><span>04</span>Value & investment</a></li>
+        <li><a href="#roadmap"><span>05</span>Roadmap & delivery plan</a></li>
+        <li><a href="#architecture"><span>06</span>Delivery architecture</a></li>
+        <li><a href="#harness"><span>07</span>Build & change efficiency</a></li>
+        <li><a href="#data"><span>08</span>Decision readiness</a></li>
+        <li><a href="#agents"><span>09</span>Work through completion</a></li>
+        <li><a href="#governance"><span>10</span>Business controls</a></li>
+        <li><a href="#observability"><span>11</span>Evidence of improvement</a></li>
+        <li><a href="#canvas"><span>12</span>Value & delivery canvas</a></li>
+        <li><a href="#failure"><span>13</span>Where value gets lost</a></li>
       </ol>
     </nav>
 
     <label class="mobile-jump"> <select id="mobile-select" aria-label="Jump to a section">
-      <option value="principles">01 · Platform thesis</option><option value="product">02 · Product portfolio</option><option value="architecture">03 · Architecture & flows</option><option value="harness">04 · Agent delivery</option><option value="data">05 · Data & knowledge</option><option value="agents">06 · Agents & tools</option><option value="governance">07 · Trust & governance</option><option value="observability">08 · Evals & observability</option><option value="adoption">09 · Adoption & operations</option><option value="metrics">10 · Metrics & economics</option><option value="roadmap">11 · Roadmap</option><option value="canvas">12 · Operating canvas</option><option value="failure">13 · Failure patterns</option>
+      <option value="principles">01 · The business case</option>
+      <option value="product">02 · Business functions</option>
+      <option value="adoption">03 · Adoption & ownership</option>
+      <option value="metrics">04 · Value & investment</option>
+      <option value="roadmap">05 · Roadmap & delivery plan</option>
+      <option value="architecture">06 · Delivery architecture</option>
+      <option value="harness">07 · Build & change efficiency</option>
+      <option value="data">08 · Decision readiness</option>
+      <option value="agents">09 · Work through completion</option>
+      <option value="governance">10 · Business controls</option>
+      <option value="observability">11 · Evidence of improvement</option>
+      <option value="canvas">12 · Value & delivery canvas</option>
+      <option value="failure">13 · Where value gets lost</option>
     </select></label>
 
     <main id="main-content">
       <section id="principles">
         <div class="section-head">
-          <div><p class="kicker">01 · Platform thesis</p><h2>Build the capabilities teams keep needing.</h2></div>
-          <p class="intro">Share identity, data access, evaluation and operating controls. Keep business definitions, workflow decisions and accountability with the people who understand the work.</p>
+          <div><p class="kicker">01 · The business case</p><h2>Invest in better business outcomes.</h2></div>
+          <p class="intro">Choose a piece of work that is too slow, costly or difficult to get right. Establish what better means with the team responsible, then fund the smallest change that can prove it.</p>
         </div>
-        <div class="rule-grid">
-          <div class="rule"><strong>Start with the work.</strong><p>Name the user, current workflow, decision, consequence of failure and definition of an accepted result before discussing architecture.</p></div>
-          <div class="rule"><strong>Share what teams can reuse.</strong><p>Identity, retrieval, model access, evaluation and traces should be shared. The domain experience may remain purpose-built.</p></div>
-          <div class="rule"><strong>Test the complete workflow.</strong><p>Models supply capacity. Contracts, evals, hard rules, human approvals and recovery paths determine what can safely ship.</p></div>
-          <div class="rule"><strong>Controls follow intended use.</strong><p>A writing assistant, a financial decision aid and a device-adjacent workflow do not belong in one undifferentiated risk class.</p></div>
-          <div class="rule"><strong>Every run creates evidence.</strong><p>Traces support debugging, audit, cost analysis and learning. Capture required records during the workflow, with their own retention and access controls. Operational traces alone are not the audit record.</p></div>
-          <div class="rule"><strong>Adoption is part of delivery.</strong><p>A technically correct capability that people route around is unfinished. Workflow fit, trust and ownership belong on the roadmap.</p></div>
+
+        <div class="grid-3">
+          <article class="card"><span class="num">Business result</span><h3>Improve completed work</h3><p>Resolve a customer issue, prepare a supplier for approval or finish a financial investigation. Measure elapsed time, quality and total effort through the final accepted result.</p></article>
+          <article class="card"><span class="num">Employee value</span><h3>Remove work people repeat</h3><p>Find evidence, reconcile conflicting information, prepare a draft and follow up on missing inputs. Check that the assistance reduces effort for the employee and the next reviewer.</p></article>
+          <article class="card"><span class="num">Platform return</span><h3>Make the next delivery easier</h3><p>Reuse connections, access checks, evaluation tools and approval services across validated needs. Compare the time and cost of the next workflow with a credible separate-build option.</p></article>
         </div>
         <div class="decision">
-          <div><h3>Build as platform when…</h3><ul><li>several teams have validated the same need</li><li>inconsistency creates material security, quality or cost risk</li><li>shared evidence improves every downstream use case</li><li>the capability has a stable contract and a clear owning team</li></ul></div>
-          <div><h3>Keep local when…</h3><ul><li>domain judgment is the differentiator</li><li>the workflow is still being discovered</li><li>the latency, safety or experience constraint is unique</li><li>forced reuse would add more coordination than it saves</li></ul></div>
+          <div><h3>Fund a shared capability when</h3><ul><li>named teams have a comparable need and are ready to use it</li><li>existing tools leave a measured gap</li><li>reuse offsets the cost of coordination and support</li><li>a team will own the service after the pilot</li></ul></div>
+          <div><h3>Keep the solution local when</h3><ul><li>the need is still being discovered</li><li>an existing application already solves it well</li><li>the workflow or control requirements are materially different</li><li>sharing adds more work than it removes</li></ul></div>
+        </div>
+        <div class="playbook-note"><p>Start the investment case with the current result, its cost and an accountable business owner. Compare process redesign, existing software and AI on the same outcome. Build shared foundations as the roadmap needs them.</p></div>
+        <div class="flowline" aria-label="From business outcome to investment decision">
+          <article><span class="step">01</span><h3>Outcome</h3><p>What must improve, for whom and by when?</p></article>
+          <article><span class="step">02</span><h3>Workflow</h3><p>Where do delay, rework and poor decisions occur?</p></article>
+          <article><span class="step">03</span><h3>Plan</h3><p>What change is feasible with the people and data available?</p></article>
+          <article><span class="step">04</span><h3>Reuse</h3><p>Which proven capabilities reduce delivery effort?</p></article>
+          <article><span class="step">05</span><h3>Evidence</h3><p>Did completed work improve enough to keep investing?</p></article>
         </div>
       </section>
 
       <section id="product">
         <div class="section-head">
-          <div><p class="kicker">02 · Product portfolio</p><h2>Decide which work is worth doing.</h2></div>
-          <p class="intro">Group requests by the business outcome and the capabilities they need. Agree priorities with business, engineering, data and control owners. Look for common needs without forcing every team into the same workflow.</p>
+          <div><p class="kicker">02 · Business functions</p><h2>Make the platform useful in everyday work.</h2></div>
+          <p class="intro">Each function needs a result it can own. Put assistance inside the application, document or approval process people already use. The examples below are hypothetical starting points, not promised gains.</p>
         </div>
-        <div class="grid-4">
-          <article class="card"><span class="num">A</span><h3>Knowledge work</h3><p>Search, synthesis, Q&A and governed knowledge bases. Optimize accepted-answer rate, provenance and time recovered.</p></article>
-          <article class="card"><span class="num">B</span><h3>Decision support</h3><p>Text-to-SQL, analysis and recommendations. Measure correctness, appropriate abstention and reviewer effort.</p></article>
-          <article class="card"><span class="num">C</span><h3>Workflow automation</h3><p>Agents that use tools and change systems. Optimize successful task completion, safe recovery and cost per task.</p></article>
-          <article class="card"><span class="num">D</span><h3>Embedded intelligence</h3><p>AI inside products or regulated workflows. Optimize validated performance, integration quality and lifecycle evidence.</p></article>
+
+        <div class="grid-2 function-grid">
+          <article class="card"><span class="num">Finance</span><h3>Resolve exceptions with less investigation</h3><p>In the reconciliation queue, gather transaction evidence, explain mismatches and prepare a proposed resolution. The finance owner approves accounting changes.</p><ul class="clean-list"><li><strong>Measure:</strong> resolution time, aged exceptions, reviewer effort and correction rate.</li><li><strong>Reuse:</strong> permitted data access, evidence retrieval and approval records.</li></ul></article>
+          <article class="card"><span class="num">Procurement</span><h3>Get suppliers ready for a decision</h3><p>In the supplier intake process, check required documents, identify missing information and route reviews to Legal, Security and Finance. Each function retains its decision authority.</p><ul class="clean-list"><li><strong>Measure:</strong> time to a complete decision, repeated requests and missed requirements.</li><li><strong>Reuse:</strong> document extraction, completeness checks and review routing.</li></ul></article>
+          <article class="card"><span class="num">Customer service</span><h3>Resolve the issue without another contact</h3><p>Inside the case workspace, assemble the customer history, find the applicable policy and draft a supported response. The agent handling the case reviews promises and actions.</p><ul class="clean-list"><li><strong>Measure:</strong> resolution time, repeat contacts, answer correctness and customer effort.</li><li><strong>Reuse:</strong> permissioned search, policy checks and case-system connections.</li></ul></article>
+          <article class="card"><span class="num">People operations</span><h3>Complete employee requests with fewer handoffs</h3><p>In the employee service workflow, explain the relevant policy and prepare onboarding or benefits tasks. A designated owner decides sensitive employment or eligibility matters.</p><ul class="clean-list"><li><strong>Measure:</strong> time to completion, avoidable escalations, employee effort and access violations.</li><li><strong>Reuse:</strong> role-aware knowledge, task preparation and approval routing.</li></ul></article>
+          <article class="card"><span class="num">Sales &amp; marketing</span><h3>Prepare accurate commercial material sooner</h3><p>In proposal and campaign tools, assemble approved product claims, customer context and commercial terms. Reviewers approve pricing, commitments and publication.</p><ul class="clean-list"><li><strong>Measure:</strong> turnaround, correction effort and unsupported-claim rate. Test any revenue effect separately.</li><li><strong>Reuse:</strong> approved content retrieval, claim checks and document generation.</li></ul></article>
+          <article class="card"><span class="num">Operations &amp; quality</span><h3>Prepare investigations for a sound decision</h3><p>In the investigation record, collect evidence, reconstruct the sequence and flag missing documentation. Qualified owners assess causes and approve corrective actions.</p><ul class="clean-list"><li><strong>Measure:</strong> investigation time, evidence completeness, reopened cases and overdue actions.</li><li><strong>Reuse:</strong> source tracing, structured summaries and completeness checks.</li></ul></article>
         </div>
-        <div class="flowline" aria-label="Product lifecycle">
-          <article><span class="step">01</span><h3>Frame</h3><p>User, job, baseline, failure consequence, accountable owner.</p></article>
-          <article><span class="step">02</span><h3>Test value</h3><p>Concierge or narrow prototype with a real workflow and reviewer.</p></article>
-          <article><span class="step">03</span><h3>Prove quality</h3><p>Golden set, failure taxonomy, acceptance threshold and fallback.</p></article>
-          <article><span class="step">04</span><h3>Prepare for production</h3><p>Shared contracts, controls, runbooks, telemetry and ownership.</p></article>
-          <article><span class="step">05</span><h3>Expand</h3><p>Expand only after checking quality, permissions and support for the new users and tasks.</p></article>
-        </div>
-        <div class="matrix" style="margin-top:28px">
-          <div class="matrix-row head"><div>Prioritization lens</div><div>Decision question</div><div>Evidence</div></div>
-          <div class="matrix-row"><div>Outcome value</div><div>What changes if this works?</div><div>Cycle time, risk avoided, revenue, capacity or quality baseline</div></div>
-          <div class="matrix-row"><div>Reuse potential</div><div>How many validated products does it unlock?</div><div>Named consumers, common contract, avoided duplicate work</div></div>
-          <div class="matrix-row"><div>Readiness</div><div>Are data, owner and workflow stable enough?</div><div>Data profile, accountable owner, review capacity, integration path</div></div>
-          <div class="matrix-row"><div>Risk-adjusted effort</div><div>What must be proven before use expands?</div><div>Risk tier, validation work, security review, operational burden</div></div>
-        </div>
-        <div class="playbook-note"><p>Start with the tools and relationships already in place. Watch a few real tasks, including the exceptions. Agree the baseline with the people doing the work, then bring back a decision they can challenge. A request for a new agent may turn out to be a missing permission, an unclear metric or a broken handoff.</p></div>
-        <details class="practice" id="prioritization-example">
-          <summary>See a prioritization example</summary>
+        <details class="practice" id="cross-functional-work">
+          <summary>Follow one outcome across several functions</summary>
           <div class="practice-body">
-            <span class="example-label">Hypothetical scenario</span>
-            <p>Three teams want help this quarter. Engineering can support one new shared capability alongside existing commitments. The scenarios below assume the named owners and evidence exist. Verify both before committing.</p>
+            <span class="example-label">Hypothetical workflow · Supplier onboarding</span>
+            <p>The outcome is a supplier that is ready for a supported approval or rejection. Faster document extraction helps only if the full decision arrives sooner with the required checks complete.</p>
+            <ol class="step-list">
+              <li><strong>Procurement opens one request</strong>The requester supplies the purpose and documents. Assistance identifies missing material before specialists receive the request.</li>
+              <li><strong>Specialists review their part</strong>Legal checks terms, Security assesses the relevant exposure and Finance verifies financial setup. Run reviews in parallel only where dependencies permit.</li>
+              <li><strong>Owners resolve exceptions</strong>One visible record tracks questions, evidence and outstanding decisions. Assistance prepares follow-ups; authorized people approve external messages and commitments.</li>
+              <li><strong>The owning system records the decision</strong>An authorized person approves the exact update. The system checks permissions, prevents duplicate execution and confirms the resulting state.</li>
+            </ol>
+            <p>Track total elapsed time, waiting time by handoff, first-pass completeness and reviewer minutes. A shorter Procurement queue does not establish improvement if Legal receives more rework.</p>
+            <div class="decision-record"><strong>Keep shared services separate from business authority</strong><p>The platform supplies intake, retrieval, routing and evidence capture. Each function owns its criteria and approvals. The end-to-end process owner resolves handoff problems and owns the overall result.</p></div>
+          </div>
+        </details>
+        <details class="practice" id="prioritization-example">
+          <summary>Choose the first workflow and explain what waits</summary>
+          <div class="practice-body">
+            <p>Compare requests on observed pain, frequency, consequence of error, readiness and total delivery effort. Include review and adoption capacity. Let affected functions challenge the evidence before committing.</p>
             <div class="decision-cards">
-              <article class="decision-card"><span class="verdict">Build a shared capability</span><h4>Document intake</h4><p>Two teams handle similar document types. They have reviewed examples, measurable rework and people available to test the output.</p><p>Share extraction, checks and evidence. Keep each team’s fields, exceptions and approval process separate. Start with one document type.</p></article>
-              <article class="decision-card"><span class="verdict">Reuse or buy</span><h4>Translation in an existing tool</h4><p>An approved supplier may already cover the workflow. Test its output with domain reviewers and check access, retention, integration and total cost.</p><p>Adopt it if it meets the same acceptance criteria. Build only the missing capability that the evidence justifies.</p></article>
-              <article class="decision-card"><span class="verdict">Defer automated action</span><h4>Financial posting</h4><p>The team wants autonomous posting, but accounting rules, approval authority and recovery procedures are unresolved.</p><p>Resolve those dependencies first. Consider a read-only pilot if it has value on its own; keep posting outside the pilot.</p></article>
+              <article class="decision-card"><span class="verdict">Test first</span><h4>A repeated, measurable task</h4><p>Document intake has reviewed examples, a process owner and users available to test it. Try one document type and compare the complete process with today’s baseline.</p></article>
+              <article class="decision-card"><span class="verdict">Use what exists</span><h4>A capability already available</h4><p>An approved application may cover translation or search. Test fit, controls and total cost before building a replacement.</p></article>
+              <article class="decision-card"><span class="verdict">Resolve dependencies</span><h4>An action without clear authority</h4><p>Financial posting has unresolved accounting rules and approvals. Resolve those first; a read-only investigation may be useful in the meantime.</p></article>
             </div>
-            <h3>Make the trade-off visible</h3>
-            <p>Product recommends the sequence. Engineering sizes delivery and support; data owners assess readiness; control owners set release conditions. The business sponsor decides between competing outcomes within the agreed capacity. A mandatory control cannot be traded away for a higher benefit score.</p>
-            <div class="decision-record"><strong>Record what was decided</strong><p>Outcome and baseline · Evidence confidence · Capacity and dependencies · Chosen option · Work deferred · Decision owner · Review date · What would change the decision</p></div>
-            <h3>Tell the team whose request waits</h3>
-            <p>Explain the constraint, what was chosen and why. Offer a safe alternative when one exists, name the dependency owner and set a review date. Revisit the decision when evidence changes. A new executive request should show what it displaces before it enters the roadmap.</p>
+            <p style="margin-top:18px">Product recommends the sequence; engineering and control owners assess feasibility. The accountable sponsor resolves competing outcomes within the available capacity. Mandatory controls remain release conditions.</p>
+            <div class="decision-record"><strong>Publish the decision</strong><p>Chosen outcome · Evidence and assumptions · Existing alternatives · Capacity committed · Work deferred · Dependency owner · Review date</p></div>
+            <p style="margin-top:18px">Tell the team whose work waits what would change the decision. A new executive request should identify the work it displaces.</p>
           </div>
         </details>
         <details class="practice" id="global-rollout">
-          <summary>Expand to another region or improve the current release?</summary>
+          <summary>Choose between improving the current workflow and expanding</summary>
+          <div class="practice-body"><p>Fix a material failure before repeating it. Expansion is reasonable when the next team has the same need, can meet the data and control requirements, and has local support. Check language, policy and process differences with that team.</p><p>Compare the expected business result and delivery effort of both options. Keep country and cohort results visible; an overall average can hide a release that does not work for one group.</p></div>
+        </details>
+      </section>
+
+      <section id="adoption">
+        <div class="section-head">
+          <div><p class="kicker">03 · Adoption & ownership</p><h2>Help teams change how the work gets done.</h2></div>
+          <p class="intro">Adoption is a function of trust and value. The function needs to see less effort or a better result, and know who remains accountable. Design the change with the people who perform and approve the work.</p>
+        </div>
+
+        <div class="lifecycle">
+          <article class="life"><span>01</span><h3>Observe</h3><p>Watch real tasks and exceptions. Find where people wait, repeat work or protect against mistakes.</p></article>
+          <article class="life"><span>02</span><h3>Co-design</h3><p>Agree the desired result, what changes in the job and where assistance belongs.</p></article>
+          <article class="life"><span>03</span><h3>Shadow</h3><p>Compare permitted drafts with real work, without changing business records.</p></article>
+          <article class="life"><span>04</span><h3>Assist</h3><p>Let people inspect, edit, reject or approve the proposed deliverable or action.</p></article>
+          <article class="life"><span>05</span><h3>Expand</h3><p>Increase use when quality, employee benefit and support hold up in practice.</p></article>
+        </div>
+        <div class="ownership" style="margin-top:26px">
+          <div><h4>Business function</h4><p>Names the process owner, provides users and reviewers, sets acceptance criteria and owns the operational outcome. Allocates time for testing, training and process changes.</p></div>
+          <div><h4>Platform product team</h4><p>Connects function needs to shared investments, recommends priorities, coordinates dependencies and measures whether adoption produces value.</p></div>
+          <div><h4>Engineering and data teams</h4><p>Own delivery estimates, technical design, integration, data readiness and service reliability. Make reuse practical and support the released workflow.</p></div>
+          <div><h4>Control owners</h4><p>Determine applicable requirements and approval authority. Agree the evidence needed early, then review the changes that affect those requirements.</p></div>
+        </div>
+        <details class="practice" id="adoption-concerns">
+          <summary>Address the reasons people keep using the old process</summary>
           <div class="practice-body">
-            <p>Separate a missing feature from a reason people cannot use the product. Compare both options on the same outcome, quality and support evidence.</p>
-            <div class="grid-2">
-              <article class="card"><h3>Improve the current release</h3><p>Investigate whether users leave because of wrong answers, unclear permissions, extra review work or a poor fit with their workflow. Fix a material failure before repeating it elsewhere.</p></article>
-              <article class="card"><h3>Test the next region</h3><p>Proceed with a small cohort when the current capability solves their task and local data, language, controls and support are ready. Reuse the shared capability; evaluate local examples separately.</p></article>
-            </div>
-            <p style="margin-top:18px">Regional representatives help set the criteria and review results. Product publishes the choice, the work displaced and the next review point. Location alone does not determine priority.</p>
+            <p>Ask what the current process gives people that the new one does not: control, context, a trusted colleague or protection from an error. More training will not fix extra review work or unclear accountability.</p>
+            <ul><li><strong>Fit the work.</strong> Put assistance inside the existing record or application. Avoid making employees copy context into another chat and then copy the answer back.</li><li><strong>Set observation boundaries.</strong> Explain what the assistant may read, what is logged, who sees it and how long it is retained. Provide a way to pause shadowing. Do not quietly turn usage logs into performance monitoring.</li><li><strong>Make approval useful.</strong> Show the change, evidence and unresolved questions. Keep edit, reject and escalation available. Require an authorized person to sign off on the exact action before execution.</li><li><strong>Discuss role changes.</strong> Managers and people teams own workforce decisions. Make workload changes visible, provide practice time and avoid promises about jobs that the product team cannot make.</li><li><strong>Support the transition.</strong> Name a help owner and retain a tested fallback. Retire duplicate steps only after the new process meets its requirements.</li></ul>
+            <p>Measure eligible tasks completed through the new workflow, corrections, review time and reasons for returning to the old route. Personalization may adapt presentation and approved context; it must not broaden access or change decision authority.</p>
+          </div>
+        </details>
+        <details class="practice" id="product-engineering">
+          <summary>Turn discovery into a delivery agreement</summary>
+          <div class="practice-body"><p>Product and the function agree the user, problem, baseline, desired result and priority. Engineering proposes delivery options and their cost. Data and control owners identify prerequisites. A prototype tests an assumption; it does not commit the team to its implementation.</p><p>Before delivery begins, name the acceptance owner, reviewer capacity, integration owner, support team and release decision-maker. Resolve disagreements through a bounded test or an explicit trade-off between options.</p></div>
+        </details>
+        <details class="practice" id="operating-cadence">
+          <summary>Keep functions involved after launch</summary>
+          <div class="practice-body">
+            <ul><li><strong>Weekly:</strong> users and delivery owners review exceptions, quality, adoption friction and unresolved dependencies.</li><li><strong>At release:</strong> accountable owners inspect outcome tests, controls, support and recovery readiness.</li><li><strong>Monthly:</strong> function sponsors and platform owners compare results with cost, then expand, revise, consolidate or stop work.</li><li><strong>During an incident:</strong> pause affected actions when necessary, restore a safe process and preserve the evidence needed to investigate.</li></ul>
+            <p>Use existing forums where they work. Reserve capacity for support, data maintenance and mandatory controls. New requests should compete with the full cost of operating what is already live.</p>
           </div>
         </details>
       </section>
 
+      <section id="metrics">
+        <div class="section-head">
+          <div><p class="kicker">04 · Value & investment</p><h2>Measure value after review, rework and support.</h2></div>
+          <p class="intro">Agree a baseline and an acceptance standard before the pilot. Compare similar work over a defined period. Report the business result, the employee effort and the cost of delivering it.</p>
+        </div>
+
+        <div class="scorecards">
+          <article class="score"><h3>Business outcome</h3><div class="formula">accepted-result rate = accepted tasks ÷ all attempted tasks</div><ul><li>end-to-end time, including waiting and review</li><li>quality, completeness and timeliness</li><li>reopened cases and downstream corrections</li><li>the function’s service or commercial measure</li></ul></article>
+          <article class="score"><h3>Employee benefit</h3><div class="formula">net time recovered = baseline effort − assisted effort, including review and rework</div><ul><li>count every activity once</li><li>include failures and manual fallbacks</li><li>report sustained use across eligible tasks</li><li>show negative results and affected cohorts</li></ul></article>
+          <article class="score"><h3>Delivery efficiency</h3><div class="formula">time to usable release = discovery + dependencies + build + assurance + rollout</div><ul><li>effort to onboard the next workflow</li><li>integration and test work reused</li><li>release defects and support burden</li><li>shared-service coordination and change cost</li></ul></article>
+          <article class="score"><h3>Total cost</h3><div class="formula">cost per accepted task = attributable operating cost ÷ accepted tasks</div><ul><li>models, tools, infrastructure and evaluation</li><li>review, rework, support and data maintenance</li><li>shared-cost allocation disclosed separately</li><li>initial build and transition costs in the investment case</li></ul></article>
+        </div>
+        <details class="practice" id="capacity-and-cost">
+          <summary>Build a credible investment case</summary>
+          <div class="practice-body">
+            <ol class="step-list">
+              <li><strong>Compare feasible alternatives</strong>Evaluate process improvement, existing software, a local solution and a shared platform. Use the same scope, time period and quality requirements.</li>
+              <li><strong>Separate types of benefit</strong>Cash savings require a spending change. Recovered capacity requires a plan for useful work. Revenue claims require evidence of incremental contribution, not a faster draft alone. Report risk and quality improvements separately where valuation is uncertain.</li>
+              <li><strong>Include the full commitment</strong>Count discovery, integration, assurance, training, transition, infrastructure, review, support and upgrades. The next workflow still has its own data, domain and adoption costs.</li>
+              <li><strong>Show uncertainty</strong>Label estimates, pilot observations and sustained results. Test low adoption, higher review effort and delayed reuse. State assumptions and avoid counting the same benefit in several functions.</li>
+              <li><strong>Release the next tranche on evidence</strong>Expand when the outcome holds and the next team can reuse enough of the investment. Reduce scope or stop when the expected benefit no longer covers the commitment.</li>
+            </ol>
+            <div class="decision-record"><strong>Evaluate the platform contribution separately</strong><p>Compare equivalent outcomes delivered with shared services versus credible separate solutions. Count avoided work only when it would otherwise have been needed. Subtract shared operation, migration and coordination costs; do not credit the entire workflow benefit to the platform alone.</p></div>
+            <h3>Keep model spending tied to the result</h3>
+            <p>Choose the least costly route that meets the task requirements. Test rules, search and smaller models before adding more expensive generation. Compare accepted-task cost, latency and recovery effort across routes.</p>
+            <p>Self-hosting may support control or customization, but includes hardware, utilization, security, upgrades and on-call costs. Open weights do not imply CPU-only operation. Benchmark the intended workload before making a cost claim.</p>
+          </div>
+        </details>
+      </section>
+
+      <section id="roadmap">
+        <div class="section-head">
+          <div><p class="kicker">05 · Roadmap & delivery plan</p><h2>Fund a sequence of outcomes.</h2></div>
+          <p class="intro">Each roadmap item pairs a business result with the capabilities needed to deliver it. Start with one owned workflow, prove reuse with a second, and expand when the evidence supports the cost. Timing depends on readiness and capacity.</p>
+        </div>
+
+        <div class="roadmap">
+          <article class="phase"><span class="when">Discover</span><h3>Choose a costly problem</h3><ul><li>observe users and handoffs</li><li>baseline the complete outcome</li><li>compare existing options</li><li>confirm data, reviewers and control owners</li></ul></article>
+          <article class="phase"><span class="when">Prove</span><h3>Improve one workflow</h3><ul><li>reuse existing applications and access</li><li>build only the missing capability</li><li>test in shadow, then approved use</li><li>compare quality, effort and elapsed time</li></ul></article>
+          <article class="phase"><span class="when">Repeat</span><h3>Deliver the next use faster</h3><ul><li>choose a comparable need</li><li>reuse proven services and tests</li><li>evaluate the new domain’s exceptions</li><li>measure onboarding and support cost</li></ul></article>
+          <article class="phase"><span class="when">Expand</span><h3>Scale what earns its place</h3><ul><li>extend to ready functions and regions</li><li>resolve expensive failure patterns</li><li>consolidate duplication with owners</li><li>retire old routes after a tested transition</li></ul></article>
+        </div>
+        <details class="practice" id="outcome-roadmap">
+          <summary>See how business outcomes shape the technical roadmap</summary>
+          <div class="practice-body">
+            <span class="example-label">Illustrative sequence · Not a delivery commitment</span>
+            <div class="controls-table-wrap" tabindex="0" role="region" aria-label="Outcome-led roadmap">
+              <table class="controls-table"><thead><tr><th scope="col">Business result</th><th scope="col">Delivery plan</th><th scope="col">Shared investment</th><th scope="col">Decision to continue</th></tr></thead><tbody>
+                <tr><th scope="row">Procurement receives a complete supplier request</th><td>Test one document type in the intake process, with a reviewer and existing system access.</td><td>Document extraction, source references, completeness checks and task evaluations.</td><td>Fewer repeated requests without more missed requirements or review work.</td></tr>
+                <tr><th scope="row">Legal and Security can review without repeated handoffs</th><td>Add function-specific criteria and visible review status. Preserve each owner’s authority.</td><td>Review routing, approval records and recovery; extend the intake services already tested.</td><td>Shorter time to a complete decision with all required reviews intact.</td></tr>
+                <tr><th scope="row">Another document-heavy workflow reaches the same standard</th><td>Onboard a second function with its own examples, permissions, owner and support.</td><td>Reuse the intake and review services. Build only the domain-specific difference.</td><td>Acceptable outcomes with less incremental delivery effort after accounting for shared overhead.</td></tr>
+              </tbody></table>
+            </div>
+            <p style="margin-top:18px">Do not build a graph, custom model or agent network because it appears in the reference architecture. Add it when a funded workflow needs it and a simpler option fails the agreed test.</p>
+          </div>
+        </details>
+        <div class="decision-record"><strong>Every delivery commitment needs</strong><p>Outcome owner · Baseline and target · Scope and exclusions · Existing capability to reuse · Missing work · Data and approval dependencies · People and capacity · Release evidence · Support owner · Review date</p></div>
+        <div class="playbook-note"><p>A date alone does not authorize expansion. Release when the outcome, controls and support are ready. Make the cost of a new priority visible, including the work that will wait.</p></div>
+      </section>
+
       <section id="architecture">
         <div class="section-head">
-          <div><p class="kicker">03 · Reference architecture</p><h2>How the platform fits together.</h2></div>
-          <p class="intro">Follow a request from the user’s workflow to an approved action and verified result. The full system view comes first, followed by its flows, security checkpoints and nine capability layers. This is a proposed reference design.</p>
+          <div><p class="kicker">06 · Delivery architecture</p><h2>Reuse the foundations that slow each new build.</h2></div>
+          <p class="intro">Connect the roadmap to services teams can reuse: system connections, access, evidence, models, approvals and tests. Build only what a funded workflow needs. The full reference design below is a set of options, not a requirement to implement every layer.</p>
+        </div>
+        <div class="grid-3" style="margin-bottom:26px">
+          <article class="card"><h3>Reduce repeated integration</h3><p>Connect to a business system through a supported interface, then reuse it where access and workflow requirements fit. Measure onboarding effort and the local work still required.</p></article>
+          <article class="card"><h3>Reuse evidence and tests</h3><p>Share evaluation tools, trace capture and tested control components. Keep domain acceptance criteria specific. Measure whether assurance work becomes faster without weaker coverage.</p></article>
+          <article class="card"><h3>Contain the cost of change</h3><p>Separate business rules from model and infrastructure choices. Version shared interfaces and test affected workflows before an upgrade. Include migration and support effort in the comparison.</p></article>
         </div>
         <nav class="architecture-jump" aria-label="Architecture views">
           <a href="#system-map">End-to-end diagram</a><a href="#architecture-flows">Eight flows</a><a href="#architecture-controls">Security checkpoints</a><a href="#architecture-layers">Nine-layer detail</a>
@@ -699,21 +815,21 @@
         <dialog class="architecture-dialog" id="architecture-dialog" aria-labelledby="architecture-dialog-title">
           <h3 id="architecture-dialog-title">Enterprise AI platform architecture</h3>
         </dialog>
-        <div class="architecture-subhead" id="architecture-flows"><h3>Eight flows through the system</h3><p>The numbers match the diagram.</p></div>
+        <div class="architecture-subhead" id="architecture-flows"><h3>What each shared flow saves teams from rebuilding</h3><p>The numbers match the diagram. Assess reuse against the cost and requirements of each workflow.</p></div>
         <ol class="architecture-flows">
-          <li><span class="flow-number">1</span><div><h4>Ask</h4><p>A request arrives in the user’s workflow. Identity establishes who is asking and their access. The router passes the request and permitted context to the orchestrator.</p></div></li>
-          <li><span class="flow-number">2</span><div><h4>Plan and delegate</h4><p>The orchestrator assigns work to domain agents, which call shared capabilities. Each task carries its owner, acceptance criteria, allowed tools, budget and stopping conditions.</p></div></li>
-          <li><span class="flow-number">3</span><div><h4>Ground</h4><p>The tool gateway checks access on every call. Retrieval returns permitted evidence with source versions and citations. Missing or conflicting evidence triggers clarification or escalation.</p></div></li>
-          <li><span class="flow-number">4</span><div><h4>Reason</h4><p>The model gateway routes to an approved model and region, applies data-handling controls, and records usage. Evaluate the route against the task’s quality, latency and cost requirements.</p></div></li>
-          <li><span class="flow-number">5</span><div><h4>Act with approval</h4><p>Show the proposed action and evidence to an authorized person. Execute only the approved action through a scoped tool. The owning system validates the write; verify its result and prevent duplicate execution.</p></div></li>
-          <li><span class="flow-number">6</span><div><h4>Refresh the knowledge</h4><p>Data pipelines prepare governed datasets from source systems and update indexes, graphs and models. Preserve lineage and source permissions. User feedback does not automatically authorize retraining or a policy change.</p></div></li>
-          <li><span class="flow-number">7</span><div><h4>Evaluate</h4><p>Check inputs, retrieval, tool calls and outcomes. Use offline suites before release and risk-appropriate checks during operation. Failed checks block, retry within limits, or escalate with the evidence.</p></div></li>
-          <li><span class="flow-number">8</span><div><h4>Govern</h4><p>Enforce policy at the control points. Link approvals, versions, actions and results with a run ID. Keep required audit records on a durable path, with retention, access controls and tamper protection.</p></div></li>
+          <li><span class="flow-number">1</span><div><h4>Start in the existing workflow</h4><p>Reuse identity and routing so each function can place assistance in its own application. Preserve the user’s permitted context instead of requiring another sign-in or manual transfer.</p></div></li>
+          <li><span class="flow-number">2</span><div><h4>Coordinate the work</h4><p>Reuse task state, ownership and exception routing where the process needs several steps. Keep domain criteria and approval authority with the function.</p></div></li>
+          <li><span class="flow-number">3</span><div><h4>Find permitted evidence</h4><p>Reuse source connections, access checks and retrieval. Return source versions so a new workflow can inspect evidence without rebuilding the same document pipeline.</p></div></li>
+          <li><span class="flow-number">4</span><div><h4>Select a model route</h4><p>Use a common gateway for approved models, regions, usage and budgets. Compare routes on task quality and total cost; avoid a separate provider integration for every product.</p></div></li>
+          <li><span class="flow-number">5</span><div><h4>Execute the approved action</h4><p>Reuse scoped tools, approval binding, duplicate prevention and result verification. Each system still validates its writes; a shared interface does not grant permission.</p></div></li>
+          <li><span class="flow-number">6</span><div><h4>Maintain the inputs</h4><p>Share ingestion, quality checks and lineage for data that several workflows need. Budget for source maintenance and keep each function’s definitions explicit.</p></div></li>
+          <li><span class="flow-number">7</span><div><h4>Test the result</h4><p>Reuse test tooling and release checks. Add domain cases for the new workflow and preserve failure thresholds. Measure the effort needed to establish acceptance.</p></div></li>
+          <li><span class="flow-number">8</span><div><h4>Support and investigate</h4><p>Use common identifiers, approvals and evidence capture to connect a failed outcome to its cause. Keep audit records with the required access, retention and tamper protection.</p></div></li>
         </ol>
         <details class="architecture-controls" id="architecture-controls">
-          <summary>Seven security checkpoints and the evidence they keep</summary>
+          <summary>Reuse control components without transferring business authority</summary>
           <div class="controls-content">
-            <p>S1–S7 mark enforcement points in the diagram. Reuse enterprise identity and source-system permissions, then check the requested action at each boundary. Quality and regulatory owners determine which validation, record and signature requirements apply to the intended use.</p>
+            <p>S1–S7 identify control components that delivery teams can reuse and test. Standardized checks can reduce repeated integration and evidence assembly. Each new workflow still needs a review of its users, actions and applicable requirements; source-system permissions remain authoritative.</p>
             <div class="controls-table-wrap" tabindex="0" role="region" aria-label="Security checkpoints table">
               <table class="controls-table">
                 <thead><tr><th scope="col">Checkpoint</th><th scope="col">Enforced control</th><th scope="col">Evidence to retain</th></tr></thead>
@@ -730,305 +846,197 @@
             </div>
           </div>
         </details>
-        <div class="layer-detail-header" id="architecture-layers"><p class="kicker">Capability view</p><h3>The nine layers behind the diagram</h3><p>Select a layer for its responsibilities, interface contract and quality checks. These are platform capabilities, not a required sequence for every request.</p></div>
+        <div class="layer-detail-header" id="architecture-layers"><p class="kicker">Build efficiency</p><h3>Which layers reduce delivery effort?</h3><p>Select a capability to see the work it can replace, what is reusable and how to check the benefit. Add a layer only when the roadmap needs it.</p></div>
         <div class="stack-map">
           <div class="layers" id="layers" aria-label="AI platform layers"></div>
           <aside class="inspector" id="layer-detail" aria-live="polite"></aside>
         </div>
         <div class="crosscuts">
-          <div>Identity & least privilege</div><div>Policy & evidence</div><div>Cost & capacity</div><div>Change & release management</div>
+          <div>Less repeated integration</div><div>Reusable assurance work</div><div>Visible delivery cost</div><div>Lower upgrade effort</div>
         </div>
       </section>
 
       <section id="harness">
         <div class="section-head">
-          <div><p class="kicker">04 · Agent delivery workflow</p><h2>How agents help build and review software.</h2></div>
-          <p class="intro">The delivery workflow takes a request through a specification, implementation and review. Keep the evidence needed to inspect a run. Safe replay also needs retained inputs and versions, with real business actions disabled.</p>
+          <div><p class="kicker">07 · Build & change efficiency</p><h2>Shorten the path from an agreed need to a usable release.</h2></div>
+          <p class="intro">Use shared engineering services and bounded coding assistance to reduce repeat work. Judge delivery speed through a supported release, including integration, testing, review and correction.</p>
         </div>
+
         <div class="harness">
-          <div class="harness-flow" id="harness-flow" aria-label="Harness stages"></div>
+          <div class="harness-flow" id="harness-flow" aria-label="Delivery stages"></div>
           <aside class="h-detail" id="harness-detail" aria-live="polite"></aside>
         </div>
         <div class="h-principles">
-          <div><strong>Operating model as versioned config</strong><p>Task types, templates, golden sets, guidelines, thresholds, risk floors and model routes change without rewriting the pipeline.</p></div>
-          <div><strong>Deterministic first, judgment second</strong><p>Tests, static analysis, graph rules and policy checks run before a model judge. A judge can raise risk; it cannot lower a hard floor.</p></div>
-          <div><strong>Cross-model verification</strong><p>Where model evaluation helps, compare evaluators against domain reviewers. A different model family can reduce some shared blind spots; it does not guarantee an independent or correct verdict.</p></div>
-          <div><strong>Spec failure is a first-class outcome</strong><p>Repeated failure triggers a review of the specification, context, tools and model. Cap retries instead of continuing without new evidence.</p></div>
-          <div><strong>Human intent and risk anchors</strong><p>Requesters confirm acceptance criteria. The authorized owner signs off before changes are merged or released, with any additional process approvals.</p></div>
-          <div><strong>Every decision is traced</strong><p>Routes, artifact references, checks, costs and approvals share a run identifier. Minimize sensitive payloads and retain required audit records separately.</p></div>
+          <div><strong>Reuse before adding code</strong><p>Check existing applications, connections, access controls and evaluation services. Build the missing workflow behavior, with an owner for any new shared service.</p></div>
+          <div><strong>Make acceptance testable</strong><p>Use real task examples and exceptions. Test whether the complete result meets the function’s needs before optimizing individual components.</p></div>
+          <div><strong>Keep changes small</strong><p>Limit the scope of each change, inspect dependencies and isolate conflicting work. Include integration and review capacity in parallel-delivery estimates.</p></div>
+          <div><strong>Bound automated retries</strong><p>Use tests and static checks first. Stop repeated failures for diagnosis instead of spending indefinitely on a larger model or another attempt.</p></div>
+          <div><strong>Make changes traceable</strong><p>Keep specifications, code, tests, configurations and approvals linked. Use that record to identify affected workflows when a shared component changes.</p></div>
+          <div><strong>Count work after release</strong><p>Track defects, support and recovery effort alongside lead time. A faster prototype does not establish lower production-delivery cost.</p></div>
         </div>
       </section>
 
       <section id="data">
         <div class="section-head">
-          <div><p class="kicker">05 · Data & knowledge</p><h2>Give agents the right evidence and access.</h2></div>
-          <p class="intro">Retrieval needs permissions, source versions, freshness and business definitions. Return the evidence with its source and access decision so the next step can check it.</p>
+          <div><p class="kicker">08 · Decision readiness</p><h2>Reduce time spent finding and checking information.</h2></div>
+          <p class="intro">Give people an answer they can inspect and use for the decision in front of them. The business function owns definitions and acceptable freshness; data owners provide maintained sources and access.</p>
         </div>
+
         <div class="grid-3">
-          <article class="card"><span class="num">01</span><h3>Data plane</h3><p>Sources, lakehouse or warehouse, streaming, catalog, lineage, contracts, quality checks and retention. Keep the source of truth outside the model layer.</p></article>
-          <article class="card"><span class="num">02</span><h3>Knowledge plane</h3><p>Document parsing, chunking, lexical + vector + graph retrieval, reranking, citations, freshness and authorization-aware filtering.</p></article>
-          <article class="card"><span class="num">03</span><h3>Semantic plane</h3><p>Business definitions, metrics, entities, tool schemas and domain ontologies. Evaluate these definitions against real questions and approved actions.</p></article>
-        </div>
-        <div class="matrix" style="margin-top:24px">
-          <div class="matrix-row head"><div>Contract</div><div>Required fields</div><div>Gate</div></div>
-          <div class="matrix-row"><div>Context pack</div><div>Source, excerpt, owner, sensitivity, timestamp, permission decision</div><div>No source or access proof → exclude</div></div>
-          <div class="matrix-row"><div>Dataset</div><div>Purpose, schema, quality SLO, lineage, retention, approved uses</div><div>Contract break → pause affected runs and notify the data owner</div></div>
-          <div class="matrix-row"><div>Simulated data</div><div>Generator version, source trajectory, perturbation, coverage, validation result</div><div>No provenance → cannot support training evidence</div></div>
-          <div class="matrix-row"><div>Feedback record</div><div>Task, output, reviewer, reason code, correction, model/config versions</div><div>No consent or purpose → do not reuse for training</div></div>
+          <article class="card"><span class="num">Find</span><h3>Bring the evidence to the work</h3><p>Return relevant, permitted records with their source and date. Measure time spent locating information and the rate of missing or outdated evidence.</p></article>
+          <article class="card"><span class="num">Understand</span><h3>Use the same business definition</h3><p>Agree what revenue, an active supplier or a completed case means. Reuse those definitions across questions instead of letting each assistant invent its own.</p></article>
+          <article class="card"><span class="num">Decide</span><h3>Make uncertainty visible</h3><p>Show gaps, conflicting evidence and limits. Route the question to the owner when the available information cannot support the decision.</p></article>
         </div>
         <details class="practice" id="analytics-workflow">
-          <summary>Work through a multi-turn analytics request</summary>
+          <summary>Turn a business question into a useful analysis</summary>
           <div class="practice-body">
-            <span class="example-label">Proposed workflow</span>
-            <p>A business user asks, “Why did service revenue fall last quarter?” Start with an approved metric and a limited set of questions the team needs answered. Put the experience in an existing analyst workspace, collaboration tool or application when that is where the work happens.</p>
+            <span class="example-label">Hypothetical workflow · Revenue investigation</span>
+            <p>A business owner asks why service revenue fell last quarter. The intended result is a checked analysis that supports a decision, with less analyst effort and no loss of accuracy.</p>
             <ol class="step-list">
-              <li><strong>Clarify the question</strong>Confirm the revenue definition, period, region and comparison. Keep these choices visible as the conversation continues.</li>
-              <li><strong>Use governed data</strong>Resolve approved metrics, joins and access in the existing data platform. Retrieve permitted definitions or policy documents only when they help explain the result.</li>
-              <li><strong>Run a bounded query</strong>Use a read-only identity with the user’s effective access. Validate the query, restrict scope and set execution limits before running it. A follow-up question requires another access check.</li>
-              <li><strong>Show the basis for the answer</strong>Return the result, filters, data freshness and query reference. Distinguish a numerical decomposition from a proven cause; correlated changes alone do not establish causation.</li>
-              <li><strong>Check and continue</strong>Compare known questions with approved results, test ambiguous follow-ups and denied-access cases, and ask for clarification when the evidence is insufficient.</li>
+              <li><strong>Agree the question</strong>Confirm the revenue definition, period, region and comparison. Keep those choices visible through follow-up questions.</li>
+              <li><strong>Use approved information</strong>Reuse existing metric definitions and governed datasets. Apply the user’s effective permissions to every query and retrieved document.</li>
+              <li><strong>Explain the result</strong>Show the breakdown, filters, data date and source query. Separate a numerical contribution from a proven cause.</li>
+              <li><strong>Let the owner investigate</strong>Support follow-ups that change one constraint at a time. Ask for clarification when the question or evidence is incomplete.</li>
+              <li><strong>Check whether it helped</strong>Compare answers with approved analyses. Measure time to a verified result, analyst review effort, material errors and inappropriate disclosures.</li>
             </ol>
-            <p>A semantic layer holds agreed business definitions. Retrieval can supply explanations; a graph may help resolve relationships. Add either when it improves measured task performance enough to justify its operating cost. An MCP interface exposes approved tools; each tool still enforces its own authorization.</p>
-            <p>Evaluate the organization’s existing analytics service before building a new text-to-SQL engine. Use the same question set, permissions tests and cost model for both options.</p>
+            <h3>Reuse the data work across the roadmap</h3>
+            <p>A shared semantic layer can supply approved definitions; permission-aware retrieval can supply supporting documents. A graph may help where relationships are otherwise difficult to resolve. Add these only where the workflow evidence justifies their build and maintenance costs.</p>
+            <p>Use the existing analytics service if it meets the requirements. An internal MCP interface can expose approved tools to several experiences, but each tool must still enforce authorization and execution limits.</p>
           </div>
         </details>
+        <div class="decision-record"><strong>Data readiness is part of the delivery plan</strong><p>Named source owner · Agreed definitions · Access · Freshness · Quality checks · Retention · Correction path · Maintenance capacity</p></div>
       </section>
 
       <section id="agents">
         <div class="section-head">
-          <div><p class="kicker">06 · Agents & tools</p><h2>Define what the agent can do and when it stops.</h2></div>
-          <p class="intro">Use an agent when the next step depends on what it finds. Give it approved tools, a budget and a recovery path. Before it changes a business system or finalizes a deliverable, the user signs off on the exact work.</p>
+          <div><p class="kicker">09 · Work through completion</p><h2>Give people useful assistance and clear authority.</h2></div>
+          <p class="intro">Let assistance gather information, prepare the work and manage agreed steps. People retain judgment and approval. Measure whether the complete task becomes easier, including the effort needed to review and recover from mistakes.</p>
         </div>
-        <div class="loop" aria-label="Agent runtime loop"><div>Confirm task and authority</div><div>Read permitted evidence</div><div>Propose the exact action</div><div>Approve, then execute</div><div>Verify the result</div><div>Finish, recover or escalate</div></div>
+
+        <div class="loop" aria-label="From user intent to a verified business result"><div>Agree the result</div><div>Gather permitted evidence</div><div>Prepare the work</div><div>Inspect and approve</div><div>Execute and confirm</div><div>Resolve or escalate exceptions</div></div>
         <div class="grid-2" style="margin-top:26px">
-          <article class="card"><h3>Runtime contract</h3><ul class="clean-list"><li>identity and delegated authority</li><li>allowed tools and argument schemas</li><li>time, token, cost and action budgets</li><li>idempotency key and rollback strategy</li><li>stop conditions and escalation owner</li></ul></article>
-          <article class="card"><h3>Agent lease</h3><p>In this reference design, a lease is a time-bounded grant tying one agent, user, purpose, environment, tool set and spend ceiling together. Enforce it at tool boundaries alongside source-system permissions.</p><ul class="clean-list"><li>expires delegated access unless renewed</li><li>separates exploration from production</li><li>requires tested expiry, revocation and attribution</li></ul></article>
+          <article class="card"><h3>Make the proposed work inspectable</h3><p>Show the exact deliverable or change, its supporting evidence and unresolved questions. Keep edit, reject and escalation available. Approval must come from someone authorized for that action.</p></article>
+          <article class="card"><h3>Keep responsibility visible</h3><p>Name the process owner, permitted scope, completion criteria and escalation route. Set time and spend limits. Verify the result in the owning system before marking the task complete.</p></article>
         </div>
         <div class="decision">
-          <div><h3>Use an agent when</h3><ul><li>the task requires several conditional steps</li><li>the environment returns useful observations</li><li>success can be verified after each action</li><li>failure has a bounded recovery or escalation path</li></ul></div>
-          <div><h3>Prefer a workflow when</h3><ul><li>the sequence is stable and known</li><li>determinism matters more than flexibility</li><li>a simple service or rule engine is sufficient</li><li>the action has no safe observation loop</li></ul></div>
+          <div><h3>Use a fixed workflow for known steps</h3><p class="muted">A stable sequence of checks and approvals may need ordinary automation. Favor predictable behavior and lower support cost where the work allows it.</p></div>
+          <div><h3>Use an agent for conditional work</h3><p class="muted">Consider an agent when the next useful step depends on what it finds, the result can be checked and failures have a bounded recovery path. Compare it with the simpler option.</p></div>
         </div>
+        <details class="practice" id="agent-delivery-reuse">
+          <summary>Reuse action controls across business workflows</summary>
+          <div class="practice-body"><p>Shared tool interfaces can avoid rebuilding the same system connection for every assistant. Pair each call with the user’s authority, approved purpose and exact action. Recheck permission and approval validity when execution occurs.</p><p>In this reference design, a time-bounded agent lease limits delegated tools, data and spend. Source systems still validate writes. Idempotency prevents duplicate execution; read-back and reconciliation check the resulting state. Test expiry, revocation and recovery before reuse.</p><p>Measure whether these services reduce integration and assurance effort for the next workflow while maintaining its required controls.</p></div>
+        </details>
       </section>
 
       <section id="governance">
         <div class="section-head">
-          <div><p class="kicker">07 · Trust & governance</p><h2>Match the controls to the consequences.</h2></div>
-          <p class="intro">Assess intended use, data sensitivity, permitted actions, reversibility and the consequence of failure. The tiers below are an illustrative starting point. Security, Privacy and Quality determine the applicable controls.</p>
+          <div><p class="kicker">10 · Business controls</p><h2>Make responsible use a condition of delivery.</h2></div>
+          <p class="intro">Agree who can use the capability, what decisions it may support and what happens when it fails. Involve control owners during discovery so the plan includes the evidence, review time and recovery needed for release.</p>
         </div>
-        <div class="tier-list">
-          <div class="tier low"><div class="tag">Lower risk</div><div><strong>Assistive, reversible</strong><br><span class="muted">Routine internal drafts or search, without material decision or regulated-record impact</span></div><div>Owner review, access controls, task evals, monitoring</div></div>
-          <div class="tier med"><div class="tag">Medium risk</div><div><strong>Decision support or system changes</strong><br><span class="muted">Analytics, recommendations, agents with reversible actions</span></div><div>Validated golden set, approval gate, rollback, full traces, periodic review</div></div>
-          <div class="tier high"><div class="tag">High risk</div><div><strong>Material or safety-adjacent consequence</strong><br><span class="muted">Regulated records, irreversible action, device-adjacent workflow</span></div><div>Quality-system path, independent validation, named human authority, release evidence, change control</div></div>
+
+        <div class="grid-3">
+          <article class="card"><h3>Protect the decision</h3><p>Assess the consequence of an incorrect answer or action. Set review, evidence and escalation requirements for the intended use, including sensitive internal work.</p></article>
+          <article class="card"><h3>Protect people and information</h3><p>Keep access, purpose, retention and disclosure boundaries intact. Personalization and convenience must not expand what a person or agent is authorized to do.</p></article>
+          <article class="card"><h3>Protect continuity</h3><p>Name a support owner, a stop authority and a safe fallback. Test recovery before depending on the new process or retiring the old one.</p></article>
         </div>
-        <div class="matrix" style="margin-top:24px">
-          <div class="matrix-row head"><div>Control</div><div>Platform mechanism</div><div>Evidence produced</div></div>
-          <div class="matrix-row"><div>Authorization</div><div>User identity, delegated authority, row/column/document filtering, agent lease</div><div>Who could access and act, for what purpose</div></div>
-          <div class="matrix-row"><div>Data protection</div><div>Classification, redaction, regional boundary, retention, encryption</div><div>What data moved, where and under which policy</div></div>
-          <div class="matrix-row"><div>Model risk</div><div>Approved registry, eval thresholds, routing rules, supported version controls and change monitoring</div><div>Why a model/config was eligible at that moment</div></div>
-          <div class="matrix-row"><div>Action safety</div><div>Tool allowlist, parameter policy, idempotency, confirmation, rollback</div><div>What changed and whether the expected effect occurred</div></div>
-          <div class="matrix-row"><div>Change control</div><div>Versioned specs, data, prompts, policies and eval suites</div><div>Comparable release packet and approver record</div></div>
+        <div class="decision">
+          <div><h3>How shared controls help delivery</h3><p class="muted">Reuse tested access checks, approval records, release templates and monitoring. This can reduce repeated implementation and evidence assembly. Each new use still needs an assessment of its own decisions, data and consequences.</p></div>
+          <div><h3>What the business should measure</h3><p class="muted">Track material errors, unauthorized actions, missed requirements, evidence completeness and time to recovery. Do not trade a mandatory control for a higher productivity score.</p></div>
         </div>
         <details class="practice" id="regulated-use">
-          <summary>Determine the assurance path before building</summary>
+          <summary>Plan delivery where records or decisions are regulated</summary>
           <div class="practice-body">
-            <p>“Internal” and “human-reviewed” are not risk classifications. A draft can affect a regulated record; a recommendation can affect a material financial decision. Start with intended use and the consequence of failure.</p>
-            <ol>
-              <li><strong>Document the use.</strong> Name the users, decisions, records and systems affected. State what the product must not do.</li>
-              <li><strong>Agree the review path.</strong> Quality, Security, Privacy and the relevant business control owner determine which requirements apply. Clinical or device functionality needs a separate assessment from an internal productivity tool.</li>
-              <li><strong>Trace requirements to evidence.</strong> Keep approved requirements, risk assessments, test results, unresolved limitations, reviewer authority and release decisions together. Determine record retention and signature requirements with the accountable owners.</li>
-              <li><strong>Control change.</strong> Assess changes to models, prompts, sources, tools and workflows. Re-test the affected behavior and obtain the required approvals before release. Keep a recovery path and investigate incidents.</li>
+            <ol class="step-list">
+              <li><strong>Define the intended use</strong>Identify the affected users, decisions, records and systems. State what the capability must not do.</li>
+              <li><strong>Agree the assurance work</strong>Quality, Legal, Security, Privacy and relevant business control owners determine applicable requirements and approval authority. Include that work in the estimate.</li>
+              <li><strong>Keep the decision evidence</strong>Link requirements, risk assessment, tests, source and configuration versions, limitations and release approvals. Set retention and signature requirements with accountable owners.</li>
+              <li><strong>Assess each material change</strong>Review changes to models, prompts, sources, tools and workflows. Test affected behavior and obtain required approvals before release.</li>
             </ol>
-            <p>FDA’s <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/computer-software-assurance-production-and-quality-management-system-software">Computer Software Assurance guidance</a> describes a risk-based approach for software used in medical-device production or quality management systems. It is not a blanket approval for enterprise AI. <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST’s AI Risk Management Framework</a> is voluntary guidance for managing AI risk, not a certification.</p>
+            <p>For a sector-specific example, FDA’s <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/computer-software-assurance-production-and-quality-management-system-software">Computer Software Assurance guidance</a> describes risk-based assurance for software used in medical-device production or quality management systems. Its scope does not cover every enterprise AI use. <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST’s AI Risk Management Framework</a> provides voluntary guidance for managing AI risk; it is not a compliance certification.</p>
+            <p>A human reviewer does not remove the need to assess intended use. Clinical or device functionality requires its own qualified review, separate from an internal productivity workflow.</p>
           </div>
         </details>
       </section>
 
       <section id="observability">
         <div class="section-head">
-          <div><p class="kicker">08 · Evals & observability</p><h2>Check the work and keep the evidence.</h2></div>
-          <p class="intro">Operational telemetry explains latency and failures. Semantic telemetry explains whether the work was good. Business telemetry explains whether it mattered.</p>
+          <div><p class="kicker">11 · Evidence of improvement</p><h2>Prove that the work gets better.</h2></div>
+          <p class="intro">Evaluate against the business result at every stage. A correct component can still produce an unusable workflow; a fast answer can create expensive rework. Business owners and users help define the examples, errors and acceptance criteria.</p>
         </div>
+
         <div class="grid-3">
-          <article class="card"><span class="num">SYSTEM</span><h3>Reliability</h3><p>Availability, latency by stage, queue time, model/tool error rate, retries, saturation, rollback success.</p></article>
-          <article class="card"><span class="num">SEMANTIC</span><h3>Quality</h3><p>Groundedness, task-specific correctness, policy compliance, judge-human agreement, abstention, drift.</p></article>
-          <article class="card"><span class="num">OUTCOME</span><h3>Value</h3><p>Accepted-result rate, time to outcome, rework, sustained use, cost per successful task, avoided risk.</p></article>
+          <article class="card"><span class="num">Result</span><h3>Was the work useful and correct?</h3><p>Check completeness, timeliness, material errors and whether the intended action occurred. Review ordinary cases and difficult exceptions separately.</p></article>
+          <article class="card"><span class="num">Effort</span><h3>Did it reduce the full workload?</h3><p>Include employee effort, review, downstream correction and failures. Compare equivalent tasks with the current process.</p></article>
+          <article class="card"><span class="num">Service</span><h3>Can the team depend on it?</h3><p>Track response time, availability, access failures, recovery and support. Set targets that match the workflow’s operational needs.</p></article>
         </div>
-        <div class="matrix" style="margin-top:24px">
-          <div class="matrix-row head"><div>Eval moment</div><div>What it answers</div><div>Method</div></div>
-          <div class="matrix-row"><div>Before release</div><div>Is this candidate better and still safe?</div><div>Golden sets, adversarial suites, shadow replay, human calibration</div></div>
-          <div class="matrix-row"><div>During run</div><div>Should this step continue?</div><div>Deterministic checks, bounded judge, policy gate, confidence/abstention</div></div>
-          <div class="matrix-row"><div>After task</div><div>Was the result accepted and useful?</div><div>User/reviewer outcome, effect verification, reason-coded corrections</div></div>
-          <div class="matrix-row"><div>Over time</div><div>Has the world changed?</div><div>Input, retrieval, quality, cost and behavior drift by segment</div></div>
-        </div>
-        <div class="decision">
-          <div><h3>Minimum trace envelope</h3><ul><li>task, user/purpose and risk tier</li><li>model, prompt/config, knowledge and tool versions</li><li>step spans, approved input/output references, policy and check results</li><li>latency, token/tool cost and retries</li><li>final outcome, reviewer and correction reason</li></ul></div>
-          <div><h3>Trace design rule</h3><p class="muted">Record the evidence, versions, checks and outcome needed to investigate a decision. Exact replay needs additional retained state and may not reproduce a model’s output. Keep sensitive payloads out of general telemetry and use a durable path for required audit records.</p></div>
+        <div class="controls-table-wrap" tabindex="0" role="region" aria-label="Evaluation through the business workflow" style="margin-top:24px">
+          <table class="controls-table"><thead><tr><th scope="col">Moment</th><th scope="col">Business question</th><th scope="col">Evidence and decision</th></tr></thead><tbody>
+            <tr><th scope="row">Before release</th><td>Does it improve the work at an acceptable risk and cost?</td><td>Compare representative cases with the baseline; approve, revise or stop.</td></tr>
+            <tr><th scope="row">During a task</th><td>Is there enough evidence and authority for the next step?</td><td>Check inputs, sources, policy and proposed actions; continue, clarify or escalate.</td></tr>
+            <tr><th scope="row">After completion</th><td>Was the result accepted, and did the intended change occur?</td><td>Record outcome, correction reasons and total effort; verify the system of record.</td></tr>
+            <tr><th scope="row">Over time</th><td>Does the benefit still hold for each user group?</td><td>Review changing data, policies, quality, adoption and cost; maintain, narrow or withdraw use.</td></tr>
+          </tbody></table>
         </div>
         <details class="practice" id="evaluation-example">
-          <summary>See how to test a claim, an answer and an action</summary>
+          <summary>Test the failures that would undo the business benefit</summary>
           <div class="practice-body">
             <span class="example-label">Hypothetical evaluation cases</span>
-            <p>A working citation proves that a source exists. Checking the claim requires the relevant passage, source version and context. Keep automated checks and human judgment separate in the evidence.</p>
             <div class="decision-cards">
-              <article class="decision-card"><span class="verdict">Check the claim</span><h4>“Returns are allowed for 60 days.”</h4><p>The approved policy says 30 days. Linking to that policy does not make the answer correct. Extract the claim, locate the supporting passage and compare the value, units, conditions and effective date.</p><p>A deterministic comparison can catch this mismatch. An ambiguous exception still needs clarification or qualified review.</p></article>
-              <article class="decision-card"><span class="verdict">Check the answer</span><h4>“Revenue fell last quarter.”</h4><p>A valid query may use the wrong metric, currency, population or period. Compare the result with an approved query on a controlled dataset and test follow-up questions that change one constraint.</p><p>Check access separately. Correct totals do not prove that the user was allowed to see the underlying data.</p></article>
-              <article class="decision-card"><span class="verdict">Check the action</span><h4>“Update this customer record.”</h4><p>Bind approval to the exact fields, values and record version. Test revoked access, stale approvals, invalid inputs, duplicate requests and tool failures.</p><p>Read back the authoritative result. A successful tool response alone does not establish that the intended business change occurred.</p></article>
+              <article class="decision-card"><span class="verdict">Customer service</span><h4>A policy answer changes the promise</h4><p>The answer says 60 days; the applicable policy says 30. Check the actual claim, effective version and exceptions. A working citation alone does not establish correctness.</p><p>Measure wrong promises, correction effort and repeat contacts, not the number of answers generated.</p></article>
+              <article class="decision-card"><span class="verdict">Finance</span><h4>A valid query answers the wrong question</h4><p>Test the metric, currency, period and population against an approved analysis. Check ambiguous follow-ups and denied access separately.</p><p>Measure time to a verified analysis and material errors, including analyst review.</p></article>
+              <article class="decision-card"><span class="verdict">Operations</span><h4>An approved update reaches the wrong record</h4><p>Test exact fields, record identity, stale approval, revoked access and repeated requests. Read back the authoritative result and reconcile failures.</p><p>Measure correctly completed tasks, unauthorized changes and recovery effort.</p></article>
             </div>
-            <h3>Measure the evaluator too</h3>
-            <ul>
-              <li>Build a versioned, expert-reviewed test set with routine cases, difficult exceptions, missing evidence and deliberately wrong outputs. Keep a held-out set separate from prompt tuning.</li>
-              <li>Report missed errors and false alarms by severity and task type. Show counts and denominators, judge–reviewer disagreement and how disagreements were resolved.</li>
-              <li>Agree acceptance thresholds before the release test. An aggregate score must not hide a failed access control, a critical error or a weak user cohort.</li>
-              <li>Measure reviewer effort and correction quality. Human approval is a control that needs clear evidence, time and authority; it is not a guarantee of correctness.</li>
-            </ul>
-            <div class="decision-record"><strong>Release evidence</strong><p>Intended use · Test-set version and coverage · Results by failure type · Failed cases and limitations · Model, prompt, source and tool versions · Reviewer decision · Rollback owner</p></div>
-            <h3>Know what changed</h3>
-            <p>To assess a new model, hold the retrieval, tools and test set steady. To assess a new workflow, keep the model fixed where possible. Record provider changes that cannot be controlled. Better model capability and better orchestration are different explanations for an improved result.</p>
-            <p>During operation, reject missing authorization, pause unsupported consequential claims and route ambiguous cases to a reviewer. Retry only when there is a reason another attempt could succeed, with a fixed limit. Zero observed failures in a finite test set does not establish zero risk.</p>
+            <h3>Check the evaluation method</h3>
+            <p>Use expert-reviewed cases and a held-out test set. Report missed errors and false alarms by severity, with counts and denominators. Calibrate model judges against qualified reviewers; disagreement needs investigation. A high average score must not hide a critical failure or a poorly served group.</p>
+            <h3>Separate the causes of improvement</h3>
+            <p>When testing a model change, keep the workflow and test set stable where possible. When testing the workflow, keep the model stable. Record unavoidable changes, task mix and external influences. Zero observed failures in a finite test does not establish zero risk.</p>
           </div>
         </details>
-      </section>
-
-      <section id="adoption">
-        <div class="section-head">
-          <div><p class="kicker">09 · Adoption & operations</p><h2>Adoption is a function of trust and value.</h2></div>
-          <p class="intro">Start with a narrow task and the people doing it. Show the result, listen to what changes for them and measure the work after review. Useful output alone will not settle concerns about accountability, workload or job changes.</p>
-        </div>
-        <div class="lifecycle">
-          <article class="life"><span>01</span><h3>Observe</h3><p>Watch the current work. Quantify handoffs, shadow systems, delays and review burden.</p></article>
-          <article class="life"><span>02</span><h3>Co-design</h3><p>Build with the people who perform and approve the work; encode their exceptions.</p></article>
-          <article class="life"><span>03</span><h3>Prove</h3><p>Run in shadow or limited release; show accepted results and honest failure modes.</p></article>
-          <article class="life"><span>04</span><h3>Embed</h3><p>Place the capability in the system of work, with support, ownership and a fallback.</p></article>
-          <article class="life"><span>05</span><h3>Retire</h3><p>Remove the old route only when reliability and trust are sufficient; track exceptions.</p></article>
-        </div>
-        <div class="grid-2" style="margin-top:24px">
-          <article class="card"><h3>Federated operating model</h3><ul class="clean-list"><li>platform team owns shared interfaces, supported delivery paths, controls and evidence</li><li>domain product owns workflow, acceptance criteria and adoption</li><li>data owner owns meaning, quality and approved use</li><li>risk and quality owners set minimum controls and independently review evidence</li></ul></article>
-          <article class="card"><h3>Decision rights</h3><ul class="clean-list"><li>platform reviews duplication and proposes shared options</li><li>domain owners decide whether the workflow meets their needs</li><li>control owners approve changes to required safeguards</li><li>product council allocates shared capacity using evidence</li></ul></article>
-        </div>
-        <details class="practice" id="product-engineering">
-          <summary>Agree product and engineering ownership</summary>
-          <div class="practice-body">
-            <p>Technical fluency helps product managers ask better questions, test assumptions and explain trade-offs. Teams still need explicit decision rights and a shared definition of a useful result.</p>
-            <div class="ownership">
-              <div><h4>Product owns</h4><p>Problem framing, discovery, outcome measures, priority recommendations, acceptance criteria, stakeholder communication and adoption. Product stays accountable after launch.</p></div>
-              <div><h4>Engineering owns</h4><p>Technical design, implementation, estimates, reliability and supportability. Engineers challenge a proposed approach and identify safer or simpler alternatives.</p></div>
-              <div><h4>Business and data owners own</h4><p>Process decisions, metric definitions, source quality, reviewer capacity and whether the outcome works in practice. They supply exceptions as well as happy-path examples.</p></div>
-              <div><h4>Control owners own</h4><p>Applicable security, privacy, quality and regulatory requirements, required evidence and approval authority. Product and engineering build these into delivery.</p></div>
-            </div>
-            <h3>Use a prototype to answer a question</h3>
-            <p>Write down the hypothesis, the result and what the prototype did not test. Review it with engineering before making a delivery commitment. Its code and architecture are options; the agreed user need and acceptance criteria are the inputs to production design.</p>
-            <h3>Resolve a disagreement</h3>
-            <p>Compare options against user impact, risk, delivery time and operating cost. Time-box an experiment when evidence is missing. Name the decision owner, record the choice and state what would justify revisiting it. Escalate the unresolved trade-off with options, rather than asking an executive to settle an undefined argument.</p>
-          </div>
+        <details class="practice" id="outcome-evidence">
+          <summary>Use shared telemetry to make improvement and recovery cheaper</summary>
+          <div class="practice-body"><p>Connect the task, approved source references, versions, checks, actions, reviewer decision, time and cost with a common run identifier. This gives support teams a way to find where a result failed and product teams a way to prioritize repeat problems.</p><p>Reuse the capture and reporting tools across workflows while keeping each function’s acceptance criteria. Minimize sensitive payloads, restrict access and retain required audit records separately from ordinary operational logs. A trace helps investigation; exact replay requires additional state and may not reproduce a model’s output.</p></div>
         </details>
-        <details class="practice" id="adoption-concerns">
-          <summary>When people are reluctant to use the product</summary>
-          <div class="practice-body">
-            <p>Ask privately what worries people before assuming they need more training. A person may understand the benefit and still fear extra review work, loss of autonomy, surveillance or a change to their role.</p>
-            <ol class="step-list">
-              <li><strong>Understand the concern</strong>Include regular users, skeptics, managers and reviewers. Observe where the current process protects them or gives them control. Avoid treating non-use as a performance problem.</li>
-              <li><strong>Agree the observation boundary</strong>Explain what the assistant can read, what is logged, who sees those logs and how long they are kept. Offer a way to pause observation. Do not quietly repurpose usage data for employee evaluation.</li>
-              <li><strong>Start alongside the user</strong>Run in shadow mode against permitted tasks. Compare drafts with the existing process without writing to business systems or forcing users onto the new route.</li>
-              <li><strong>Make approval meaningful</strong>Show the proposed change, evidence and uncertainty. Keep accept, edit, reject and escalate available. Recheck permissions and require sign-off on the exact action before execution.</li>
-              <li><strong>Agree what changes in the job</strong>Managers and people teams own workforce decisions. Product makes workload and role impacts visible, supports training and avoids promises about job security it cannot make.</li>
-              <li><strong>Expand from observed results</strong>Track sustained use, corrections, review minutes and reasons people return to the old process. Increase scope only when users and accountable owners accept the results and support is ready.</li>
-            </ol>
-            <p>Personalization can change presentation, task defaults and approved context. It must not silently broaden access, change policy or authorize actions.</p>
-          </div>
-        </details>
-        <details class="practice" id="operating-cadence">
-          <summary>Run the platform after the pilot</summary>
-          <div class="practice-body">
-            <p>Use existing decision forums where they work. The cadence below is a starting point, not a reason to create another committee.</p>
-            <ul>
-              <li><strong>Intake and discovery:</strong> Record the workflow, affected users, baseline, owner, risk and alternatives. Group related requests before committing to another agent.</li>
-              <li><strong>Weekly delivery review:</strong> Product, engineering, data and domain owners review outcomes, dependencies, capacity and unresolved decisions. Reserve capacity for reliability and mandatory controls.</li>
-              <li><strong>Release review:</strong> Inspect task-level evals, approval evidence, support readiness and rollback. Name the person who can pause or withdraw the release.</li>
-              <li><strong>Monthly portfolio review:</strong> Compare accepted outcomes, sustained use, support load and cost. Fund, adjust, consolidate or stop work using the same published criteria.</li>
-              <li><strong>Incident response:</strong> Stop affected actions when necessary, preserve evidence, notify the right owners and restore a safe workflow. Verify the fix and add the failure to regression tests.</li>
-            </ul>
-            <p>Give locally built agents a path into supported operation: register an owner and intended use, compare existing capabilities, review permissions, run evals, name support and plan retirement. Find duplicates before asking teams to rewrite working tools.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="metrics">
-        <div class="section-head">
-          <div><p class="kicker">10 · Metrics & economics</p><h2>Measure the result after review and rework.</h2></div>
-          <p class="intro">A cheap model call can produce an expensive business outcome. A costly call can be efficient if it prevents rework. Normalize economics around a completed, accepted task.</p>
-        </div>
-        <div class="scorecards">
-          <article class="score"><h3>Outcome scorecard</h3><div class="formula">accepted-result rate = accepted tasks ÷ attempted tasks</div><ul><li>time from intent to accepted result</li><li>rework and reviewer minutes per result</li><li>sustained weekly use in the target cohort</li><li>business effect versus baseline</li></ul></article>
-          <article class="score"><h3>Unit economics</h3><div class="formula">cost / successful task = (model + tools + infra + evals + support + review + rework) ÷ accepted tasks</div><ul><li>segment by task type and risk tier</li><li>include failed runs and escalations</li><li>compare model routes on total cost, not token price</li><li>budget and meter; efficiency alone can expand demand</li></ul></article>
-          <article class="score"><h3>Platform reuse</h3><div class="formula">reuse rate = eligible products using a shared capability ÷ eligible products</div><ul><li>time to onboard a new product</li><li>percentage using paved-road contracts</li><li>duplicate services retired</li><li>upgrade adoption and backward-compatibility burden</li></ul></article>
-          <article class="score"><h3>Trust & quality</h3><div class="formula">material failure rate = released tasks with a material failure ÷ completed released tasks</div><ul><li>abstention appropriateness</li><li>judge-human agreement</li><li>policy and authorization violations</li><li>rollback, recovery and incident time</li></ul></article>
-        </div>
-        <details class="practice" id="capacity-and-cost">
-          <summary>Estimate capacity and model cost without overstating savings</summary>
-          <div class="practice-body">
-            <h3>Separate the team building it from the team using it</h3>
-            <p>A delivery estimate covers engineering, product, data, security, quality and support work. An operating-capacity estimate covers the tasks people perform after launch. Faster prototyping does not by itself establish either production staffing or workforce savings.</p>
-            <div class="decision-record"><strong>Measure recovered time on comparable work</strong><p>Net minutes per task = baseline task time − assisted task time − additional review and rework time.</p><p>Count each activity once. Include failed attempts and manual fallbacks across the evaluated workload. Preserve negative results. Multiply observed net time by comparable volume only after checking the task mix.</p></div>
-            <p>Distinguish an estimate, a pilot result and a sustained production outcome. Recovered hours become financial savings only when spending changes or the extra capacity produces measurable value. Report the period, cohort, denominator and attribution limits.</p>
-            <h3>Choose a model route against the task</h3>
-            <p>Test a deterministic rule or service first when the task allows it. Compare a classifier or ranker, a smaller model and a larger generative model on the same acceptance criteria. Preserve a fallback when a cheaper route cannot handle the task.</p>
-            <p>Self-hosted open-weight models may offer control over deployment and customization. Include serving, hardware utilization, patching, security, upgrades, evaluation and on-call work in the comparison. Open weights do not imply CPU-only operation; measure latency and throughput on the intended hardware and workload.</p>
-            <p>Treat research benchmarks as candidates for local testing. A reported speedup for ranking cached choices is not an end-to-end speedup for a business workflow. Keep experimental routes separate from production until they pass the required checks.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="roadmap">
-        <div class="section-head">
-          <div><p class="kicker">11 · Roadmap</p><h2>An example first-six-month roadmap.</h2></div>
-          <p class="intro">Improve the platform already in use before proposing a replacement. The timing below is illustrative; existing commitments, data readiness, risk review and delivery capacity determine the sequence.</p>
-        </div>
-        <div class="roadmap">
-          <article class="phase"><span class="when">0–30 days</span><h3>Listen and baseline</h3><ul><li>meet users, owners, skeptics and support teams</li><li>map existing capabilities, commitments and decision rights</li><li>agree one workflow baseline and its acceptance criteria</li><li>prioritize gaps and escalate immediate risks to their owners</li></ul></article>
-          <article class="phase"><span class="when">31–60 days</span><h3>Test one improvement</h3><ul><li>reuse existing identity, gateways, data and delivery tools</li><li>close the gaps needed for this workflow</li><li>run a shadow pilot with task evals and review time measured</li><li>decide to release, revise or stop against agreed criteria</li></ul></article>
-          <article class="phase"><span class="when">61–90 days</span><h3>Prove reuse</h3><ul><li>onboard a second team with a comparable need</li><li>test permissions, local exceptions and support load</li><li>document shared contracts and ownership</li><li>publish outcomes and explain what remains deferred</li></ul></article>
-          <article class="phase"><span class="when">90–180 days</span><h3>Expand selectively</h3><ul><li>extend to ready cohorts and regions</li><li>compare model routes on quality and total cost</li><li>consolidate duplicate services with their owners</li><li>retire old routes only after migration and recovery are tested</li></ul></article>
-        </div>
-        <div class="playbook-note"><p>Expansion is a decision gate, not a date on a slide. If quality, user benefit or support readiness falls short, narrow the scope, fix the gap or stop. Keep stakeholders informed about what changes and why.</p></div>
       </section>
 
       <section id="canvas">
         <div class="section-head">
-          <div><p class="kicker">12 · Operating canvas</p><h2>Agree the problem and the conditions for success.</h2></div>
-          <p class="intro">Use this to work through the proposal with product, engineering, data, security, quality and the business owner. Unresolved questions need an owner and a next step.</p>
+          <div><p class="kicker">12 · Value & delivery canvas</p><h2>Agree the outcome before committing the build.</h2></div>
+          <p class="intro">Use this with the business function and delivery owners. Every unresolved dependency needs a named owner and a next step.</p>
         </div>
+
         <div class="canvas" id="canvas-copy">
-          <div class="canvas-head"><h3>AI platform initiative canvas</h3><button class="copy" id="copy-canvas" type="button">Copy canvas</button></div>
+          <div class="canvas-head"><h3>Business outcome and delivery canvas</h3><button class="copy" id="copy-canvas" type="button">Copy canvas</button></div>
           <div class="canvas-grid">
-            <div><strong>Outcome</strong><p>User, job, baseline, accepted result, consequence of failure.</p></div>
-            <div><strong>Portfolio fit</strong><p>Existing options, build/buy/reuse decision, capacity displaced, dependencies and review date.</p></div>
-            <div><strong>Owner</strong><p>Business owner, product owner, engineering owner, data owner, risk approver.</p></div>
-            <div><strong>Contracts</strong><p>Data, context, model, tool, agent, trace and release-evidence contracts.</p></div>
-            <div><strong>Quality</strong><p>Golden set, thresholds, failure taxonomy, abstention, fallback and reviewer.</p></div>
-            <div><strong>Risk</strong><p>Intended use, sensitivity, autonomy, reversibility, risk tier and control floor.</p></div>
-            <div><strong>Economics</strong><p>Volume, latency target, capacity, cost per successful task, budget and route.</p></div>
-            <div><strong>Adoption</strong><p>User concerns, role changes, observation boundaries, review effort, support and sustained-use target.</p></div>
-            <div><strong>Learning</strong><p>Trace plan, feedback rights, drift signals, review cadence and next expansion gate.</p></div>
+            <div><strong>Outcome</strong><p>User, completed task, baseline, target and consequence of failure.</p></div>
+            <div><strong>Workflow</strong><p>Where assistance appears, what changes, handoffs and human decisions.</p></div>
+            <div><strong>Ownership</strong><p>Business owner, product, engineering, data, control and support owners.</p></div>
+            <div><strong>Delivery</strong><p>Existing capability to reuse, missing work, dependencies, capacity and sequence.</p></div>
+            <div><strong>Quality</strong><p>Representative cases, acceptance thresholds, reviewer effort and release evidence.</p></div>
+            <div><strong>Controls</strong><p>Intended use, access, approval authority, stop conditions and recovery.</p></div>
+            <div><strong>Investment</strong><p>Alternatives, build and running costs, benefit assumptions and attribution limits.</p></div>
+            <div><strong>Adoption</strong><p>User concerns, practice time, reviewer capacity, support and sustained-use measure.</p></div>
+            <div><strong>Next decision</strong><p>Review date, expand/revise/stop criteria and owner of the funding decision.</p></div>
           </div>
         </div>
       </section>
 
       <section id="failure">
         <div class="section-head">
-          <div><p class="kicker">13 · Failure patterns</p><h2>Problems to watch for.</h2></div>
-          <p class="intro">Review these as the work moves from a prototype into a supported service.</p>
+          <div><p class="kicker">13 · Where value gets lost</p><h2>Change the plan when the evidence is weak.</h2></div>
+          <p class="intro">Use these signals in portfolio reviews. Name the corrective decision and its owner instead of treating every problem as a request for another feature.</p>
         </div>
+
         <div class="anti">
-          <div><strong>Gateway as platform</strong><p>Model access without identity, context, evaluation, traces and product ownership leaves teams rebuilding the rest.</p></div>
-          <div><strong>Demo-to-production jump</strong><p>A compelling happy path replaces workflow study, failure taxonomy, operational readiness and review capacity.</p></div>
-          <div><strong>Governance as queue</strong><p>Documents and committees sit outside delivery, so teams route around them. Encode control floors and evidence in paved roads.</p></div>
-          <div><strong>One interface for every workflow</strong><p>A common surface is mistaken for common capability. Domain workflows become shallow while local tools proliferate underneath.</p></div>
-          <div><strong>Agent without a lease</strong><p>Long-lived credentials, unclear ownership and no budget or stop condition create unbounded operational risk.</p></div>
-          <div><strong>Token cost without review cost</strong><p>Cheaper calls look efficient while retries, review, rework and failed tasks make the business outcome more expensive.</p></div>
-          <div><strong>Judge grades itself</strong><p>Model evaluation substitutes for tests and calibrated human review. Changing model families alone does not resolve this.</p></div>
-          <div><strong>Adoption by mandate</strong><p>Training and executive sponsorship substitute for workflow fit, trust, support and the hard work of retiring the old route.</p></div>
+          <div><strong>Activity replaces outcomes</strong><p>Logins, agents and generated answers rise, but work does not improve. Return to completed tasks, quality and full effort.</p></div>
+          <div><strong>One team’s speed becomes another’s rework</strong><p>Measure the whole process and give someone authority to resolve the handoff.</p></div>
+          <div><strong>The platform gets ahead of demand</strong><p>Pause unclaimed capabilities. Require a ready consumer and a funded outcome before adding shared scope.</p></div>
+          <div><strong>Reuse becomes forced migration</strong><p>Compare the cost of moving a working solution with the benefit of sharing. Keep justified exceptions.</p></div>
+          <div><strong>The pilot has no operational owner</strong><p>Name review, support, data maintenance and recovery owners before expanding use.</p></div>
+          <div><strong>Recovered hours become assumed savings</strong><p>Show where capacity went and whether spending or output changed. Keep estimates separate from measured benefits.</p></div>
+          <div><strong>Review becomes the bottleneck</strong><p>Fix recurring errors and improve the evidence reviewers receive. Include review capacity in the plan.</p></div>
+          <div><strong>Controls arrive after the build</strong><p>Bring accountable owners into discovery. Include assurance and recovery in the delivery estimate.</p></div>
         </div>
-        <p class="footer-note">A working reference for product, engineering, data and control teams. Examples are hypothetical; diagrams describe proposed designs. Confirm the legal, security and quality requirements for each intended use before deployment.</p>
+        <p class="footer-note">A general reference for business and delivery teams. Examples are hypothetical; the architecture describes a proposed design. Confirm requirements for each intended use and measure the result before expanding.</p>
       </section>
     </main>
   </div>
@@ -1036,22 +1044,103 @@
 <script>
 (function () {
   var layers = [
-    {n:"01", name:"Data foundation", sub:"Trusted, governed source of truth", signal:"quality · lineage", color:"#39704d", job:"Supply reliable, permissioned data for analytics, training, retrieval and feedback.", contract:"Datasets with owner, schema, lineage, quality SLO, retention and approved-use metadata.", proof:"Freshness and quality SLOs hold; access is explainable; lineage reaches every product output."},
-    {n:"02", name:"Compute & training", sub:"Reproducible experimentation", signal:"utilization · reproducibility", color:"#4e7650", job:"Provision secure compute, environments, pipelines and experiment lineage for model development.", contract:"Versioned code, data, environment, parameters, artifact and training run manifest.", proof:"A run is reproducible; capacity is visible; artifacts pass security and provenance gates."},
-    {n:"03", name:"Inference serving", sub:"Reliable model access and routing", signal:"latency · cost", color:"#315f79", job:"Expose approved models through stable interfaces with routing, quotas, fallback and capacity controls.", contract:"Model endpoint with capability, context window, SLO, region, cost and approved-use profile.", proof:"SLOs hold by task class; fallback works; route changes improve total cost without quality loss."},
-    {n:"04", name:"Knowledge & retrieval", sub:"Authorized context with provenance", signal:"recall · grounding", color:"#277a78", job:"Assemble the right context using lexical, vector, graph and semantic retrieval under user permissions.", contract:"Typed context pack: excerpts, source, owner, time, sensitivity and authorization decision.", proof:"Evaluate retrieval on approved questions, resolve citations, and test denied access, revocation and cross-user cases."},
-    {n:"05", name:"Evaluation", sub:"Release and run-time quality gates", signal:"pass rate · agreement", color:"#006d68", job:"Measure task quality, safety, policy compliance and model changes before, during and after use.", contract:"Versioned eval suite with dataset, rubric, evaluator, threshold, segment and owner.", proof:"Thresholds predict accepted outcomes; judges agree with calibrated humans; regressions block release."},
-    {n:"06", name:"Agents & tools", sub:"Bounded autonomy and recovery", signal:"success · recovery", color:"#8b5b26", job:"Plan and execute multi-step work through contracted tools with budgets, verification and escalation.", contract:"Typed task, agent lease, tool schemas, authority, budgets, idempotency and stop conditions.", proof:"Tasks complete safely; effects are verified; retries are bounded; humans receive useful escalations."},
-    {n:"07", name:"Trust & governance", sub:"Policy, evidence and oversight", signal:"violations · evidence", color:"#a74318", job:"Translate intended use and risk into control floors, decision rights and release evidence.", contract:"Risk tier and policy bundle bound to product, version, data, model, tools and approvers.", proof:"Every release explains eligibility and approval; violations surface quickly; controls travel with change."},
-    {n:"08", name:"Developer platform", sub:"Paved roads and agent delivery", signal:"lead time · reuse", color:"#5c586f", job:"Give teams templates, SDKs, environments and a spec-driven workflow that encode the safe path.", contract:"Golden path with supported interfaces, operating model, gates, runbooks and ownership.", proof:"A second team ships faster without bespoke platform help; upgrades propagate without breaking products."},
-    {n:"09", name:"Observability & feedback", sub:"Trace, learn and improve", signal:"drift · outcome", color:"#684f62", job:"Connect system behavior, semantic quality, business outcomes, cost and feedback across a task trace.", contract:"Canonical run ID joining spans, versions, verdicts, costs, outcomes and correction reasons.", proof:"Incidents are explainable; drift is detected; feedback changes are reviewed and measurable."}
-  ];
+  {
+    "n": "01",
+    "name": "Data foundation",
+    "sub": "Avoid repeated data preparation",
+    "signal": "onboarding · upkeep",
+    "color": "#39704d",
+    "job": "Reuse maintained datasets and source connections where several workflows need the same information. Keep business definitions and quality ownership explicit.",
+    "contract": "Documented datasets with schema, access, source lineage, freshness targets and an owner.",
+    "proof": "Compare integration effort, time to usable data, correction work and maintenance cost for each new consumer."
+  },
+  {
+    "n": "02",
+    "name": "Compute & training",
+    "sub": "Use only when the roadmap needs it",
+    "signal": "setup · utilization",
+    "color": "#4e7650",
+    "job": "Share secure environments and repeatable experiments when a funded outcome requires model development. Prefer an existing service when customization has no demonstrated benefit.",
+    "contract": "Versioned environment, code, data references, experiment record and approved model artifact.",
+    "proof": "Measure setup time, reproducibility, utilization and total delivery cost against the simpler alternative."
+  },
+  {
+    "n": "03",
+    "name": "Inference serving",
+    "sub": "Change models without reconnecting every app",
+    "signal": "change effort · cost",
+    "color": "#315f79",
+    "job": "Give teams one supported route to approved models, budgets and fallbacks. Separate the business workflow from provider-specific integration where practical.",
+    "contract": "Stable endpoint, approved-use profile, region, version controls, latency target and usage record.",
+    "proof": "Compare integration and upgrade effort; test task quality, fallback behavior and accepted-task cost for every route."
+  },
+  {
+    "n": "04",
+    "name": "Knowledge & retrieval",
+    "sub": "Reuse the evidence pipeline",
+    "signal": "integration · accuracy",
+    "color": "#277a78",
+    "job": "Share document ingestion, source references and permission-aware search. Add graph or vector retrieval where it solves a tested need.",
+    "contract": "Evidence with source version, relevant passage, freshness and the access decision.",
+    "proof": "Measure the work saved on each new connector or consumer, alongside answer quality, missing evidence and denied-access tests."
+  },
+  {
+    "n": "05",
+    "name": "Evaluation",
+    "sub": "Reuse tools, keep domain criteria",
+    "signal": "test effort · coverage",
+    "color": "#006d68",
+    "job": "Share test execution, comparison and reporting. Business functions supply representative cases and acceptance standards for their own tasks.",
+    "contract": "Versioned cases, rubric, evaluator, threshold, results by failure type and accountable reviewer.",
+    "proof": "Measure time to establish release readiness, review effort, critical misses and regression coverage."
+  },
+  {
+    "n": "06",
+    "name": "Agents & tools",
+    "sub": "Reuse controlled business-system actions",
+    "signal": "integration · recovery",
+    "color": "#8b5b26",
+    "job": "Share supported tool connections, task state and recovery mechanisms where workflows need them. Keep approvals and business rules specific to the function.",
+    "contract": "Typed task, scoped tools, time-bounded authority, exact approval, spend limits and verified result.",
+    "proof": "Measure integration effort and correctly completed tasks; test duplicate requests, revoked authority, failures and recovery."
+  },
+  {
+    "n": "07",
+    "name": "Trust & governance",
+    "sub": "Prepare review evidence as work proceeds",
+    "signal": "review effort · gaps",
+    "color": "#a74318",
+    "job": "Reuse control implementations and evidence templates so teams can plan assurance early. Every new intended use still receives the required review.",
+    "contract": "Use assessment, applicable controls, evidence requirements, approvers and change record.",
+    "proof": "Track late control gaps, evidence completeness, assurance effort and unresolved violations."
+  },
+  {
+    "n": "08",
+    "name": "Developer platform",
+    "sub": "Make proven delivery paths easy to use",
+    "signal": "lead time · support",
+    "color": "#5c586f",
+    "job": "Provide maintained templates, test tools, deployment paths and support documentation. Keep escape routes for justified requirements the shared path cannot meet.",
+    "contract": "Supported interfaces, environments, release checks, runbooks, version policy and service owner.",
+    "proof": "Compare a second team's time to usable release and ongoing support burden, including coordination and migration work."
+  },
+  {
+    "n": "09",
+    "name": "Observability & feedback",
+    "sub": "Find repeat problems without rebuilding reporting",
+    "signal": "diagnosis · rework",
+    "color": "#684f62",
+    "job": "Connect business outcomes to versions, checks, actions and cost. Use common reporting to identify failures that affect several workflows.",
+    "contract": "Run identifier, protected evidence references, outcome, correction reason, timing and cost.",
+    "proof": "Measure diagnosis and recovery time, repeated incidents, reporting effort and whether the resulting fixes improve task outcomes."
+  }
+];
   var layerBox = document.getElementById("layers");
   var detail = document.getElementById("layer-detail");
   function renderLayer(i) {
     var x = layers[i];
     detail.style.setProperty("--inspect-color", x.color);
-    detail.innerHTML = '<div class="eyebrow">Layer ' + x.n + '</div><h3>' + x.name + '</h3><p>' + x.job + '</p><dl><div><dt>Core contract</dt><dd>' + x.contract + '</dd></div><div><dt>What we test</dt><dd>' + x.proof + '</dd></div></dl>';
+    detail.innerHTML = '<div class="eyebrow">Layer ' + x.n + '</div><h3>' + x.name + '</h3><p>' + x.job + '</p><dl><div><dt>What teams can reuse</dt><dd>' + x.contract + '</dd></div><div><dt>How to assess the benefit</dt><dd>' + x.proof + '</dd></div></dl>';
     document.querySelectorAll(".layer").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
   }
   layers.forEach(function (x, i) {
@@ -1062,16 +1151,46 @@
   renderLayer(0);
 
   var harness = [
-    {n:"01", name:"Intake & routing", sub:"Retrieve context, classify the task, set owner and risk.", body:"A context service runs lexical, vector and graph retrieval in parallel, fuses the results and produces a typed context pack. The decision layer routes to a task operating model, or asks for clarification instead of guessing.", gate:"Low confidence, ambiguous intent or no matching task type returns to a requester or platform owner. Hard rules can raise risk but never lower it."},
-    {n:"02", name:"Spec development", sub:"Turn intent into testable acceptance criteria.", body:"Task-specific spec agents use a template, golden examples and domain guidelines. Deterministic checks and a calibrated spec judge test completeness, consistency and testability before the requester locks intent.", gate:"No implementation begins until acceptance criteria are testable and the requester confirms the intended outcome."},
-    {n:"03", name:"Blast radius & stacking", sub:"Predict change, dependencies and safe parallelism.", body:"Predicted edits are compared with repository ownership, dependency graphs, sensitive paths and static analysis. Related low-risk changes can form a stack; wide or high-risk changes run alone.", gate:"Risk floors, locked paths, task/file/service caps and drift checks decide what may share a run."},
-    {n:"04", name:"Execution loop", sub:"Build one spec step; verify before committing.", body:"A worker receives only the current step and context. Deterministic tests run first, then a bounded decision check and cross-model judge. Failure loops back with reasons; repeated failure can escalate model tier once.", gate:"Attempts are capped. If the stronger model still fails, stop and investigate the specification, evidence, tools and model rather than assuming one cause."},
-    {n:"05", name:"Verify & merge", sub:"Test the whole stack, approve risk, merge bottom-up.", body:"The complete stack is integrated and evaluated against acceptance criteria, regression suites and policy. Automated checks prepare the change for review. The named owner approves the exact change before merge; additional release approvals depend on the workflow.", gate:"Any failed stack-level test returns to the owning task. Merge proceeds bottom-up only after evidence and approvals are complete."}
-  ];
+  {
+    "n": "01",
+    "name": "Agree the result",
+    "sub": "Define the business outcome and acceptance test.",
+    "body": "Product and the function describe the current work, target result, failure consequences and representative cases. Engineering checks what already exists and proposes the smallest deliverable that can test the benefit.",
+    "gate": "Confirm the owner, scope, examples and acceptance criteria before committing implementation capacity."
+  },
+  {
+    "n": "02",
+    "name": "Reuse proven services",
+    "sub": "Identify the work that does not need rebuilding.",
+    "body": "Compare existing applications and shared connections, identity, retrieval, evaluation and approval services. Document remaining domain work, dependencies and support responsibilities.",
+    "gate": "The selected path must meet the workflow's requirements. Include integration, coordination and migration costs."
+  },
+  {
+    "n": "03",
+    "name": "Build a small change",
+    "sub": "Keep automated work bounded and reviewable.",
+    "body": "Give engineers and coding agents a testable change with the relevant context. Inspect affected interfaces and conflicting edits before parallel work. Run deterministic checks first and cap attempts that keep failing.",
+    "gate": "Stop and diagnose when attempts fail repeatedly or the change exceeds its approved scope."
+  },
+  {
+    "n": "04",
+    "name": "Test the complete task",
+    "sub": "Check quality and effort through the final result.",
+    "body": "Run integration, access and regression tests, then compare business outcomes on representative cases. Include reviewer effort and recovery. If a model judge helps, compare its judgments with qualified reviewers.",
+    "gate": "Do not release on a component score alone. Required controls and task acceptance criteria must be met."
+  },
+  {
+    "n": "05",
+    "name": "Release and support",
+    "sub": "Measure a usable service, not a merged change.",
+    "body": "The authorized owner approves the exact change. Confirm training, support, monitoring and rollback readiness. Compare initial task results with the baseline and route problems to a named owner.",
+    "gate": "Expand only when users can complete the work at the required quality and the operating team can support it."
+  }
+];
   var hf = document.getElementById("harness-flow"), hd = document.getElementById("harness-detail");
   function renderHarness(i) {
     var x = harness[i];
-    hd.innerHTML = '<p class="kicker">Stage ' + x.n + '</p><h3>' + x.name + '</h3><p>' + x.body + '</p><div class="gate"><strong>Control gate</strong><p>' + x.gate + '</p></div>';
+    hd.innerHTML = '<p class="kicker">Stage ' + x.n + '</p><h3>' + x.name + '</h3><p>' + x.body + '</p><div class="gate"><strong>Decision to continue</strong><p>' + x.gate + '</p></div>';
     document.querySelectorAll(".h-step").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
   }
   harness.forEach(function (x, i) {
@@ -1102,7 +1221,7 @@
 
   var copyButton = document.getElementById("copy-canvas");
   copyButton.addEventListener("click", function () {
-    var text = "AI PLATFORM INITIATIVE CANVAS\n\nOutcome: User, job, baseline, accepted result, consequence of failure.\nPortfolio fit: Existing options, build/buy/reuse decision, capacity displaced, dependencies and review date.\nOwner: Business owner, product owner, engineering owner, data owner, risk approver.\nContracts: Data, context, model, tool, agent, trace and release-evidence contracts.\nQuality: Golden set, thresholds, failure taxonomy, abstention, fallback and reviewer.\nRisk: Intended use, sensitivity, autonomy, reversibility, risk tier and control floor.\nEconomics: Volume, latency target, capacity, cost per successful task, budget and route.\nAdoption: User concerns, role changes, observation boundaries, review effort, support and sustained-use target.\nLearning: Trace plan, feedback rights, drift signals, review cadence and next expansion gate.";
+    var text = "BUSINESS OUTCOME AND DELIVERY CANVAS\n\nOutcome: User, completed task, baseline, target and consequence of failure.\nWorkflow: Where assistance appears, what changes, handoffs and human decisions.\nOwnership: Business owner, product, engineering, data, control and support owners.\nDelivery: Existing capability to reuse, missing work, dependencies, capacity and sequence.\nQuality: Representative cases, acceptance thresholds, reviewer effort and release evidence.\nControls: Intended use, access, approval authority, stop conditions and recovery.\nInvestment: Alternatives, build and running costs, benefit assumptions and attribution limits.\nAdoption: User concerns, practice time, reviewer capacity, support and sustained-use measure.\nNext decision: Review date, expand/revise/stop criteria and owner of the funding decision.";
     function done(ok) { if(!ok){ var range=document.createRange();range.selectNodeContents(document.getElementById("canvas-copy"));var selection=window.getSelection();selection.removeAllRanges();selection.addRange(range); } copyButton.textContent = ok ? "Copied" : "Select text"; setTimeout(function () { copyButton.textContent = "Copy canvas"; }, 1800); }
     if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(function(){ done(true); }).catch(function(){ done(false); }); } else { done(false); }
   });

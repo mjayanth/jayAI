@@ -5,22 +5,22 @@
   {
    id:'ai-platform',
    title:'AI Platform Playbook',
-   description:'A practical guide to prioritization, ownership, adoption and evaluation, with worked decisions and a vendor-neutral architecture. Extend the platforms already in use and measure the result after review.',
+   description:'Business workflows, adoption, investment and an outcome-led roadmap. See how shared architecture reduces repeated delivery work, and measure value after review, rework and support.',
    type:'Playbook',
    date:'2026-10-09',
    href:'playbooks/ai-platform.html',
    topics:['Enterprise AI','Product','Architecture'],
    featured:true,
    visual:['Data foundation','Compute & training','Inference serving','Knowledge & retrieval','Evaluation','Agents & tools','Trust & governance','Developer platform','Observability & feedback'],
-   visualTitle:'Reference architecture',
+   visualTitle:'Architecture for shared delivery',
    visualMeta:'09 layers',
    visualHref:'playbooks/ai-platform.html#architecture',
-   visualCaption:'Explore the interactive architecture',
+   visualCaption:'See what delivery teams can reuse',
    cta:'Read the playbook',
    links:[
-    {label:'Product decisions',hash:'product'},
-    {label:'Adoption & ownership',hash:'adoption'},
-    {label:'Evaluation',hash:'observability'}
+    {label:'Business functions',hash:'product'},
+    {label:'Delivery roadmap',hash:'roadmap'},
+    {label:'Value & cost',hash:'metrics'}
    ]
   }
  ];
