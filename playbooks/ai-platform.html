@@ -391,6 +391,148 @@
           <article class="card"><span class="num">Sales &amp; marketing</span><h3>Prepare accurate commercial material sooner</h3><p>In proposal and campaign tools, assemble approved product claims, customer context and commercial terms. Reviewers approve pricing, commitments and publication.</p><ul class="clean-list"><li><strong>Measure:</strong> turnaround, correction effort and unsupported-claim rate. Test any revenue effect separately.</li><li><strong>Reuse:</strong> approved content retrieval, claim checks and document generation.</li></ul></article>
           <article class="card"><span class="num">Operations &amp; quality</span><h3>Prepare investigations for a sound decision</h3><p>In the investigation record, collect evidence, reconstruct the sequence and flag missing documentation. Qualified owners assess causes and approve corrective actions.</p><ul class="clean-list"><li><strong>Measure:</strong> investigation time, evidence completeness, reopened cases and overdue actions.</li><li><strong>Reuse:</strong> source tracing, structured summaries and completeness checks.</li></ul></article>
         </div>
+        <div class="decision-record" id="use-cases">
+          <h3>Work through a business outcome.</h3>
+          <p>These are hypothetical designs, with outcomes to test rather than promised returns. Start with the existing system and process. Add agent behavior where it helps, then reuse the controls and connections across the next workflow.</p>
+          <p><a href="#financial-forecast">Rolling forecasts</a> · <a href="#financial-reconciliation">Financial reconciliation</a> · <a href="#service-resolution">Customer resolution</a> · <a href="#quality-investigation">Quality investigations</a></p>
+        </div>
+        <details class="practice" id="financial-forecast" open>
+          <summary>Finance · Keep the rolling forecast current</summary>
+          <div class="practice-body">
+            <span class="example-label">Hypothetical use case · FP&amp;A owns the forecast</span>
+            <p><strong>Business outcome:</strong> shorten the time from a material business change to an approved view of revenue, margin and cash. Baseline forecast cycle time, reconciliation effort and forecast error before changing the process.</p>
+            <figure class="workflow-map" aria-labelledby="forecast-flow-title">
+              <figcaption id="forecast-flow-title">Bring changed assumptions into the next decision</figcaption>
+              <div class="workflow-track">
+                <div class="workflow-node"><span class="node-step">01 · Detect</span><strong>Business owners</strong><p>Demand, capacity, hiring or collections changes beyond agreed thresholds.</p></div>
+                <div class="workflow-node"><span class="node-step">02 · Prepare</span><strong>Agent + owners</strong><p>Gather evidence, surface conflicting assumptions and request owner confirmation.</p></div>
+                <div class="workflow-node"><span class="node-step">03 · Calculate</span><strong>Planning models</strong><p>Run scenarios with approved inputs, consistent definitions and versioned calculations.</p></div>
+                <div class="workflow-node"><span class="node-step">04 · Decide</span><strong>FP&amp;A</strong><p>Review, approve and publish the forecast version. Record the business decisions.</p></div>
+              </div>
+              <div class="workflow-foundation"><strong>Feedback</strong><span>Compare forecast with actuals</span><span>Investigate variance</span><span>Review assumptions for the next cycle</span></div>
+            </figure>
+            <div class="ownership">
+              <div><h4>Agent responsibility</h4><p>Coordinate updates inside planning tools, prepare variance explanations with sources and route unresolved assumptions. Keep forecast changes as proposals until the authorized owner approves them.</p></div>
+              <div><h4>Shared platform responsibility</h4><p>Connect permitted finance and operating data, retain assumption versions, track review state, call the existing planning engine and capture evaluation results. Keep financial calculations in tested models.</p></div>
+            </div>
+            <h3>What the evaluation harness reconciles</h3>
+            <p>Check the required input set and source cutoffs, reconcile the actuals baseline, validate entities, periods and currencies, and compare calculated outputs with approved assumptions and model rules. Confirm that the published version matches the signed-off version. Predictive accuracy can only be measured later against actuals. Use <a href="#forecast-backtesting">rolling backtests</a> to evaluate changes to the prediction model before release.</p>
+            <div class="decision-record"><strong>Measure and sequence</strong><p>Track time to an approved forecast, missing-input rate, forecast error and bias by horizon, reviewer effort and total operating cost. Begin with read-only variance analysis for one business unit; add scenario preparation after the evidence and checks hold. Hold publication when required inputs or approvals are missing.</p></div>
+          </div>
+        </details>
+        <details class="practice" id="forecast-backtesting">
+          <summary>Forecast evaluation · Backtest an evolving prediction model</summary>
+          <div class="practice-body">
+            <p>The evaluation harness has two jobs here: reconcile each forecast’s inputs and production process, then test whether the prediction method improves on unseen periods. A correctly produced forecast can still predict poorly.</p>
+            <ol class="step-list">
+              <li><strong>Freeze what was known at each forecast date</strong>Retain data as it was available then, including publication delays, assumptions, feature definitions and approvals. Later corrections and future outcomes must not leak into the inputs. If historical snapshots are unavailable, disclose that limitation.</li>
+              <li><strong>Replay the forecasting process through time</strong>Use rolling-origin backtesting. Train or refit each candidate pipeline using only the data available before that cutoff, then predict the required horizon. Fit preprocessing inside each training window. Account for reporting lags; do not use random train/test splits or test today’s fitted model on its training periods.</li>
+              <li><strong>Compare equivalent forecasts</strong>Test the current method, proposed method and a simple baseline, such as a seasonal naïve forecast, on the same dates and horizons. Compare archived business forecasts separately when available. Separate model output from human overrides so their effects remain visible.</li>
+              <li><strong>Keep final evaluation separate from tuning</strong>Use the earlier backtests to choose the method. Reserve a later, untouched period for final evaluation and follow with a prospective shadow run. Repeatedly tuning against the final test invalidates its role as an independent check.</li>
+              <li><strong>Review the change before promotion</strong>Agree thresholds for error, bias, segment regressions, cost and reliability before testing. Record dataset, code, model and assumption versions with the results. Authorized owners approve promotion; keep the previous version available for rollback.</li>
+              <li><strong>Continue when new actuals arrive</strong>Score the frozen forecasts against the agreed actuals version, retaining later revisions separately. Investigate error and drift, then test a revised candidate. Drift should trigger investigation, not automatic model replacement.</li>
+            </ol>
+            <figure class="workflow-map" aria-labelledby="backtest-flow-title">
+              <figcaption id="backtest-flow-title">Repeat the test at successive forecast dates</figcaption>
+              <div class="workflow-track">
+                <div class="workflow-node"><span class="node-step">01 · Historical cutoff</span><strong>Known inputs only</strong><p>Restore the data and assumptions available at that date.</p></div>
+                <div class="workflow-node"><span class="node-step">02 · Forecast</span><strong>Refit and predict</strong><p>Run each method on the same forecast horizon. Freeze its predictions.</p></div>
+                <div class="workflow-node"><span class="node-step">03 · Score</span><strong>Compare with actuals</strong><p>Report errors by horizon and business segment, including missed forecasts.</p></div>
+                <div class="workflow-node"><span class="node-step">04 · Advance</span><strong>Move the cutoff forward</strong><p>Repeat across several periods. Keep the final test separate from tuning.</p></div>
+              </div>
+              <div class="workflow-foundation"><strong>Release decision</strong><span>Backtest evidence</span><span>Untouched test period</span><span>Shadow results</span><span>Human approval</span></div>
+            </figure>
+            <h3>Measure more than average error</h3>
+            <p>Track mean absolute error and signed bias in business units, separately by horizon and segment. Choose scaled measures when comparing unlike series; percentage errors can be misleading when actuals are near zero. If the model provides prediction intervals, evaluate both coverage and width. Also track missing forecasts, stale inputs, delivery time and the cost of each run.</p>
+            <div class="decision-record"><strong>Keep the platform and finance responsibilities clear</strong><p>The platform provides versioned datasets, backtest execution, a model registry, evidence capture and monitored deployment. Finance owns target definitions, evaluation horizons, materiality and business acceptance; data science owns modeling and validation. Passing a backtest supports a release decision but does not guarantee future accuracy.</p></div>
+            <p>Methods: <a href="https://otexts.com/fpp3/tscv.html">rolling-origin time-series cross-validation</a> and <a href="https://otexts.com/fpp3/accuracy.html">out-of-sample forecast accuracy</a>. The workflow and release controls above are a proposed platform design.</p>
+          </div>
+        </details>
+        <details class="practice" id="financial-reconciliation">
+          <summary>Financial operations · Resolve transaction exceptions</summary>
+          <div class="practice-body">
+            <span class="example-label">Hypothetical use case · Financial operations owns resolution</span>
+            <p><strong>Business outcome:</strong> reduce aged reconciliation breaks and investigation effort while maintaining accounting controls. Keep the source population, accounting rules and period boundaries explicit.</p>
+            <figure class="workflow-map" aria-labelledby="finance-ops-flow-title">
+              <figcaption id="finance-ops-flow-title">Use agents to investigate the breaks</figcaption>
+              <div class="workflow-track">
+                <div class="workflow-node"><span class="node-step">01 · Reconcile</span><strong>Deterministic controls</strong><p>Match transactions, settlements and ledger records. Identify missing or inconsistent items.</p></div>
+                <div class="workflow-node"><span class="node-step">02 · Investigate</span><strong>Agent</strong><p>Gather evidence, identify likely causes and prepare a proposed resolution.</p></div>
+                <div class="workflow-node"><span class="node-step">03 · Authorize</span><strong>Finance owner</strong><p>Review evidence and approve the exact correction within existing controls.</p></div>
+                <div class="workflow-node"><span class="node-step">04 · Confirm</span><strong>System + harness</strong><p>Execute the authorized change, read back the result and reconcile again.</p></div>
+              </div>
+            </figure>
+            <div class="ownership">
+              <div><h4>Agent responsibility</h4><p>Explain exceptions using permitted records and assemble reviewable corrections. Ambiguous matching or an unsupported explanation remains an exception.</p></div>
+              <div><h4>Shared platform responsibility</h4><p>Supply source connectors, event identity, approval routing, controlled write tools, reconciliation checks and recovery records. Preserve the ledger’s own accounting and access controls.</p></div>
+            </div>
+            <h3>What the evaluation harness reconciles</h3>
+            <p>Match expected IDs, counts and amounts across sources and destinations, accounting for legitimate aggregation, fees, currency conversion and timing differences. Test record identity, correction authority, duplicates and late arrivals. A correction closes a break only when the agreed accounting checks pass.</p>
+            <div class="decision-record"><strong>Measure and sequence</strong><p>Track reconciled items against items due, value and age of unresolved breaks, time to resolution, false matches and reviewer effort. Start with read-only investigations for one exception class. Allow approved corrections only after retry and recovery tests pass; unresolved or unauthorized actions remain blocked.</p></div>
+          </div>
+        </details>
+        <details class="practice" id="service-resolution">
+          <summary>Customer service · Resolve the request through the final action</summary>
+          <div class="practice-body">
+            <span class="example-label">Hypothetical use case · Service operations owns resolution</span>
+            <p><strong>Business outcome:</strong> resolve an eligible cancellation or refund correctly with less customer effort and fewer repeat contacts. Measure through confirmed resolution, including any back-office work.</p>
+            <figure class="workflow-map" aria-labelledby="service-flow-title">
+              <figcaption id="service-flow-title">Connect the answer to the service outcome</figcaption>
+              <div class="workflow-track">
+                <div class="workflow-node"><span class="node-step">01 · Understand</span><strong>Agent</strong><p>Confirm the request, account and relevant order through approved identity checks.</p></div>
+                <div class="workflow-node"><span class="node-step">02 · Prepare</span><strong>Policy + evidence</strong><p>Check eligibility and prepare the action with the applicable policy version.</p></div>
+                <div class="workflow-node"><span class="node-step">03 · Approve</span><strong>Authorized reviewer</strong><p>Resolve exceptions and approve the proposed commitment or transaction.</p></div>
+                <div class="workflow-node"><span class="node-step">04 · Confirm</span><strong>Service systems</strong><p>Execute the change and communicate its verified status to the customer.</p></div>
+              </div>
+            </figure>
+            <div class="ownership">
+              <div><h4>Agent responsibility</h4><p>Retrieve policy, prepare the explanation and coordinate the approved action in the existing case workspace. Ask for missing information and keep pending actions visible.</p></div>
+              <div><h4>Shared platform responsibility</h4><p>Reuse permission-aware retrieval, identity context, durable task state, approval records, controlled transactions and evidence capture across channels.</p></div>
+            </div>
+            <h3>What the evaluation harness reconciles</h3>
+            <p>Check every requested item and promised action against the case, order and payment records. Verify eligibility, amount, recipient, authorization and duplicate handling. Distinguish a submitted refund from a completed refund; give the customer the status supported by the payment system.</p>
+            <div class="decision-record"><strong>Measure and sequence</strong><p>Track end-to-end resolution time, repeat-contact rate, incorrect commitments, pending-action age and cost per correctly resolved case. Begin with reviewer-assisted preparation for one request type. Expand when actions and communications remain accurate through failure and recovery.</p></div>
+          </div>
+        </details>
+        <details class="practice" id="quality-investigation">
+          <summary>Operations &amp; quality · Assemble a complete investigation</summary>
+          <div class="practice-body">
+            <span class="example-label">Hypothetical use case · Quality owns the investigation</span>
+            <p><strong>Business outcome:</strong> give a qualified reviewer a complete, traceable investigation package sooner. Preserve the evidence and required review before any conclusion or corrective action is approved.</p>
+            <figure class="workflow-map" aria-labelledby="quality-flow-title">
+              <figcaption id="quality-flow-title">Bring evidence and missing work into one review</figcaption>
+              <div class="workflow-track">
+                <div class="workflow-node"><span class="node-step">01 · Scope</span><strong>Quality owner</strong><p>Set the affected process, required evidence, applicable procedure and deadline.</p></div>
+                <div class="workflow-node"><span class="node-step">02 · Assemble</span><strong>Agent</strong><p>Build a sourced timeline and request missing records from their owners.</p></div>
+                <div class="workflow-node"><span class="node-step">03 · Assess</span><strong>Qualified reviewers</strong><p>Evaluate causes, challenge evidence and decide whether corrective action is needed.</p></div>
+                <div class="workflow-node"><span class="node-step">04 · Record</span><strong>Quality system</strong><p>Retain the approved package, required signatures and follow-up obligations.</p></div>
+              </div>
+            </figure>
+            <div class="ownership">
+              <div><h4>Agent responsibility</h4><p>Organize evidence, draft sourced summaries and flag contradictions. Keep hypotheses separate from approved findings. Qualified people determine cause and sign off decisions.</p></div>
+              <div><h4>Shared platform responsibility</h4><p>Provide controlled retrieval, document lineage, workflow state, access checks, evaluation records and audit retention configured for the intended use.</p></div>
+            </div>
+            <h3>What the evaluation harness reconciles</h3>
+            <p>Compare the package with its required-evidence checklist, source versions, procedure and approval records. Check that claims have supporting passages and that cited evidence supports the claim. Route contradictions and judgment-heavy conclusions to qualified review; a populated template does not establish a valid investigation.</p>
+            <div class="decision-record"><strong>Measure and sequence</strong><p>Track time to a review-ready package, missing-evidence rate, unsupported claims, reviewer effort and reopened investigations. Pilot evidence assembly for one approved investigation type. Release only after quality owners assess intended use and required assurance; this design is not a compliance certification.</p></div>
+          </div>
+        </details>
+        <details class="practice" id="use-case-reuse">
+          <summary>What the platform should build once and reuse</summary>
+          <div class="practice-body">
+            <p>Reuse the mechanism across these cases. Keep business definitions, permissions, tolerances and approval rights specific to each workflow.</p>
+            <div class="controls-table-wrap" tabindex="0" role="region" aria-label="Shared platform capabilities across use cases">
+              <table class="controls-table"><thead><tr><th scope="col">Shared capability</th><th scope="col">What teams reuse</th><th scope="col">What each workflow still owns</th></tr></thead><tbody>
+                <tr><th scope="row">Governed access</th><td>Identity propagation, connectors and permission checks.</td><td>Purpose, permitted sources, effective access and source freshness.</td></tr>
+                <tr><th scope="row">Evidence and context</th><td>Retrieval, source references and version tracking.</td><td>Business definitions, required inputs and expert-reviewed examples.</td></tr>
+                <tr><th scope="row">Work coordination</th><td>Task state, review routing, deadlines and recovery.</td><td>Decision rights, escalation owners and permitted actions.</td></tr>
+                <tr><th scope="row">Evaluation and reconciliation</th><td>Check execution, expected-versus-actual comparison, evidence records and exception queues.</td><td>Acceptance rules, materiality, tolerances and qualified review.</td></tr>
+                <tr><th scope="row">Operating evidence</th><td>Traces, task cost, service-health and outcome reporting.</td><td>Baseline, targets, benefit attribution and support decisions.</td></tr>
+              </tbody></table>
+            </div>
+            <p style="margin-top:18px">Fund a shared service when committed workflows can use it and the saved delivery effort exceeds its coordination and operating cost. Track the next workflow’s onboarding effort and total support burden to test that case.</p>
+          </div>
+        </details>
         <details class="practice" id="cross-functional-work">
           <summary>Follow one outcome across several functions</summary>
           <div class="practice-body">
@@ -482,6 +624,7 @@
           <article class="score"><h3>Delivery efficiency</h3><div class="formula">time to usable release = discovery + dependencies + build + assurance + rollout</div><ul><li>effort to onboard the next workflow</li><li>integration and test work reused</li><li>release defects and support burden</li><li>shared-service coordination and change cost</li></ul></article>
           <article class="score"><h3>Total cost</h3><div class="formula">cost per accepted task = attributable operating cost ÷ accepted tasks</div><ul><li>models, tools, infrastructure and evaluation</li><li>review, rework, support and data maintenance</li><li>shared-cost allocation disclosed separately</li><li>initial build and transition costs in the investment case</li></ul></article>
         </div>
+        <div class="playbook-note"><p>Attempted-task success can hide work that never started. Also reconcile <strong>all work due</strong> against verified outcomes, pending work and exceptions. Use the <a href="#reconciliation">evaluation harness</a> to keep completeness, accuracy and timeliness visible separately.</p></div>
         <details class="practice" id="capacity-and-cost">
           <summary>Build a credible investment case</summary>
           <div class="practice-body">
@@ -527,7 +670,7 @@
           </div>
         </details>
         <div class="decision-record"><strong>Every delivery commitment needs</strong><p>Outcome owner · Baseline and target · Scope and exclusions · Existing capability to reuse · Missing work · Data and approval dependencies · People and capacity · Release evidence · Support owner · Review date</p></div>
-        <div class="playbook-note"><p>A date alone does not authorize expansion. Release when the outcome, controls and support are ready. Make the cost of a new priority visible, including the work that will wait.</p></div>
+        <div class="playbook-note"><p>A date alone does not authorize expansion. Release when the outcome, controls and support are ready. For consequential workflows, agree completeness, accuracy and timeliness requirements and test the <a href="#reconciliation">reconciliation and recovery path</a>. Make the cost of a new priority visible, including the work that will wait.</p></div>
       </section>
 
       <section id="architecture">
@@ -924,7 +1067,7 @@
           <p class="intro">Agents coordinate approved steps across functions. Business owners retain judgment, approval and accountability.</p>
         </div>
 
-        <div class="loop" aria-label="From business need to a verified workflow result"><div>Agree the result</div><div>Gather permitted evidence</div><div>Prepare the work</div><div>Inspect and approve</div><div>Execute and confirm</div><div>Resolve or escalate exceptions</div></div>
+        <div class="loop" aria-label="From business need to a reconciled workflow result"><div>Agree the result</div><div>Gather permitted evidence</div><div>Prepare the work</div><div>Inspect and approve</div><div>Execute and reconcile</div><div>Resolve or escalate exceptions</div></div>
         <div class="grid-2" style="margin-top:26px">
           <article class="card"><h3>Make the proposed work inspectable</h3><p>Show the exact deliverable or change, its supporting evidence and unresolved questions. Keep edit, reject and escalation available. Approval must come from someone authorized for that action.</p></article>
           <article class="card"><h3>Keep responsibility visible</h3><p>Name the process owner, permitted scope, completion criteria and escalation route. Set time and spend limits. Verify the result in the owning system before marking the task complete.</p></article>
@@ -933,9 +1076,36 @@
           <div><h3>Use a fixed workflow for known steps</h3><p class="muted">A stable sequence of checks and approvals may need ordinary automation. Favor predictable behavior and lower support cost where the work allows it.</p></div>
           <div><h3>Use an agent for conditional work</h3><p class="muted">Consider an agent when the next useful step depends on what it finds, the result can be checked and failures have a bounded recovery path. Compare it with the simpler option.</p></div>
         </div>
+        <details class="practice" id="reconciliation" open>
+          <summary>Have the evaluation harness reconcile the work</summary>
+          <div class="practice-body">
+            <p>Financial engines need completeness, accuracy and timeliness before people can depend on their output. Apply that rigor to agents. The evaluation harness should compare expected work with authoritative results, independently of the agent’s claim that it succeeded.</p>
+            <div class="decision-cards">
+              <article class="decision-card"><span class="verdict">Completeness</span><h4>Account for all expected work</h4><p>Register required records, inputs and steps from the business process. Reconcile IDs, counts and control totals where appropriate. Surface missing work, duplicates and unresolved items.</p><p><strong>Measure:</strong> verified outcomes against work due, including work the agent never started. Keep exceptions visible.</p></article>
+              <article class="decision-card"><span class="verdict">Accuracy</span><h4>Check the actual result</h4><p>Validate amounts, entities, rules and approved versions. Use deterministic checks for calculations and system changes. Use qualified review for judgments that cannot be checked exactly.</p><p><strong>Measure:</strong> mismatches, material errors and corrections, by severity. A model’s confidence is not reconciliation.</p></article>
+              <article class="decision-card"><span class="verdict">Timeliness</span><h4>Meet the business deadline</h4><p>Set source-freshness and completion targets. Measure from the business event through review and confirmed completion, including queues, retries and downstream delays.</p><p><strong>Measure:</strong> age of unresolved work and verified outcomes delivered on time. A late correct result still missed its deadline.</p></article>
+            </div>
+            <figure class="workflow-map" aria-labelledby="reconciliation-flow-title">
+              <figcaption id="reconciliation-flow-title">Expected work → checked action → reconciled outcome</figcaption>
+              <div class="workflow-track">
+                <div class="workflow-node"><span class="node-step">01 · Expect</span><strong>Register the obligation</strong><p>Scope, source cutoff, required result, owner and deadline.</p></div>
+                <div class="workflow-node"><span class="node-step">02 · Check</span><strong>Validate before action</strong><p>Evidence, rules and exact proposed change. Obtain required human approval.</p></div>
+                <div class="workflow-node"><span class="node-step">03 · Execute</span><strong>Confirm the system state</strong><p>Use authorized tools. Capture the transaction reference and read back the result.</p></div>
+                <div class="workflow-node"><span class="node-step">04 · Reconcile</span><strong>Match expected to actual</strong><p>The harness records verified, pending or exception status. Missing evidence stays unresolved.</p></div>
+              </div>
+              <div class="workflow-foundation"><strong>Recovery loop</strong><span>Record the difference</span><span>Bounded recovery or owner review</span><span>Recheck authority</span><span>Reconcile again</span></div>
+            </figure>
+            <p>Keep this harness separate from the agent’s execution path, with versioned checks and read access to the relevant evidence. The workflow engine uses its results to hold completion or escalate; the harness does not grant permission to change a business record. If the harness is unavailable, do not mark unverified work complete.</p>
+            <div class="decision-record"><strong>Recover without repeating the damage</strong><p>A timeout leaves the action’s outcome uncertain. Check the destination before retrying. Use idempotent writes where supported, with stable request IDs and tested limits. Bound retries and route unresolved differences to an owner. Reversals and compensating actions need their own authority.</p></div>
+            <h3>Apply it to a rolling forecast</h3>
+            <p><span class="example-label">Hypothetical workflow</span><br>A forecast includes the latest sales assumptions but misses a revised hiring plan. The arithmetic can be correct while the forecast is incomplete. The harness checks required inputs, reconciled actuals, approved assumption versions, calculations and approval records against the planning system. Reconciliation verifies how the forecast was produced; <a href="#forecast-backtesting">rolling backtests and subsequent actuals</a> evaluate the prediction method.</p>
+            <p>Reuse the expectation register, check runner, reconciliation records and exception routing across workflows. Business owners define the required checks and tolerances. Measure whether this reduces review, rework and recovery effort without weakening controls.</p>
+            <p>Technical grounding: <a href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">idempotent API contracts and safe retries</a>; <a href="https://sre.google/workbook/implementing-slos/">outcome-based reliability measures and service objectives</a>. The agent workflow above is a proposed application of these practices.</p>
+          </div>
+        </details>
         <details class="practice" id="agent-delivery-reuse">
           <summary>Reuse action controls across business workflows</summary>
-          <div class="practice-body"><p>Shared tool interfaces can avoid rebuilding the same system connection for every assistant. Pair each call with the user’s authority, approved purpose and exact action. Recheck permission and approval validity when execution occurs.</p><p>In this reference design, a time-bounded agent lease limits delegated tools, data and spend. Source systems still validate writes. Idempotency prevents duplicate execution; read-back and reconciliation check the resulting state. Test expiry, revocation and recovery before reuse.</p><p>Measure whether these services reduce integration and assurance effort for the next workflow while maintaining its required controls.</p></div>
+          <div class="practice-body"><p>Shared tool interfaces can avoid rebuilding the same system connection for every assistant. Pair each call with the user’s authority, approved purpose and exact action. Recheck permission and approval validity when execution occurs.</p><p>In this reference design, a time-bounded agent lease limits delegated tools, data and spend. Source systems still validate writes. Idempotent write contracts help avoid duplicate effects within their documented limits; the <a href="#reconciliation">evaluation harness reconciles the resulting state</a>. Test expiry, revocation and recovery before reuse.</p><p>Measure whether these services reduce integration and assurance effort for the next workflow while maintaining its required controls.</p></div>
         </details>
       </section>
 
@@ -984,7 +1154,7 @@
           <table class="controls-table"><thead><tr><th scope="col">Moment</th><th scope="col">Business question</th><th scope="col">Evidence and decision</th></tr></thead><tbody>
             <tr><th scope="row">Before release</th><td>Does it improve the work at an acceptable risk and cost?</td><td>Compare representative cases with the baseline; approve, revise or stop.</td></tr>
             <tr><th scope="row">During a task</th><td>Is there enough evidence and authority for the next step?</td><td>Check inputs, sources, policy and proposed actions; continue, clarify or escalate.</td></tr>
-            <tr><th scope="row">After completion</th><td>Was the result accepted, and did the intended change occur?</td><td>Record outcome, correction reasons and total effort; verify the system of record.</td></tr>
+            <tr><th scope="row">Before marking complete</th><td>Did all required work reach the verified outcome on time?</td><td>The <a href="#reconciliation">evaluation harness reconciles expected work with authoritative results</a>. Record checks, exceptions, approvals and total effort; keep quality and deadline status separate.</td></tr>
             <tr><th scope="row">Over time</th><td>Does the benefit hold across functions, regions and user groups?</td><td>Review changing data, policies, quality, adoption and cost; maintain, narrow or withdraw use.</td></tr>
           </tbody></table>
         </div>

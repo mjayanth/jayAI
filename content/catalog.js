@@ -18,6 +18,7 @@
    visualCaption:'See what delivery teams can reuse',
    cta:'Read the playbook',
    links:[
+    {label:'Worked use cases',hash:'use-cases'},
     {label:'Business functions',hash:'product'},
     {label:'Delivery roadmap',hash:'roadmap'},
     {label:'Value & cost',hash:'metrics'}

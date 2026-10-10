@@ -68,6 +68,8 @@ This is a public repository. Do not commit private interview notes, customer fil
 
 The playbook is a proposed approach. Its diagrams and evaluation criteria are not claims about an employer’s internal systems or a compliance certification.
 
+Worked examples are available at `#use-cases`, with direct links to `#financial-forecast`, `#financial-reconciliation`, `#service-resolution` and `#quality-investigation`. These are hypothetical workflow designs. Each separates agent behavior, shared platform services, human authority, evaluation checks and business measures. `#forecast-backtesting` covers time-aware model evaluation and governed promotion. `#use-case-reuse` maps the reusable capabilities; `#reconciliation` explains how an evaluation harness checks completeness, accuracy and timeliness against authoritative records. Keep the examples generic and do not imply measured customer results.
+
 ## Checks
 
 With Node 20 or later:
