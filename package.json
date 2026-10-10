@@ -3,6 +3,6 @@
  "version":"1.0.0",
  "private":true,
  "description":"Frameworks, architectures and playbooks for putting AI to work across the enterprise.",
- "scripts":{"test":"node --test tests/*.test.cjs","check":"node scripts/check.cjs"},
+ "scripts":{"test":"node --test tests/*.test.cjs","check":"node scripts/check.cjs","check:analytics":"node scripts/check-analytics.cjs"},
  "engines":{"node":">=20"}
 }

@@ -12,10 +12,11 @@ A library of frameworks, architectures and playbooks for putting AI to work acro
 - `assets/site.css` — homepage colors, type and layout, drawn from the playbook.
 - `assets/library.js` — card rendering, filtering and safe local links.
 - `assets/main.js` — homepage interactions.
+- `assets/analytics.js` — shared Cloudflare beacon loader, restricted to the published site.
 - `assets/enterprise-ai-architecture.svg` — full enterprise AI reference architecture.
 - `assets/architecture.css` and `assets/diagram-viewer.js` — playbook diagram layout, zoom and expanded view.
 
-Plain HTML, CSS and JavaScript. No install, bundler, database or paid service is required. GitHub Pages serves the root of `main`. IBM Plex fonts load from Google Fonts with local fallbacks.
+Plain HTML, CSS and JavaScript. No install, bundler, database or paid service is required. GitHub Pages serves the root of `main`. IBM Plex fonts load from Google Fonts with local fallbacks. Cloudflare Web Analytics reports site traffic and performance.
 
 ## Add another piece
 
@@ -44,7 +45,8 @@ Plain HTML, CSS and JavaScript. No install, bundler, database or paid service is
 ```
 
 3. Give the article’s sections matching IDs, for example `<section id="approach">`. Add a link back to `../index.html` and optionally `../index.html#work`.
-4. Check the site, then commit and push. The new card appears automatically; the homepage needs no edits or build step.
+4. Add `<script defer src="../assets/analytics.js"></script>` just before the new page’s closing `</body>` tag, adjusting the relative path for its folder. Include the analytics disclosure link.
+5. Check the site, then commit and push. The new card appears automatically; the homepage needs no edits or build step.
 
 Cards sort featured-first, then newest-first. Search and format filters appear when the collection grows beyond three published pieces. The collection works with local files too: it reads the catalog as a normal script, without a `fetch` request.
 
@@ -76,6 +78,22 @@ npm run check
 ```
 
 The tests exercise card additions, safe links, escaped text, search, draft filtering and old section URLs. Static checks cover local files and anchors, HTML nesting, JavaScript syntax, accidental private preparation text and principal text-color contrast. Browser layout and interaction still need a visual check.
+
+## Traffic analytics
+
+Both published pages use `assets/analytics.js` to load the Cloudflare Web Analytics beacon with the site’s public token. The loader runs only on HTTPS pages under `mjayanth.github.io/jayAI/`; local files, localhost and preview hosts do not load the beacon. The token is not an account credential. Keep account API keys and passwords out of this repository.
+
+The Cloudflare dashboard reports visits, page views, referring sites, countries, device types and page performance. These metrics do not identify visitors by name or email. The site does not add session recording or an identity-enrichment service. Blocking browser extensions and site settings can affect counts; traffic reporting is not a complete visitor list. Use [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/) for the product’s current collection details.
+
+To verify the integration with Playwright and Chromium available:
+
+```sh
+npm run check:analytics
+```
+
+This loads local site files at the production origin in an isolated browser, executes the real Cloudflare beacon and intercepts analytics submissions. It verifies page attribution and the site token without adding test traffic to the dashboard. Provide the installed Playwright module through `NODE_PATH` if it is not available locally.
+
+After publishing, `npm run check:analytics -- --live` checks that Cloudflare accepts requests from the live pages. This sends two real verification page views. It does not confirm that the dashboard has finished processing them.
 
 ## Design and copy
 

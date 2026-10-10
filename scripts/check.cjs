@@ -42,7 +42,7 @@ for(const item of catalog){
  const target=fs.readFileSync(path.join(root,item.href.split('#')[0]),'utf8');
  for(const link of item.links||[])assert.ok(target.includes('id="'+link.hash+'"'),'Missing catalog sublink '+link.hash);
 }
-for(const script of ['assets/library.js','assets/main.js','assets/diagram-viewer.js','content/catalog.js'])new vm.Script(fs.readFileSync(path.join(root,script),'utf8'));
+for(const script of ['assets/library.js','assets/main.js','assets/diagram-viewer.js','assets/analytics.js','content/catalog.js'])new vm.Script(fs.readFileSync(path.join(root,script),'utf8'));
 function luminance(h){const rgb=h.match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;}
 const pairs=[['16232a','e9eef0'],['53636b','e9eef0'],['006d68','f8faf9'],['e6edef','0e1519'],['a0b0b6','131d22'],['60c5bc','131d22']];
 for(const [fg,bg] of pairs){const a=luminance(fg),b=luminance(bg);assert.ok((Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5,'Text contrast below AA');}
