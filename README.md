@@ -1,6 +1,6 @@
-# How I AI
+# Enterprise AI Playbooks
 
-A library of frameworks, playbooks and architectures for building and running AI, by Jay Madduru. The homepage is a content index, not a career portfolio.
+A library of frameworks, architectures and playbooks for putting AI to work across the enterprise. The content connects business outcomes, cross-functional workflows and shared capabilities to delivery and operating decisions.
 
 **Live site:** https://mjayanth.github.io/jayAI/
 
@@ -12,7 +12,7 @@ A library of frameworks, playbooks and architectures for building and running AI
 - `assets/site.css` — homepage colors, type and layout, drawn from the playbook.
 - `assets/library.js` — card rendering, filtering and safe local links.
 - `assets/main.js` — homepage interactions.
-- `assets/enterprise-ai-architecture.svg` — full reference diagram adapted from Jay’s original Claude artifact.
+- `assets/enterprise-ai-architecture.svg` — full enterprise AI reference architecture.
 - `assets/architecture.css` and `assets/diagram-viewer.js` — playbook diagram layout, zoom and expanded view.
 
 Plain HTML, CSS and JavaScript. No install, bundler, database or paid service is required. GitHub Pages serves the root of `main`. IBM Plex fonts load from Google Fonts with local fallbacks.
@@ -24,17 +24,17 @@ Plain HTML, CSS and JavaScript. No install, bundler, database or paid service is
 
 ```js
 {
-  id: 'my-next-piece',
+  id: 'next-resource',
   title: 'The title of the piece',
   description: 'A short, specific description of what a reader will find.',
   type: 'Framework', // Playbook, Architecture, Framework, Note, or another format
   date: '2026-10-09',
-  href: 'notes/my-next-piece.html',
+  href: 'notes/next-resource.html',
   topics: ['Agents', 'Evals'],
   featured: false,
   visual: ['Problem', 'Approach', 'Decisions'],
   visualTitle: 'Decision flow',
-  visualHref: 'notes/my-next-piece.html#approach', // optional clickable diagram
+  visualHref: 'notes/next-resource.html#approach', // optional clickable diagram
   visualCaption: 'An illustrated note',
   cta: 'Read the note',
   links: [
@@ -81,7 +81,7 @@ The tests exercise card additions, safe links, escaped text, search, draft filte
 
 The homepage follows an editorial layout, using the original playbook’s teal/gray palette and IBM Plex Sans, Sans Condensed and Mono. Diagrams show relationships and steps; they do not stand in for performance data.
 
-The homepage contains the resource library and concise links into the current playbook. Avoid biographies, employer lists, sales pitches and repeated summaries. Framework links are labeled as sections within the playbook, not separate publications. The full nine-layer architecture is visible in the card preview and opens the original interactive diagram. The thirteen playbook sections lead with business outcomes, function workflows, adoption, investment and the roadmap. Technical material explains reuse, delivery efficiency and the cost of change. Preserve all section IDs so existing links continue to work.
+The homepage contains the resource library and concise links into the current playbook. Use enterprise language in headings, navigation, metadata and descriptions. Avoid personal branding, biographies, employer lists, sales pitches and repeated summaries. Keep individual permissions, employee concerns and accountable approval roles explicit: enterprise-wide outcomes do not imply enterprise-wide access. Framework links are labeled as sections within the playbook, not separate publications. The full nine-layer architecture is visible in the card preview and opens the original interactive diagram. The thirteen playbook sections lead with business outcomes, function workflows, adoption, investment and the roadmap. Technical material explains reuse, delivery efficiency and the cost of change. Preserve all section IDs so existing links continue to work.
 
 The playbook’s Architecture section opens with the end-to-end diagram from the original Claude artifact, followed by eight numbered flows, seven security checkpoints, then the nine-layer capability view. The SVG is also embedded inline for accessible text and the site fonts. If its layout changes, update both the inline SVG and the standalone SVG file. The diagram is a proposed reference design, not a representation of a company’s deployed systems. Labels were clarified around human approval, accountable owners, intended use and evaluation; the original component layout and flow connections remain.
 

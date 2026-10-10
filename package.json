@@ -1,8 +1,8 @@
 {
- "name":"jay-how-i-ai",
+ "name":"enterprise-ai-playbooks",
  "version":"1.0.0",
  "private":true,
- "description":"Jay Madduru's independent collection of AI playbooks, builds and notes.",
+ "description":"Frameworks, architectures and playbooks for putting AI to work across the enterprise.",
  "scripts":{"test":"node --test tests/*.test.cjs","check":"node scripts/check.cjs"},
  "engines":{"node":">=20"}
 }

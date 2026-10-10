@@ -89,4 +89,6 @@ main>section{padding:clamp(38px,5vw,64px) 0}
 .life:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:18px;z-index:1;background:var(--bg);color:var(--teal);font-size:1rem}
 @media(max-width:1080px){.hero{gap:28px}.workflow-track{grid-template-columns:1fr}.workflow-node:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-22px}.phase:not(:last-child)::after,.life:not(:last-child)::after{display:none}}
 @media(max-width:800px){.hero{grid-template-columns:1fr;gap:30px;padding:40px 0 30px}.hero h1{font-size:clamp(2.65rem,12.5vw,4.3rem)}.hero .lead{font-size:1.05rem;margin-top:20px}.hero-map{padding:18px}.section-head{grid-template-columns:1fr;gap:14px}.section-head h2{font-size:clamp(2rem,8vw,2.8rem)}.hero-map-core{gap:10px}.hero-map-core div>span{font-size:.75rem}.core-symbol{width:30px;height:30px}.workflow-map{padding:14px}.workflow-foundation{display:grid;gap:7px}.workflow-foundation>span{border:0;padding:0}}
+.publication-nav{flex-wrap:wrap;row-gap:0}
+@media(max-width:620px){.publication-nav{padding:8px 0}.publication-brand{flex-basis:100%;margin-right:0}.publication-nav>.publication-brand{padding-bottom:0;font-size:1rem}}
 @media print{.hero-link{display:none}.hero-map,.workflow-map{break-inside:avoid}}

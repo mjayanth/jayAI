@@ -5,7 +5,7 @@
   {
    id:'ai-platform',
    title:'AI Platform Playbook',
-   description:'Business workflows, adoption, investment and an outcome-led roadmap. See how shared architecture reduces repeated delivery work, and measure value after review, rework and support.',
+   description:'Connect business outcomes to cross-functional workflows, shared investment and a delivery roadmap. Measure value across the portfolio, including review, rework and support.',
    type:'Playbook',
    date:'2026-10-09',
    href:'playbooks/ai-platform.html',
